@@ -1,0 +1,8 @@
+verilog work "vga640x480.v"
+verilog work "segdisplay.v"
+verilog work "renderer.v"
+verilog work "fsm.v"
+verilog work "clockdiv.v"
+verilog work "NERP_demo_top.v"
+verilog work "tb.v"
+verilog work "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v"

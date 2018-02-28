@@ -1,0 +1,1594 @@
+Release 14.6 - xst P.68d (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.14 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.14 secs
+ 
+--> Reading design: NERP_demo_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "NERP_demo_top.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "NERP_demo_top"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : NERP_demo_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "C:\Users\152\Downloads\0226\vga640x480.v" into library work
+Parsing module <vga640x480>.
+Analyzing Verilog file "C:\Users\152\Downloads\0226\segdisplay.v" into library work
+Parsing module <segdisplay>.
+Analyzing Verilog file "C:\Users\152\Downloads\0226\renderer.v" into library work
+Parsing module <renderer>.
+WARNING:HDLCompiler:751 - "C:\Users\152\Downloads\0226\renderer.v" Line 27: Redeclaration of ansi port pixel is not allowed
+Analyzing Verilog file "C:\Users\152\Downloads\0226\clockdiv.v" into library work
+Parsing module <clockdiv>.
+Analyzing Verilog file "C:\Users\152\Downloads\0226\NERP_demo_top.v" into library work
+Parsing module <NERP_demo_top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <NERP_demo_top>.
+
+Elaborating module <clockdiv>.
+WARNING:HDLCompiler:413 - "C:\Users\152\Downloads\0226\clockdiv.v" Line 45: Result of 22-bit expression is truncated to fit in 21-bit target.
+
+Elaborating module <segdisplay>.
+
+Elaborating module <vga640x480>.
+WARNING:HDLCompiler:413 - "C:\Users\152\Downloads\0226\vga640x480.v" Line 68: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Downloads\0226\vga640x480.v" Line 77: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Downloads\0226\vga640x480.v" Line 89: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Downloads\0226\vga640x480.v" Line 90: Result of 32-bit expression is truncated to fit in 1-bit target.
+
+Elaborating module <renderer>.
+WARNING:HDLCompiler:872 - "C:\Users\152\Downloads\0226\renderer.v" Line 36: Using initial value of state since it is never assigned
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 23, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 27, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 22, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 23, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 27, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 28, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 21, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 22, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 23, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 27, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 28, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 29, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 22, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 23, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 27, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 28, 46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 23, 47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 27, 47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 24, 48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 26, 48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 25, 49 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 29,46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 29,47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 29,48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 29,49 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 28,47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 28,48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 28,49 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 28,50 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 27,48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 27,49 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 27,50 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 27,51 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 26,49 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 26,50 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 26,51 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 26,52 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 40, 28 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 39, 29 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 40, 29 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 41, 29 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 38, 30 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 39, 30 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 40, 30 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 41, 30 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 42, 30 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 39, 31 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 40, 31 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 41, 31 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 40, 32 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 42,31 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 42,32 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 41,32 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 41,33 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 35 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 36 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 36 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 36 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 37 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 37 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 37 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 37 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 37 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 47, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 53, 38 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 46, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 47, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 53, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 54, 39 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 45, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 46, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 47, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 53, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 54, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 55, 40 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 46, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 47, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 53, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 54, 41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 47, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 53, 42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 48, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 52, 43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 49, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 51, 44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 51. $display painting 50, 45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 55,41 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 55,42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 55,43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 55,44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 55,45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 54,42 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 54,43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 54,44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 54,45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 54,46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 53,43 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 53,44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 53,45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 53,46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 53,47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 52,44 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 52,45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 52,46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 52,47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 52,48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 51,45 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 51,46 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 51,47 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 51,48 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 67. $display setting 51,49 to 1
+"C:\Users\152\Downloads\0226\renderer.v" Line 90. $display in drawing mode
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 108: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 109: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 110: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 111: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 112: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 113: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 114: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 115: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 119: System task fwrite ignored for synthesis
+WARNING:HDLCompiler:817 - "C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 120: System task fflush ignored for synthesis
+"C:\Users\152\Downloads\0226\NERP_demo_top.v" Line 122. $display TB PRINTED 0-th frame
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <NERP_demo_top>.
+    Related source file is "C:\Users\152\Downloads\0226\NERP_demo_top.v".
+    Summary:
+	no macro.
+Unit <NERP_demo_top> synthesized.
+
+Synthesizing Unit <clockdiv>.
+    Related source file is "C:\Users\152\Downloads\0226\clockdiv.v".
+    Found 21-bit register for signal <q>.
+    Found 21-bit adder for signal <q[20]_GND_2_o_add_1_OUT> created at line 45.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  21 D-type flip-flop(s).
+Unit <clockdiv> synthesized.
+
+Synthesizing Unit <segdisplay>.
+    Related source file is "C:\Users\152\Downloads\0226\segdisplay.v".
+        N = 7'b1001000
+        E = 7'b0000110
+        R = 7'b1001100
+        P = 7'b0001100
+        left = 2'b00
+        midleft = 2'b01
+        midright = 2'b10
+        right = 2'b11
+    Found 4-bit register for signal <an>.
+    Found 7-bit register for signal <seg>.
+    Found 2-bit register for signal <state>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 8                                              |
+    | Clock              | segclk (rising_edge)                           |
+    | Reset              | clr (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred  11 D-type flip-flop(s).
+	inferred   1 Finite State Machine(s).
+Unit <segdisplay> synthesized.
+
+Synthesizing Unit <vga640x480>.
+    Related source file is "C:\Users\152\Downloads\0226\vga640x480.v".
+        hpixels = 800
+        vlines = 521
+        hpulse = 96
+        vpulse = 2
+        hbp = 144
+        hfp = 784
+        vbp = 31
+        vfp = 511
+    Found 10-bit register for signal <vc>.
+    Found 10-bit register for signal <hc>.
+    Found 11-bit subtractor for signal <n0051> created at line 198.
+    Found 11-bit subtractor for signal <n0052> created at line 198.
+    Found 10-bit adder for signal <hc[9]_GND_5_o_add_2_OUT> created at line 68.
+    Found 10-bit adder for signal <vc[9]_GND_5_o_add_4_OUT> created at line 77.
+    Found 33-bit adder for signal <idx> created at line 198.
+    Found 30x7-bit multiplier for signal <n0053> created at line 198.
+    Found 33x2-bit multiplier for signal <n0054> created at line 204.
+    Found 28799-bit shifter logical right for signal <n0055> created at line 204
+    Found 10-bit comparator greater for signal <hc[9]_PWR_4_o_LessThan_2_o> created at line 67
+    Found 10-bit comparator greater for signal <vc[9]_PWR_4_o_LessThan_4_o> created at line 76
+    Found 10-bit comparator greater for signal <hc[9]_GND_5_o_LessThan_11_o> created at line 89
+    Found 10-bit comparator greater for signal <vc[9]_GND_5_o_LessThan_13_o> created at line 90
+    Found 10-bit comparator lessequal for signal <n0017> created at line 199
+    Found 10-bit comparator greater for signal <vc[9]_GND_5_o_LessThan_20_o> created at line 199
+    Found 10-bit comparator lessequal for signal <n0021> created at line 199
+    Found 10-bit comparator greater for signal <hc[9]_PWR_4_o_LessThan_22_o> created at line 199
+    Summary:
+	inferred   2 Multiplier(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred  20 D-type flip-flop(s).
+	inferred   8 Comparator(s).
+	inferred   6 Multiplexer(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <vga640x480> synthesized.
+
+Synthesizing Unit <renderer>.
+    Related source file is "C:\Users\152\Downloads\0226\renderer.v".
+        DRAW = 3'b000
+        OTHER = 3'b001
+WARNING:Xst:2935 - Signal 'pixel<14400:12798>', unconnected in block 'renderer', is tied to its initial value
+   (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<12794:12561>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<12551:12324>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<12308:12153>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<12149:12087>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<12065:11916>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11906:11850>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11822:11679>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11663:11610>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11582:11442>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11420:11370>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11342:11205>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11177:11130>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<11102:10968>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10934:10890>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10862:10728>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10694:10647>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10625:10488>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10454:10404>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10388:10248>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10214:10161>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<10151:10008>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<9974:9918>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<9914:9768>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<9734:9525>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<9497:9282>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<9260:9039>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<9023:8796>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<8786:8553>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<8549:8283>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<8279:8046>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<8036:7809>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<7793:7569>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<7553:7329>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<7313:7086>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<7076:6843>', unconnected in block 'renderer', is tied to its initial value (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+WARNING:Xst:2935 - Signal 'pixel<6839:0>', unconnected in block 'renderer', is tied to its initial value
+   (000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+   000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+    Register <pixel<6840>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<6842>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7077>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7079>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7080>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7082>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7083>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7085>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7314>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7316>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7317>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7319>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7320>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7322>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7323>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7325>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7326>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7328>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7555>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7556>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7557>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7559>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7560>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7562>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7563>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7565>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7566>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7567>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7568>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7795>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7796>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7798>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7799>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7800>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7802>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7803>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7804>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7805>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7806>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7807>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<7808>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8038>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8039>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8041>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8042>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8043>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8044>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8045>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8281>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8282>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8552>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8789>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8792>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<8795>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9026>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9029>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9032>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9035>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9038>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9263>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9266>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9269>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9272>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9275>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9278>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9281>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9500>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9503>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9506>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9509>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9512>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9515>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9518>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9521>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9524>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9737>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9740>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9743>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9746>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9749>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9752>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9755>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9758>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9761>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9764>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9767>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9915>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9975>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9976>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9980>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9983>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9986>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9989>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9992>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9995>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<9998>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10001>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10004>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10005>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10006>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10152>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10155>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10158>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10215>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10216>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10218>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10219>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10223>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10226>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10229>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10232>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10235>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10238>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10241>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10242>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10243>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10245>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10246>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10389>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10392>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10395>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10398>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10401>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10455>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10456>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10458>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10459>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10461>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10462>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10466>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10469>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10472>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10475>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10478>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10479>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10480>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10482>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10483>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10485>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10486>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10626>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10629>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10632>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10635>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10638>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10641>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10644>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10695>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10696>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10698>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10699>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10701>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10702>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10704>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10705>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10709>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10712>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10715>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10716>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10717>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10719>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10720>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10722>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10723>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10725>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10726>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10863>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10866>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10869>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10872>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10875>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10878>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10881>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10884>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10887>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10935>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10936>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10938>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10939>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10941>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10942>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10944>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10945>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10947>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10948>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10952>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10953>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10954>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10956>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10957>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10959>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10960>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10962>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10963>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10965>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<10966>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11104>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11106>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11109>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11112>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11115>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11118>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11121>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11124>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11127>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11128>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11178>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11179>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11181>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11182>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11184>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11185>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11187>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11188>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11190>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11191>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11193>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11194>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11196>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11197>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11199>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11200>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11202>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11203>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11344>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11347>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11349>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11352>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11355>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11358>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11361>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11364>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11365>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11367>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11368>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11421>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11422>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11424>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11425>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11427>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11428>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11430>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11431>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11433>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11434>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11436>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11437>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11439>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11440>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11584>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11587>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11590>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11592>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11595>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11598>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11601>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11602>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11604>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11605>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11607>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11608>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11664>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11665>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11667>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11668>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11670>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11671>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11673>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11674>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11676>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11677>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11824>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11827>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11830>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11833>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11835>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11838>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11839>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11841>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11842>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11844>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11845>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11847>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11848>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11907>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11908>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11910>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11911>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11913>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<11914>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12067>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12070>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12073>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12076>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12078>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12079>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12081>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12082>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12084>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12085>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12150>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12151>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12310>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12313>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12316>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12318>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12319>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12321>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12322>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12553>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12556>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12558>> equivalent to <pixel<12796>> has been removed
+    Register <pixel<12559>> equivalent to <pixel<12796>> has been removed
+    Found 1-bit register for signal <pixel<12796>>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12797><0:0>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12795><12797:12797>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12560><12795:12795>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12557><12560:12560>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12555><12557:12557>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12554><12555:12555>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12552><12554:12554>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12323><12552:12552>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12320><12323:12323>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12317><12320:12320>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12315><12317:12317>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12314><12315:12315>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12312><12314:12314>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12311><12312:12312>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12309><12311:12311>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12152><12309:12309>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12086><12152:12152>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12083><12086:12086>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12080><12083:12083>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12077><12080:12080>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12075><12077:12077>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12074><12075:12075>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12072><12074:12074>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12071><12072:12072>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12069><12071:12071>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12068><12069:12069>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<12066><12068:12068>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11915><12066:12066>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11912><11915:11915>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11909><11912:11912>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11849><11909:11909>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11846><11849:11849>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11843><11846:11846>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11840><11843:11843>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11837><11840:11840>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11836><11837:11837>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11834><11836:11836>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11832><11834:11834>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11831><11832:11832>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11829><11831:11831>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11828><11829:11829>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11826><11828:11828>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11825><11826:11826>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11823><11825:11825>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11678><11823:11823>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11675><11678:11678>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11672><11675:11675>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11669><11672:11672>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11666><11669:11669>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11609><11666:11666>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11606><11609:11609>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11603><11606:11606>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11600><11603:11603>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11599><11600:11600>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11597><11599:11599>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11596><11597:11597>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11594><11596:11596>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11593><11594:11594>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11591><11593:11593>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11589><11591:11591>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11588><11589:11589>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11586><11588:11588>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11585><11586:11586>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11583><11585:11585>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11441><11583:11583>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11438><11441:11441>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11435><11438:11438>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11432><11435:11435>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11429><11432:11432>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11426><11429:11429>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11423><11426:11426>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11369><11423:11423>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11366><11369:11369>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11363><11366:11366>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11362><11363:11363>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11360><11362:11362>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11359><11360:11360>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11357><11359:11359>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11356><11357:11357>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11354><11356:11356>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11353><11354:11354>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11351><11353:11353>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11350><11351:11351>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11348><11350:11350>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11346><11348:11348>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11345><11346:11346>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11343><11345:11345>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11204><11343:11343>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11201><11204:11204>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11198><11201:11201>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11195><11198:11198>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11192><11195:11195>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11189><11192:11192>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11186><11189:11189>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11183><11186:11186>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11180><11183:11183>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11129><11180:11180>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11126><11129:11129>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11125><11126:11126>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11123><11125:11125>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11122><11123:11123>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11120><11122:11122>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11119><11120:11120>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11117><11119:11119>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11116><11117:11117>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11114><11116:11116>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11113><11114:11114>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11111><11113:11113>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11110><11111:11111>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11108><11110:11110>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11107><11108:11108>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11105><11107:11107>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<11103><11105:11105>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10967><11103:11103>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10964><10967:10967>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10961><10964:10964>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10958><10961:10961>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10955><10958:10958>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10951><10955:10955>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10950><10951:10951>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10949><10950:10950>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10946><10949:10949>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10943><10946:10946>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10940><10943:10943>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10937><10940:10940>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10889><10937:10937>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10888><10889:10889>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10886><10888:10888>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10885><10886:10886>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10883><10885:10885>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10882><10883:10883>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10880><10882:10882>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10879><10880:10880>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10877><10879:10879>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10876><10877:10877>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10874><10876:10876>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10873><10874:10874>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10871><10873:10873>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10870><10871:10871>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10868><10870:10870>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10867><10868:10868>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10865><10867:10867>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10864><10865:10865>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10727><10864:10864>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10724><10727:10727>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10721><10724:10724>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10718><10721:10721>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10714><10718:10718>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10713><10714:10714>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10711><10713:10713>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10710><10711:10711>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10708><10710:10710>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10707><10708:10708>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10706><10707:10707>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10703><10706:10706>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10700><10703:10703>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10697><10700:10700>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10646><10697:10697>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10645><10646:10646>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10643><10645:10645>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10642><10643:10643>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10640><10642:10642>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10639><10640:10640>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10637><10639:10639>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10636><10637:10637>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10634><10636:10636>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10633><10634:10634>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10631><10633:10633>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10630><10631:10631>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10628><10630:10630>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10627><10628:10628>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10487><10627:10627>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10484><10487:10487>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10481><10484:10484>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10477><10481:10481>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10476><10477:10477>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10474><10476:10476>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10473><10474:10474>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10471><10473:10473>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10470><10471:10471>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10468><10470:10470>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10467><10468:10468>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10465><10467:10467>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10464><10465:10465>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10463><10464:10464>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10460><10463:10463>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10457><10460:10460>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10403><10457:10457>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10402><10403:10403>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10400><10402:10402>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10399><10400:10400>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10397><10399:10399>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10396><10397:10397>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10394><10396:10396>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10393><10394:10394>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10391><10393:10393>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10390><10391:10391>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10247><10390:10390>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10244><10247:10247>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10240><10244:10244>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10239><10240:10240>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10237><10239:10239>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10236><10237:10237>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10234><10236:10236>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10233><10234:10234>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10231><10233:10233>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10230><10231:10231>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10228><10230:10230>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10227><10228:10228>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10225><10227:10227>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10224><10225:10225>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10222><10224:10224>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10221><10222:10222>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10220><10221:10221>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10217><10220:10220>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10160><10217:10217>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10159><10160:10160>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10157><10159:10159>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10156><10157:10157>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10154><10156:10156>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10153><10154:10154>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10007><10153:10153>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10003><10007:10007>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10002><10003:10003>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<10000><10002:10002>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9999><10000:10000>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9997><9999:9999>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9996><9997:9997>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9994><9996:9996>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9993><9994:9994>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9991><9993:9993>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9990><9991:9991>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9988><9990:9990>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9987><9988:9988>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9985><9987:9987>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9984><9985:9985>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9982><9984:9984>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9981><9982:9982>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9979><9981:9981>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9978><9979:9979>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9977><9978:9978>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9917><9977:9977>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9916><9917:9917>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9766><9916:9916>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9765><9766:9766>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9763><9765:9765>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9762><9763:9763>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9760><9762:9762>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9759><9760:9760>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9757><9759:9759>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9756><9757:9757>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9754><9756:9756>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9753><9754:9754>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9751><9753:9753>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9750><9751:9751>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9748><9750:9750>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9747><9748:9748>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9745><9747:9747>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9744><9745:9745>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9742><9744:9744>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9741><9742:9742>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9739><9741:9741>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9738><9739:9739>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9736><9738:9738>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9735><9736:9736>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9523><9735:9735>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9522><9523:9523>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9520><9522:9522>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9519><9520:9520>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9517><9519:9519>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9516><9517:9517>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9514><9516:9516>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9513><9514:9514>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9511><9513:9513>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9510><9511:9511>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9508><9510:9510>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9507><9508:9508>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9505><9507:9507>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9504><9505:9505>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9502><9504:9504>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9501><9502:9502>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9499><9501:9501>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9498><9499:9499>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9280><9498:9498>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9279><9280:9280>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9277><9279:9279>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9276><9277:9277>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9274><9276:9276>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9273><9274:9274>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9271><9273:9273>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9270><9271:9271>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9268><9270:9270>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9267><9268:9268>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9265><9267:9267>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9264><9265:9265>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9262><9264:9264>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9261><9262:9262>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9037><9261:9261>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9036><9037:9037>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9034><9036:9036>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9033><9034:9034>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9031><9033:9033>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9030><9031:9031>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9028><9030:9030>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9027><9028:9028>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9025><9027:9027>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<9024><9025:9025>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8794><9024:9024>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8793><8794:8794>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8791><8793:8793>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8790><8791:8791>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8788><8790:8790>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8787><8788:8788>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8551><8787:8787>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8550><8551:8551>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8280><8550:8550>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8040><8280:8280>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<8037><8040:8040>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7801><8037:8037>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7797><7801:7801>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7794><7797:7797>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7564><7794:7794>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7561><7564:7564>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7558><7561:7561>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7554><7558:7558>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7327><7554:7554>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7324><7327:7327>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7321><7324:7324>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7318><7321:7321>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7315><7318:7318>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7084><7315:7315>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7081><7084:7084>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<7078><7081:7081>> (without init value) have a constant value of 0 in block <renderer>.
+    WARNING:Xst:2404 -  FFs/Latches <pixel<6841><7078:7078>> (without init value) have a constant value of 0 in block <renderer>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <renderer> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 2
+ 30x7-bit multiplier                                   : 1
+ 33x2-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 6
+ 10-bit adder                                          : 2
+ 11-bit subtractor                                     : 2
+ 21-bit adder                                          : 1
+ 33-bit adder                                          : 1
+# Registers                                            : 6
+ 1-bit register                                        : 1
+ 10-bit register                                       : 2
+ 21-bit register                                       : 1
+ 4-bit register                                        : 1
+ 7-bit register                                        : 1
+# Comparators                                          : 8
+ 10-bit comparator greater                             : 6
+ 10-bit comparator lessequal                           : 2
+# Multiplexers                                         : 6
+ 10-bit 2-to-1 multiplexer                             : 2
+ 2-bit 2-to-1 multiplexer                              : 1
+ 3-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 28799-bit shifter logical right                       : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <seg_0> in Unit <U2> is equivalent to the following 2 FFs/Latches, which will be removed : <seg_4> <seg_5> 
+WARNING:Xst:1426 - The value init of the FF/Latch pixel_12796 hinder the constant cleaning in the block U4.
+   You should achieve better results by setting this init to 1.
+
+Synthesizing (advanced) Unit <clockdiv>.
+The following registers are absorbed into counter <q>: 1 register on signal <q>.
+Unit <clockdiv> synthesized (advanced).
+
+Synthesizing (advanced) Unit <vga640x480>.
+The following registers are absorbed into counter <hc>: 1 register on signal <hc>.
+The following registers are absorbed into counter <vc>: 1 register on signal <vc>.
+Unit <vga640x480> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 2
+ 30x7-bit multiplier                                   : 1
+ 33x2-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 3
+ 11-bit subtractor                                     : 2
+ 33-bit adder                                          : 1
+# Counters                                             : 3
+ 10-bit up counter                                     : 2
+ 21-bit up counter                                     : 1
+# Registers                                            : 12
+ Flip-Flops                                            : 12
+# Comparators                                          : 8
+ 10-bit comparator greater                             : 6
+ 10-bit comparator lessequal                           : 2
+# Multiplexers                                         : 4
+ 2-bit 2-to-1 multiplexer                              : 1
+ 3-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 28799-bit shifter logical right                       : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch pixel_12796 hinder the constant cleaning in the block renderer.
+   You should achieve better results by setting this init to 1.
+INFO:Xst:2261 - The FF/Latch <seg_0> in Unit <segdisplay> is equivalent to the following 2 FFs/Latches, which will be removed : <seg_4> <seg_5> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <U2/FSM_0> on signal <state[1:4]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 0001
+ 01    | 0010
+ 10    | 0100
+ 11    | 1000
+-------------------
+WARNING:Xst:2677 - Node <Mmult_n00531> of sequential type is unconnected in block <vga640x480>.
+WARNING:Xst:2677 - Node <U1/q_20> of sequential type is unconnected in block <NERP_demo_top>.
+INFO:Xst:2261 - The FF/Latch <an_3> in Unit <segdisplay> is equivalent to the following FF/Latch, which will be removed : <seg_2> 
+INFO:Xst:2261 - The FF/Latch <an_2> in Unit <segdisplay> is equivalent to the following FF/Latch, which will be removed : <seg_3> 
+
+Optimizing unit <NERP_demo_top> ...
+
+Optimizing unit <segdisplay> ...
+
+Optimizing unit <vga640x480> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block NERP_demo_top, actual ratio is 7.
+FlipFlop U2/seg_0 has been replicated 2 time(s) to handle iob=true attribute.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 54
+ Flip-Flops                                            : 54
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : NERP_demo_top.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 565
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 19
+#      LUT2                        : 57
+#      LUT3                        : 46
+#      LUT4                        : 45
+#      LUT5                        : 98
+#      LUT6                        : 151
+#      MUXCY                       : 62
+#      MUXF7                       : 13
+#      VCC                         : 1
+#      XORCY                       : 67
+# FlipFlops/Latches                : 54
+#      FD                          : 1
+#      FDC                         : 33
+#      FDCE                        : 10
+#      FDP                         : 10
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 23
+#      IBUF                        : 1
+#      OBUF                        : 22
+# DSPs                             : 1
+#      DSP48A1                     : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              51  out of  18224     0%  
+ Number of Slice LUTs:                  421  out of   9112     4%  
+    Number used as Logic:               421  out of   9112     4%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    425
+   Number with an unused Flip Flop:     374  out of    425    88%  
+   Number with an unused LUT:             4  out of    425     0%  
+   Number of fully used LUT-FF pairs:    47  out of    425    11%  
+   Number of unique control sets:         6
+
+IO Utilization: 
+ Number of IOs:                          24
+ Number of bonded IOBs:                  24  out of    232    10%  
+    IOB Flip Flops/Latches:               3
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+ Number of DSP48A1s:                      1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+U1/q_19                            | NONE(U4/pixel_12796)   | 1     |
+clk                                | BUFGP                  | 20    |
+U1/q_17                            | NONE(U2/state_FSM_FFd4)| 13    |
+U1/q_1                             | BUFG                   | 20    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 3.996ns (Maximum Frequency: 250.225MHz)
+   Minimum input arrival time before clock: 3.219ns
+   Maximum output required time after clock: 25.286ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 2.083ns (frequency: 480.054MHz)
+  Total number of paths / destination ports: 210 / 20
+-------------------------------------------------------------------------
+Delay:               2.083ns (Levels of Logic = 4)
+  Source:            U1/q_17 (FF)
+  Destination:       U1/q_19 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: U1/q_17 to U1/q_19
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             14   0.447   0.958  U1/q_17 (U1/q_17)
+     LUT1:I0->O            1   0.205   0.000  U1/Mcount_q_cy<17>_rt (U1/Mcount_q_cy<17>_rt)
+     MUXCY:S->O            1   0.172   0.000  U1/Mcount_q_cy<17> (U1/Mcount_q_cy<17>)
+     MUXCY:CI->O           0   0.019   0.000  U1/Mcount_q_cy<18> (U1/Mcount_q_cy<18>)
+     XORCY:CI->O           1   0.180   0.000  U1/Mcount_q_xor<19> (Result<19>)
+     FDC:D                     0.102          U1/q_19
+    ----------------------------------------
+    Total                      2.083ns (1.125ns logic, 0.958ns route)
+                                       (54.0% logic, 46.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'U1/q_17'
+  Clock period: 1.984ns (frequency: 504.007MHz)
+  Total number of paths / destination ports: 11 / 10
+-------------------------------------------------------------------------
+Delay:               1.984ns (Levels of Logic = 1)
+  Source:            U2/state_FSM_FFd4 (FF)
+  Destination:       U2/an_3 (FF)
+  Source Clock:      U1/q_17 rising
+  Destination Clock: U1/q_17 rising
+
+  Data Path: U2/state_FSM_FFd4 to U2/an_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              3   0.447   0.650  U2/state_FSM_FFd4 (U2/state_FSM_FFd3-In)
+     INV:I->O              1   0.206   0.579  U2/_n0021<10>1_INV_0 (U2/_n0021<10>)
+     FDP:D                     0.102          U2/an_3
+    ----------------------------------------
+    Total                      1.984ns (0.755ns logic, 1.229ns route)
+                                       (38.1% logic, 61.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'U1/q_1'
+  Clock period: 3.996ns (frequency: 250.225MHz)
+  Total number of paths / destination ports: 1269 / 30
+-------------------------------------------------------------------------
+Delay:               3.996ns (Levels of Logic = 2)
+  Source:            U3/hc_7 (FF)
+  Destination:       U3/vc_9 (FF)
+  Source Clock:      U1/q_1 rising
+  Destination Clock: U1/q_1 rising
+
+  Data Path: U3/hc_7 to U3/vc_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              8   0.447   1.031  U3/hc_7 (U3/hc_7)
+     LUT3:I0->O           14   0.205   0.958  U3/hc[9]_PWR_4_o_LessThan_2_o_inv_inv121 (U3/hc[9]_PWR_4_o_LessThan_2_o_inv_inv12)
+     LUT6:I5->O            9   0.205   0.829  U3/hc[9]_PWR_4_o_LessThan_2_o_inv1 (U3/hc[9]_PWR_4_o_LessThan_2_o_inv)
+     FDCE:CE                   0.322          U3/vc_1
+    ----------------------------------------
+    Total                      3.996ns (1.179ns logic, 2.817ns route)
+                                       (29.5% logic, 70.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 20 / 20
+-------------------------------------------------------------------------
+Offset:              3.219ns (Levels of Logic = 1)
+  Source:            clr (PAD)
+  Destination:       U1/q_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: clr to U1/q_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            53   1.222   1.567  clr_IBUF (clr_IBUF)
+     FDC:CLR                   0.430          U1/q_0
+    ----------------------------------------
+    Total                      3.219ns (1.652ns logic, 1.567ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/q_17'
+  Total number of paths / destination ports: 13 / 13
+-------------------------------------------------------------------------
+Offset:              3.219ns (Levels of Logic = 1)
+  Source:            clr (PAD)
+  Destination:       U2/state_FSM_FFd4 (FF)
+  Destination Clock: U1/q_17 rising
+
+  Data Path: clr to U2/state_FSM_FFd4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            53   1.222   1.567  clr_IBUF (clr_IBUF)
+     FDP:PRE                   0.430          U2/an_0
+    ----------------------------------------
+    Total                      3.219ns (1.652ns logic, 1.567ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/q_1'
+  Total number of paths / destination ports: 20 / 20
+-------------------------------------------------------------------------
+Offset:              3.219ns (Levels of Logic = 1)
+  Source:            clr (PAD)
+  Destination:       U3/vc_9 (FF)
+  Destination Clock: U1/q_1 rising
+
+  Data Path: clr to U3/vc_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            53   1.222   1.567  clr_IBUF (clr_IBUF)
+     FDC:CLR                   0.430          U3/hc_0
+    ----------------------------------------
+    Total                      3.219ns (1.652ns logic, 1.567ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/q_17'
+  Total number of paths / destination ports: 11 / 11
+-------------------------------------------------------------------------
+Offset:              3.634ns (Levels of Logic = 1)
+  Source:            U2/an_2 (FF)
+  Destination:       seg<3> (PAD)
+  Source Clock:      U1/q_17 rising
+
+  Data Path: U2/an_2 to seg<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              2   0.447   0.616  U2/an_2 (U2/an_2)
+     OBUF:I->O                 2.571          seg_3_OBUF (seg<3>)
+    ----------------------------------------
+    Total                      3.634ns (3.018ns logic, 0.616ns route)
+                                       (83.0% logic, 17.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/q_1'
+  Total number of paths / destination ports: 93738927 / 9
+-------------------------------------------------------------------------
+Offset:              25.286ns (Levels of Logic = 20)
+  Source:            U3/vc_1 (FF)
+  Destination:       green<0> (PAD)
+  Source Clock:      U1/q_1 rising
+
+  Data Path: U3/vc_1 to green<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             7   0.447   1.002  U3/vc_1 (U3/vc_1)
+     LUT3:I0->O            4   0.205   0.684  U3/inscreen121 (U3/Msub_n0052_cy<2>)
+     LUT6:I5->O            3   0.205   0.651  U3/Msub_n0052_cy<7>11 (U3/Msub_n0052_cy<7>)
+     LUT3:I2->O           10   0.205   0.856  U3/Msub_n0052_xor<10>11 (U3/n0052<10>)
+     DSP48A1:B7->M0        1   3.364   0.580  U3/Mmult_n0053 (U3/n0053<0>)
+     LUT2:I1->O            1   0.205   0.000  U3/Madd_idx_lut<0> (U3/Madd_idx_lut<0>)
+     XORCY:LI->O         109   0.136   1.901  U3/Madd_idx_xor<0> (U3/idx<0>)
+     LUT2:I1->O            1   0.205   0.000  U3/Mmult_n0054_Madd_lut<1> (U3/Mmult_n0054_Madd_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  U3/Mmult_n0054_Madd_cy<1> (U3/Mmult_n0054_Madd_cy<1>)
+     XORCY:CI->O         118   0.180   2.172  U3/Mmult_n0054_Madd_xor<2> (U3/n0054<2>1)
+     LUT4:I0->O            6   0.203   0.745  U3/Sh5246311 (U3/Sh524631)
+     LUT5:I4->O            5   0.205   1.059  U3/Sh522211 (U3/Sh52221)
+     LUT6:I1->O            2   0.203   0.845  U3/Sh8146811 (U3/Sh814681)
+     LUT6:I3->O            1   0.205   0.924  U3/Sh18719223 (U3/Sh18719224)
+     LUT5:I0->O            1   0.203   0.580  U3/Sh18719231_SW0 (N27)
+     LUT6:I5->O            1   0.205   0.684  U3/Sh18719231 (U3/Sh18719232)
+     LUT6:I4->O            1   0.203   0.580  U3/Sh18719243 (U3/Sh18719244)
+     LUT6:I5->O            1   0.205   0.580  U3/Sh18719295_SW0 (N39)
+     LUT6:I5->O            4   0.205   0.931  U3/Sh18719295 (U3/Sh187192)
+     LUT4:I0->O            1   0.203   0.579  U3/Mmux_blue111 (green_0_OBUF)
+     OBUF:I->O                 2.571          green_0_OBUF (green<0>)
+    ----------------------------------------
+    Total                     25.286ns (9.935ns logic, 15.351ns route)
+                                       (39.3% logic, 60.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/q_19'
+  Total number of paths / destination ports: 1989 / 7
+-------------------------------------------------------------------------
+Offset:              14.965ns (Levels of Logic = 11)
+  Source:            U4/pixel_12796 (FF)
+  Destination:       green<0> (PAD)
+  Source Clock:      U1/q_19 rising
+
+  Data Path: U4/pixel_12796 to green<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q             103   0.447   2.114  U4/pixel_12796 (U4/pixel_12796)
+     LUT3:I0->O            8   0.205   1.031  U3/Sh212391 (U3/Sh21239)
+     LUT5:I2->O            5   0.205   1.059  U3/Sh522211 (U3/Sh52221)
+     LUT6:I1->O            2   0.203   0.845  U3/Sh8146811 (U3/Sh814681)
+     LUT6:I3->O            1   0.205   0.924  U3/Sh18719223 (U3/Sh18719224)
+     LUT5:I0->O            1   0.203   0.580  U3/Sh18719231_SW0 (N27)
+     LUT6:I5->O            1   0.205   0.684  U3/Sh18719231 (U3/Sh18719232)
+     LUT6:I4->O            1   0.203   0.580  U3/Sh18719243 (U3/Sh18719244)
+     LUT6:I5->O            1   0.205   0.580  U3/Sh18719295_SW0 (N39)
+     LUT6:I5->O            4   0.205   0.931  U3/Sh18719295 (U3/Sh187192)
+     LUT4:I0->O            1   0.203   0.579  U3/Mmux_blue111 (green_0_OBUF)
+     OBUF:I->O                 2.571          green_0_OBUF (green<0>)
+    ----------------------------------------
+    Total                     14.965ns (5.060ns logic, 9.905ns route)
+                                       (33.8% logic, 66.2% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock U1/q_1
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+U1/q_1         |    3.996|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock U1/q_17
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+U1/q_17        |    1.984|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    2.083|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 227.00 secs
+Total CPU time to Xst completion: 227.01 secs
+ 
+--> 
+
+Total memory usage is 1068656 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  392 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
+

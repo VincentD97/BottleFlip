@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Ste\Documents\FPGA\NERP_demo\NERP_demo_top.ncd
+OUTFILE=C:\Users\Ste\Documents\FPGA\NERP_demo\NERP_demo_top.bit
+FAMILY=Spartan3E
+PART=xc3s1200e-4fg320
+WORKINGDIR=C:\Users\Ste\Documents\FPGA\NERP_demo
+LICENSE=WebPack
+USER_INFO=179841639_0_0_818
