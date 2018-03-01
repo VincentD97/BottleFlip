@@ -1,4 +1,3 @@
-`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -18,6 +17,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+parameter WIDTH = 240;
+parameter HEIGHT = 480;
+parameter PX_WIDTH = 60;
+parameter PX_HEIGHT = 120;
+
 parameter SQ_WIDTH = 41;  
 // input reg[7:0] center_x, input reg[7:0] center_y, input reg [7:0] r, input reg [7:0] height, 
 // input reg[2:0] color1, input reg[2:0] color2, input reg[2:0] color3); 
@@ -43,3 +48,4 @@ typedef struct {
   reg[2:0] ccode3;
 } sq;
 */
+

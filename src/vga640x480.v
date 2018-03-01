@@ -27,7 +27,7 @@ module vga640x480(
 	output reg [2:0] red,	//red vga output
 	output reg [2:0] green, //green vga output
 	output reg [1:0] blue,	//blue vga output
-	input [80*60*3:0] pixel
+	input [PX_WIDTH*PX_HEIGHT*3:0] pixel
 	);
 
 `include "consts.v"
@@ -37,6 +37,12 @@ parameter vlines = 521; // vertical lines per frame
 parameter hpulse = 96; 	// hsync pulse length
 parameter vpulse = 2; 	// vsync pulse length
 parameter hbp = 144; 	// end of horizontal back porch
+
+
+parameter hbp_real = 144 + ((640 - WIDTH) >> 1);
+parameter hfp_real = 784 - ((640 - WIDTH) >> 1);
+
+
 parameter hfp = 784; 	// beginning of horizontal front porch
 parameter vbp = 31; 		// end of vertical back porch
 parameter vfp = 511; 	// beginning of vertical front porch
@@ -197,8 +203,8 @@ endfunction
 
 wire [32:0] idx;
 wire inscreen;
-assign idx = ((hc - hbp) >> 3)+ ((vc - vbp) >> 3) * 80;
-assign inscreen = (vc >= vbp && vc < vfp) && (hc >= hbp && hc < hfp);
+assign idx = ((hc - hbp_real) >> 2)+ ((vc - vbp) >> 2) * PX_WIDTH;
+assign inscreen = (vc >= vbp && vc < vfp) && (hc >= hbp_real && hc < hfp_real);
 always @(*)
 begin
 	// first check if we're within vertical active video range

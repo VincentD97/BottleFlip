@@ -51,7 +51,7 @@ end
 // 50Mhz ÷ 2^17 = 381.47Hz
 assign segclk = q[17];
 
-assign rclk = q[19];
+assign rclk = q[11];
 
 // 50Mhz ÷ 2^1 = 25MHz
 assign dclk = q[1];

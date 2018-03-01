@@ -45,7 +45,7 @@ assign dp = 1;
 
 // 2d pixel 
 
-wire [80*60*3 : 0] pixel;
+wire [PX_HEIGHT*PX_WIDTH*3 : 0] pixel;
 
 // generate 7-segment clock & display clock
 clockdiv U1(
@@ -122,10 +122,12 @@ wire [2:0] pix;
 assign pix = ;
 	*/
 	
-always @(posedge rclk) begin
-	for (j = 0; j < 60; j = j + 1) 
-		for (i = 0; i < 80; i = i +1) 
-			case (pixel[(j * 80 + i) * 3 +: 3])
+always @(negedge rclk) begin
+    //$display("demo_top: %d ", PX_HEIGHT);
+	for (j = 0; j < PX_HEIGHT; j = j + 1) 
+		for (i = 0; i < PX_WIDTH; i = i +1) 
+        begin
+			case (pixel[(j * PX_WIDTH + i) * 3 +: 3])
 				3'b000: $fwrite(f, "0");	
 				3'b001: $fwrite(f, "1");
 				3'b010: $fwrite(f, "2");
@@ -136,6 +138,8 @@ always @(posedge rclk) begin
 				3'b111: $fwrite(f, "7");
 				//default: code_to_rgb = 8'b11111111;
 			endcase
+            //$display("pixel is ", pixel[(j * PX_WIDTH + i) * 3 +: 3]);
+        end
 	cnt = cnt + 1;
     $fwrite(f, "\n");
 	$fflush(f);

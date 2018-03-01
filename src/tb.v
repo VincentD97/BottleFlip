@@ -62,9 +62,9 @@ module tb;
 		
 		forever begin
 			clk = 0;
-			#10;
+			#1;
 			clk = 1;
-			#10;
+			#1;
 		end
         
 		// Add stimulus here
