@@ -115,25 +115,31 @@ endtask
 random rand();
 
 
-reg [15:0] dx;
-reg [15:0] dy;
+reg [7:0] dx;
+reg [7:0] dy;
 task updatePlayer();
 begin
-	dy = ((square[0][`SQ_CY] - square[1][`SQ_CY]) * jump_ratio) >>> jump_tot_sft;
+	dy = last8bits(((square[0][`SQ_CY] - square[1][`SQ_CY]) * jump_ratio) >>> jump_tot_sft);
 	if (square[1][`SQ_CX] > square[0][`SQ_CX]) begin
-		dx = (((square[1][`SQ_CX] - square[0][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
-		player_reg = { square[0][`SQ_CX] + last8bits(dx),
-							square[0][`SQ_CY] - last8bits(dy),
+		$display("dy = %d", (last8bits(dx * (square[1][`SQ_CX] - square[0][`SQ_CX] - dx)) >>> 2));
+
+
+		dx = last8bits(((square[1][`SQ_CX] - square[0][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
+		player_reg = { square[0][`SQ_CX] + dx,
+							square[0][`SQ_CY] - dy 
+								- (last8bits(dx * (square[1][`SQ_CX] - square[0][`SQ_CX] - dx)) >>> 2),
 							PL_INIT_H };
 	end else begin
-		dx = (((square[0][`SQ_CX] - square[1][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
-		player_reg = { square[0][`SQ_CX] - last8bits(dx),
-							square[0][`SQ_CY] - last8bits(dy),
+	$display("dy = %d", (last8bits(dx * (square[0][`SQ_CX] - square[1][`SQ_CX] - dx)) >>> 2));
+	
+		dx = last8bits(((square[0][`SQ_CX] - square[1][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
+		player_reg = { square[0][`SQ_CX] - dx,
+							square[0][`SQ_CY] - dy 
+								- (last8bits(dx * (square[0][`SQ_CX] - square[1][`SQ_CX] - dx)) >>> 2),
 							PL_INIT_H };
 	end
 end
 endtask
-
 
 
 
