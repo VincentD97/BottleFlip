@@ -5,28 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/Users/152/Downloads/0226/vga640x480.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/Users/152/Downloads/0226/segdisplay.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/Users/152/Downloads/0226/renderer.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="751" delta="unknown" >"C:/Users/152/Downloads/0226/renderer.v" Line 34: Redeclaration of ansi port <arg fmt="%s" index="1">pixel</arg> is not allowed
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1830" delta="unknown" >"C:/Users/152/Downloads/0226/renderer.v" Line 82: Cannot omit port direction for function/task declarations
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/Users/152/Downloads/0226/fsm.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/Users/152/Downloads/0226/clockdiv.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/Users/152/Downloads/0226/NERP_demo_top.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
+<msg type="warning" file="HDLCompiler" num="751" delta="unknown" >"C:/Users/152/Downloads/BottleFlip/src/renderer.v" Line 34: Redeclaration of ansi port <arg fmt="%s" index="1">pixel</arg> is not allowed
 </msg>
 
 </messages>

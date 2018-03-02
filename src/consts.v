@@ -27,8 +27,6 @@ parameter SQ_WIDTH = 41;
 // input reg[7:0] center_x, input reg[7:0] center_y, input reg [7:0] r, input reg [7:0] height, 
 // input reg[2:0] color1, input reg[2:0] color2, input reg[2:0] color3); 
 
-parameter PLAYER_WIDTH = 32;
-
 `define SQW 41
 `define SQ_CX `SQW - 1 -: 8
 `define SQ_CY `SQW - 8 - 1 -: 8
@@ -48,4 +46,15 @@ typedef struct {
   reg[2:0] ccode3;
 } sq;
 */
+
+parameter PLAYER_WIDTH = 24;
+parameter PL_DRAW_WIDTH = 1;
+parameter PL_COLOR = 3'b110;
+parameter PL_INIT_H = 8'd15;
+// input reg[7:0] botmid_x, input reg[7:0] botmid_y, input reg [7:0] height
+
+`define PLW 24
+`define PL_X `PLW - 1       -: 8
+`define PL_Y `PLW - 1 -   8 -: 8
+`define PL_H `PLW - 1 - 2*8 -: 8
 

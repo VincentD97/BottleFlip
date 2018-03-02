@@ -1,3 +1,4 @@
+verilog work "random.v"
 verilog work "vga640x480.v"
 verilog work "segdisplay.v"
 verilog work "renderer.v"

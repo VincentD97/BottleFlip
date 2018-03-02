@@ -45,10 +45,12 @@ reg [NUM_SQ * 8 - 8 - 1:0] dist;
 reg [NUM_SQ - 1:0] color;
 
 reg [SQ_WIDTH - 1:0] square [2:0];
-
 assign square1 = square[0];
 assign square2 = square[1];
 assign square3 = square[2];
+
+reg [PLAYER_WIDTH - 1:0] player_reg;
+assign player =  player_reg;
 
 function[8:0] colorscheme(input color);
 	if (color) colorscheme = {3'd1, 3'd2, 3'd3};
@@ -67,6 +69,8 @@ reg [7:0] shiftX;
 reg [7:0] shiftY;
 reg [7:0] tmpX;
 integer i;
+reg[15:0] jump_ratio;
+parameter signed jump_tot_sft = 4;
 
 
 function [7:0] s_dist(input layout, input [7:0] dist);
@@ -76,6 +80,11 @@ function [15:0] base(input layout);
     if (layout) base = {8'd40, 8'd100};
     else base = {8'd20, 8'd100};
 endfunction
+function [7:0] last8bits(input[15:0] x);
+	 reg [7:0] wulala;
+	 {wulala, last8bits} = x;
+endfunction
+
 
 task layout_to_xy(input [1:0] layout, input[2:0] color);
 begin
@@ -90,13 +99,13 @@ begin
         end
         //$display("square[%d] = %b", i, square[i]);
 	end
+	
 end
 endtask
 
 task shift_xy(input signed [7:0] x, input signed [7:0] y); 
 begin
-
-    for (i = 0; i < NUM_SQ; i = i + 1) begin 
+	 for (i = 0; i < NUM_SQ; i = i + 1) begin 
         square[i][`SQ_CX] = square[i][`SQ_CX] + x;
         square[i][`SQ_CY] = square[i][`SQ_CY] + y;
     end
@@ -104,6 +113,37 @@ end
 endtask
 
 random rand();
+
+
+reg [15:0] dx;
+reg [15:0] dy;
+task updatePlayer();
+begin
+	dy = ((square[0][`SQ_CY] - square[1][`SQ_CY]) * jump_ratio) >>> jump_tot_sft;
+	if (square[1][`SQ_CX] > square[0][`SQ_CX]) begin
+		dx = (((square[1][`SQ_CX] - square[0][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
+		player_reg = { square[0][`SQ_CX] + last8bits(dx),
+							square[0][`SQ_CY] - last8bits(dy),
+							PL_INIT_H };
+	end else begin
+		dx = (((square[0][`SQ_CX] - square[1][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
+		player_reg = { square[0][`SQ_CX] - last8bits(dx),
+							square[0][`SQ_CY] - last8bits(dy),
+							PL_INIT_H };
+	end
+end
+endtask
+
+
+
+
+
+
+
+
+
+
+
 
 task reset;
 begin
@@ -117,9 +157,19 @@ begin
     $display("init state: layout = %b, color = %b, dist = %b, %b", 
             layout, color, dist[15:8], dist[7:0]);
 	layout_to_xy(layout, color);
-    state = GEN_NEXT;
+	updatePlayer();
+   state = GEN_NEXT;
+	
 end
 endtask
+
+
+
+
+
+
+
+
 
 
 reg next_layout;
@@ -145,10 +195,23 @@ begin
     $display("next layout is %d based on prev layout %d", next_layout, layout[NUM_SQ - 2]);
     next_color = rand.rand(1) & 1;
     next_dist = 13 + (rand.rand(1) & 3'b111);
+	 jump_ratio = 0;
+	 updatePlayer();
     state = SHIFT;
     shift_state = SHIFT_PREP;
 end
 endtask
+
+
+
+
+
+
+
+
+
+
+
 
 task shift;
 begin
@@ -173,10 +236,10 @@ begin
     //    shift_ratio, (diffX * shift_ratio) >>> shift_tot_sft, 
     //                 (diffY * shift_ratio) >>> shift_tot_sft );
     
-    shift_xy( (diffX * shift_ratio) >>> shift_tot_sft, 
-              (diffY * shift_ratio) >>> shift_tot_sft );
+	 shift_xy( (diffX * shift_ratio) >>> shift_tot_sft,
+				  (diffY * shift_ratio) >>> shift_tot_sft );
 
-    if (shift_ratio == (1 << shift_tot_sft)) 
+    if (shift_ratio == (1 << shift_tot_sft) - 1) 
     begin
         $display("prev state: layout = %b, color = %b, dist = %d, %d", 
             layout, color, dist[15:8], dist[7:0]);
@@ -192,6 +255,15 @@ begin
         shift_ratio = shift_ratio + 1;
         shift_lazy = shift_lazy + 1;
     end
+	 
+	 updatePlayer();
+	 
+	 if (jump_ratio == (1 << jump_tot_sft) - 1) begin
+		  jump_ratio = 0;
+	 end else begin
+		  jump_ratio = jump_ratio + 1;
+	 end
+	 
 end
 
 endtask
@@ -200,14 +272,15 @@ endtask
 task static;
 begin
 	layout_to_xy(layout, color);
-    if (static_state == STATIC_ANIM) 
+   if (static_state == STATIC_ANIM) 
         state = GEN_NEXT;
+	updatePlayer();
 end
 endtask
 
 always @(negedge clk) begin
 	case (state)
-		RESET: reset();
+		  RESET: reset();
         STATIC: static();
         SHIFT: shift();
         GEN_NEXT: gen_next();

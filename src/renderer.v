@@ -87,23 +87,36 @@ begin
 					square1[`SQ_H], square1[`SQ_C1], square1[`SQ_C2], square1[`SQ_C3]);
 end
 endtask
-always @(posedge clk) begin
-/*
-	center_x = 30;
-	center_y = 20;
-	height   = 5;
-	r = 5;
-	*/
-	/* diamond */
-		// $display("%b\n", pixel);
 
-	// $display("renderer done");
+
+task draw_player(input reg[7:0] botmid_x, input reg[7:0] botmid_y, input reg [7:0] height); 
+begin
+	for (x = botmid_x - PL_DRAW_WIDTH; x <= botmid_x + PL_DRAW_WIDTH; x = x + 1) begin
+		for (y = botmid_y; y > botmid_y - height; y = y - 1) begin
+			pixel[(y * PX_WIDTH + x) * 3 +: 3] = PL_COLOR;
+		end
+	end
+end
+endtask
+
+
+task draw_pl(input [PLAYER_WIDTH - 1 : 0] player);
+begin
+	draw_player(
+					player[`PL_X], player[`PL_Y], player[`PL_H]);
+end
+endtask
+
+
+
+always @(posedge clk) begin
     case (state)
         DRAW: begin
-            pixel = 0;
-			draw_sq(square1);
+				pixel = 0;
+				draw_sq(square1);
             draw_sq(square2);
-			draw_sq(square3);
+				draw_sq(square3);
+				draw_pl(player);
             $display("in drawing mode");
             //state <= state + 1;
         end

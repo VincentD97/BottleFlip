@@ -1,5 +1,5 @@
 ISim log file
-Running: C:\Users\152\Downloads\0226\tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Downloads/0226/tb_isim_beh.wdb 
+Running: C:\Users\152\Downloads\BottleFlip\src\tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Downloads/BottleFlip/src/tb_isim_beh.wdb 
 ISim P.68d (signature 0x7708f090)
 ----------------------------------------------------------------------
 WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
@@ -12,45 +12,672 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
+TB PRINTED           1-th frame
+random         97
+init state: layout = 01, color = 010, dist = 00001101, 00010000
 Finished circuit initialization process.
 # run all
-TB PRINTED           1-th frame
-baseX =  70    baseY =  50
-i:           1,   layout: 01,   layout[i - 1]: 1
-last CX:  70,    tmp:  55
-i:           2,   layout: 01,   layout[i - 1]: 0
-last CX:  55,    tmp:  75
-here in draw_sq, xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,   x,   x
-  x   x   x
-here in draw_sq, xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,   x,   x
-  x   x   x
-here in draw_sq, xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,   x,   x
-  x   x   x
 in drawing mode
 TB PRINTED           2-th frame
-baseX =  70    baseY =  50
-i:           1,   layout: 01,   layout[i - 1]: 1
-last CX:  70,    tmp:  55
-i:           2,   layout: 01,   layout[i - 1]: 0
-last CX:  55,    tmp:  75
-here in draw_sq, 01000110001100100000010100000101001010011,  70,  50
- 70  50   5
-here in draw_sq, 00110111001000110000010100000101011010001,  55,  35
- 55  35   5
-here in draw_sq, 01001011000011110000010100000101011010001,  75,  15
- 75  15   5
+next layout is 1 based on prev layout 0
 in drawing mode
 TB PRINTED           3-th frame
-baseX =  70    baseY =  50
-i:           1,   layout: 01,   layout[i - 1]: 1
-last CX:  70,    tmp:  55
-i:           2,   layout: 01,   layout[i - 1]: 0
-last CX:  55,    tmp:  75
-here in draw_sq, 01000110001100100000010100000101001010011,  70,  50
- 70  50   5
-here in draw_sq, 00110111001000110000010100000101011010001,  55,  35
- 55  35   5
-here in draw_sq, 01001011000011110000010100000101011010001,  75,  15
- 75  15   5
+baseX =  24, baseY =  84, nbX =  20, nbY = 100
+diffX =          -4, diffY =          16
 in drawing mode
-Stopped at time : 60399740 ns : File "C:/Users/152/Downloads/0226/tb.v" Line 63
+TB PRINTED           4-th frame
+in drawing mode
+TB PRINTED           5-th frame
+in drawing mode
+TB PRINTED           6-th frame
+in drawing mode
+TB PRINTED           7-th frame
+in drawing mode
+TB PRINTED           8-th frame
+in drawing mode
+TB PRINTED           9-th frame
+in drawing mode
+TB PRINTED          10-th frame
+in drawing mode
+TB PRINTED          11-th frame
+in drawing mode
+TB PRINTED          12-th frame
+in drawing mode
+TB PRINTED          13-th frame
+in drawing mode
+TB PRINTED          14-th frame
+in drawing mode
+TB PRINTED          15-th frame
+in drawing mode
+TB PRINTED          16-th frame
+in drawing mode
+TB PRINTED          17-th frame
+in drawing mode
+TB PRINTED          18-th frame
+prev state: layout = 01, color = 010, dist =  13,  16
+new state: layout = 10, color = 101, dist =  17,  13
+in drawing mode
+TB PRINTED          19-th frame
+in drawing mode
+TB PRINTED          20-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED          21-th frame
+baseX =  33, baseY =  87, nbX =  40, nbY = 100
+diffX =           7, diffY =          13
+in drawing mode
+TB PRINTED          22-th frame
+in drawing mode
+TB PRINTED          23-th frame
+in drawing mode
+TB PRINTED          24-th frame
+in drawing mode
+TB PRINTED          25-th frame
+in drawing mode
+TB PRINTED          26-th frame
+in drawing mode
+TB PRINTED          27-th frame
+in drawing mode
+TB PRINTED          28-th frame
+in drawing mode
+TB PRINTED          29-th frame
+in drawing mode
+TB PRINTED          30-th frame
+in drawing mode
+TB PRINTED          31-th frame
+in drawing mode
+TB PRINTED          32-th frame
+in drawing mode
+TB PRINTED          33-th frame
+in drawing mode
+TB PRINTED          34-th frame
+in drawing mode
+TB PRINTED          35-th frame
+in drawing mode
+TB PRINTED          36-th frame
+prev state: layout = 10, color = 101, dist =  17,  13
+new state: layout = 01, color = 010, dist =  16,  17
+in drawing mode
+TB PRINTED          37-th frame
+in drawing mode
+TB PRINTED          38-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED          39-th frame
+baseX =  23, baseY =  83, nbX =  20, nbY = 100
+diffX =          -3, diffY =          17
+in drawing mode
+TB PRINTED          40-th frame
+in drawing mode
+TB PRINTED          41-th frame
+in drawing mode
+TB PRINTED          42-th frame
+in drawing mode
+TB PRINTED          43-th frame
+in drawing mode
+TB PRINTED          44-th frame
+in drawing mode
+TB PRINTED          45-th frame
+in drawing mode
+TB PRINTED          46-th frame
+in drawing mode
+TB PRINTED          47-th frame
+in drawing mode
+TB PRINTED          48-th frame
+in drawing mode
+TB PRINTED          49-th frame
+in drawing mode
+TB PRINTED          50-th frame
+in drawing mode
+TB PRINTED          51-th frame
+in drawing mode
+TB PRINTED          52-th frame
+in drawing mode
+TB PRINTED          53-th frame
+in drawing mode
+TB PRINTED          54-th frame
+prev state: layout = 01, color = 010, dist =  16,  17
+new state: layout = 10, color = 101, dist =  19,  16
+in drawing mode
+TB PRINTED          55-th frame
+in drawing mode
+TB PRINTED          56-th frame
+next layout is 1 based on prev layout 1
+in drawing mode
+TB PRINTED          57-th frame
+baseX =  36, baseY =  84, nbX =  40, nbY = 100
+diffX =           4, diffY =          16
+in drawing mode
+TB PRINTED          58-th frame
+in drawing mode
+TB PRINTED          59-th frame
+in drawing mode
+TB PRINTED          60-th frame
+in drawing mode
+TB PRINTED          61-th frame
+in drawing mode
+TB PRINTED          62-th frame
+in drawing mode
+TB PRINTED          63-th frame
+in drawing mode
+TB PRINTED          64-th frame
+in drawing mode
+TB PRINTED          65-th frame
+in drawing mode
+TB PRINTED          66-th frame
+in drawing mode
+TB PRINTED          67-th frame
+in drawing mode
+TB PRINTED          68-th frame
+in drawing mode
+TB PRINTED          69-th frame
+in drawing mode
+TB PRINTED          70-th frame
+in drawing mode
+TB PRINTED          71-th frame
+in drawing mode
+TB PRINTED          72-th frame
+prev state: layout = 10, color = 101, dist =  19,  16
+new state: layout = 11, color = 010, dist =  18,  19
+in drawing mode
+TB PRINTED          73-th frame
+in drawing mode
+TB PRINTED          74-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED          75-th frame
+baseX =  21, baseY =  81, nbX =  40, nbY = 100
+diffX =          19, diffY =          19
+in drawing mode
+TB PRINTED          76-th frame
+in drawing mode
+TB PRINTED          77-th frame
+in drawing mode
+TB PRINTED          78-th frame
+in drawing mode
+TB PRINTED          79-th frame
+in drawing mode
+TB PRINTED          80-th frame
+in drawing mode
+TB PRINTED          81-th frame
+in drawing mode
+TB PRINTED          82-th frame
+in drawing mode
+TB PRINTED          83-th frame
+in drawing mode
+TB PRINTED          84-th frame
+in drawing mode
+TB PRINTED          85-th frame
+in drawing mode
+TB PRINTED          86-th frame
+in drawing mode
+TB PRINTED          87-th frame
+in drawing mode
+TB PRINTED          88-th frame
+in drawing mode
+TB PRINTED          89-th frame
+in drawing mode
+TB PRINTED          90-th frame
+prev state: layout = 11, color = 010, dist =  18,  19
+new state: layout = 01, color = 101, dist =  13,  18
+in drawing mode
+TB PRINTED          91-th frame
+in drawing mode
+TB PRINTED          92-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED          93-th frame
+baseX =  22, baseY =  82, nbX =  20, nbY = 100
+diffX =          -2, diffY =          18
+in drawing mode
+TB PRINTED          94-th frame
+in drawing mode
+TB PRINTED          95-th frame
+in drawing mode
+TB PRINTED          96-th frame
+in drawing mode
+TB PRINTED          97-th frame
+in drawing mode
+TB PRINTED          98-th frame
+in drawing mode
+TB PRINTED          99-th frame
+in drawing mode
+TB PRINTED         100-th frame
+in drawing mode
+TB PRINTED         101-th frame
+in drawing mode
+TB PRINTED         102-th frame
+in drawing mode
+TB PRINTED         103-th frame
+in drawing mode
+TB PRINTED         104-th frame
+in drawing mode
+TB PRINTED         105-th frame
+in drawing mode
+TB PRINTED         106-th frame
+in drawing mode
+TB PRINTED         107-th frame
+in drawing mode
+TB PRINTED         108-th frame
+prev state: layout = 01, color = 101, dist =  13,  18
+new state: layout = 10, color = 010, dist =  20,  13
+in drawing mode
+TB PRINTED         109-th frame
+in drawing mode
+TB PRINTED         110-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED         111-th frame
+baseX =  33, baseY =  87, nbX =  40, nbY = 100
+diffX =           7, diffY =          13
+in drawing mode
+TB PRINTED         112-th frame
+in drawing mode
+TB PRINTED         113-th frame
+in drawing mode
+TB PRINTED         114-th frame
+in drawing mode
+TB PRINTED         115-th frame
+in drawing mode
+TB PRINTED         116-th frame
+in drawing mode
+TB PRINTED         117-th frame
+in drawing mode
+TB PRINTED         118-th frame
+in drawing mode
+TB PRINTED         119-th frame
+in drawing mode
+TB PRINTED         120-th frame
+in drawing mode
+TB PRINTED         121-th frame
+in drawing mode
+TB PRINTED         122-th frame
+in drawing mode
+TB PRINTED         123-th frame
+in drawing mode
+TB PRINTED         124-th frame
+in drawing mode
+TB PRINTED         125-th frame
+in drawing mode
+TB PRINTED         126-th frame
+prev state: layout = 10, color = 010, dist =  20,  13
+new state: layout = 01, color = 101, dist =  15,  20
+in drawing mode
+TB PRINTED         127-th frame
+in drawing mode
+TB PRINTED         128-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED         129-th frame
+baseX =  20, baseY =  80, nbX =  20, nbY = 100
+diffX =           0, diffY =          20
+in drawing mode
+TB PRINTED         130-th frame
+in drawing mode
+TB PRINTED         131-th frame
+in drawing mode
+TB PRINTED         132-th frame
+in drawing mode
+TB PRINTED         133-th frame
+in drawing mode
+TB PRINTED         134-th frame
+in drawing mode
+TB PRINTED         135-th frame
+in drawing mode
+TB PRINTED         136-th frame
+in drawing mode
+TB PRINTED         137-th frame
+in drawing mode
+TB PRINTED         138-th frame
+in drawing mode
+TB PRINTED         139-th frame
+in drawing mode
+TB PRINTED         140-th frame
+in drawing mode
+TB PRINTED         141-th frame
+in drawing mode
+TB PRINTED         142-th frame
+in drawing mode
+TB PRINTED         143-th frame
+in drawing mode
+TB PRINTED         144-th frame
+prev state: layout = 01, color = 101, dist =  15,  20
+new state: layout = 10, color = 010, dist =  14,  15
+in drawing mode
+TB PRINTED         145-th frame
+in drawing mode
+TB PRINTED         146-th frame
+next layout is 1 based on prev layout 1
+in drawing mode
+TB PRINTED         147-th frame
+baseX =  35, baseY =  85, nbX =  40, nbY = 100
+diffX =           5, diffY =          15
+in drawing mode
+TB PRINTED         148-th frame
+in drawing mode
+TB PRINTED         149-th frame
+in drawing mode
+TB PRINTED         150-th frame
+in drawing mode
+TB PRINTED         151-th frame
+in drawing mode
+TB PRINTED         152-th frame
+in drawing mode
+TB PRINTED         153-th frame
+in drawing mode
+TB PRINTED         154-th frame
+in drawing mode
+TB PRINTED         155-th frame
+in drawing mode
+TB PRINTED         156-th frame
+in drawing mode
+TB PRINTED         157-th frame
+in drawing mode
+TB PRINTED         158-th frame
+in drawing mode
+TB PRINTED         159-th frame
+in drawing mode
+TB PRINTED         160-th frame
+in drawing mode
+TB PRINTED         161-th frame
+in drawing mode
+TB PRINTED         162-th frame
+prev state: layout = 10, color = 010, dist =  14,  15
+new state: layout = 11, color = 101, dist =  17,  14
+in drawing mode
+TB PRINTED         163-th frame
+in drawing mode
+TB PRINTED         164-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED         165-th frame
+baseX =  26, baseY =  86, nbX =  40, nbY = 100
+diffX =          14, diffY =          14
+in drawing mode
+TB PRINTED         166-th frame
+in drawing mode
+TB PRINTED         167-th frame
+in drawing mode
+TB PRINTED         168-th frame
+in drawing mode
+TB PRINTED         169-th frame
+in drawing mode
+TB PRINTED         170-th frame
+in drawing mode
+TB PRINTED         171-th frame
+in drawing mode
+TB PRINTED         172-th frame
+in drawing mode
+TB PRINTED         173-th frame
+in drawing mode
+TB PRINTED         174-th frame
+in drawing mode
+TB PRINTED         175-th frame
+in drawing mode
+TB PRINTED         176-th frame
+in drawing mode
+TB PRINTED         177-th frame
+in drawing mode
+TB PRINTED         178-th frame
+in drawing mode
+TB PRINTED         179-th frame
+in drawing mode
+TB PRINTED         180-th frame
+prev state: layout = 11, color = 101, dist =  17,  14
+new state: layout = 01, color = 010, dist =  16,  17
+in drawing mode
+TB PRINTED         181-th frame
+in drawing mode
+TB PRINTED         182-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED         183-th frame
+baseX =  23, baseY =  83, nbX =  20, nbY = 100
+diffX =          -3, diffY =          17
+in drawing mode
+TB PRINTED         184-th frame
+in drawing mode
+TB PRINTED         185-th frame
+in drawing mode
+TB PRINTED         186-th frame
+in drawing mode
+TB PRINTED         187-th frame
+in drawing mode
+TB PRINTED         188-th frame
+in drawing mode
+TB PRINTED         189-th frame
+in drawing mode
+TB PRINTED         190-th frame
+in drawing mode
+TB PRINTED         191-th frame
+in drawing mode
+TB PRINTED         192-th frame
+in drawing mode
+TB PRINTED         193-th frame
+in drawing mode
+TB PRINTED         194-th frame
+in drawing mode
+TB PRINTED         195-th frame
+in drawing mode
+TB PRINTED         196-th frame
+in drawing mode
+TB PRINTED         197-th frame
+in drawing mode
+TB PRINTED         198-th frame
+prev state: layout = 01, color = 010, dist =  16,  17
+new state: layout = 10, color = 101, dist =  19,  16
+in drawing mode
+TB PRINTED         199-th frame
+in drawing mode
+TB PRINTED         200-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED         201-th frame
+baseX =  36, baseY =  84, nbX =  40, nbY = 100
+diffX =           4, diffY =          16
+in drawing mode
+TB PRINTED         202-th frame
+in drawing mode
+TB PRINTED         203-th frame
+in drawing mode
+TB PRINTED         204-th frame
+in drawing mode
+TB PRINTED         205-th frame
+in drawing mode
+TB PRINTED         206-th frame
+in drawing mode
+TB PRINTED         207-th frame
+in drawing mode
+TB PRINTED         208-th frame
+in drawing mode
+TB PRINTED         209-th frame
+in drawing mode
+TB PRINTED         210-th frame
+in drawing mode
+TB PRINTED         211-th frame
+in drawing mode
+TB PRINTED         212-th frame
+in drawing mode
+TB PRINTED         213-th frame
+in drawing mode
+TB PRINTED         214-th frame
+in drawing mode
+TB PRINTED         215-th frame
+in drawing mode
+TB PRINTED         216-th frame
+prev state: layout = 10, color = 101, dist =  19,  16
+new state: layout = 01, color = 010, dist =  18,  19
+in drawing mode
+TB PRINTED         217-th frame
+in drawing mode
+TB PRINTED         218-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED         219-th frame
+baseX =  21, baseY =  81, nbX =  20, nbY = 100
+diffX =          -1, diffY =          19
+in drawing mode
+TB PRINTED         220-th frame
+in drawing mode
+TB PRINTED         221-th frame
+in drawing mode
+TB PRINTED         222-th frame
+in drawing mode
+TB PRINTED         223-th frame
+in drawing mode
+TB PRINTED         224-th frame
+in drawing mode
+TB PRINTED         225-th frame
+in drawing mode
+TB PRINTED         226-th frame
+in drawing mode
+TB PRINTED         227-th frame
+in drawing mode
+TB PRINTED         228-th frame
+in drawing mode
+TB PRINTED         229-th frame
+in drawing mode
+TB PRINTED         230-th frame
+in drawing mode
+TB PRINTED         231-th frame
+in drawing mode
+TB PRINTED         232-th frame
+in drawing mode
+TB PRINTED         233-th frame
+in drawing mode
+TB PRINTED         234-th frame
+prev state: layout = 01, color = 010, dist =  18,  19
+new state: layout = 10, color = 101, dist =  13,  18
+in drawing mode
+TB PRINTED         235-th frame
+in drawing mode
+TB PRINTED         236-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED         237-th frame
+baseX =  38, baseY =  82, nbX =  40, nbY = 100
+diffX =           2, diffY =          18
+in drawing mode
+TB PRINTED         238-th frame
+in drawing mode
+TB PRINTED         239-th frame
+in drawing mode
+TB PRINTED         240-th frame
+in drawing mode
+TB PRINTED         241-th frame
+in drawing mode
+TB PRINTED         242-th frame
+in drawing mode
+TB PRINTED         243-th frame
+in drawing mode
+TB PRINTED         244-th frame
+in drawing mode
+TB PRINTED         245-th frame
+in drawing mode
+TB PRINTED         246-th frame
+in drawing mode
+TB PRINTED         247-th frame
+in drawing mode
+TB PRINTED         248-th frame
+in drawing mode
+TB PRINTED         249-th frame
+in drawing mode
+TB PRINTED         250-th frame
+in drawing mode
+TB PRINTED         251-th frame
+in drawing mode
+TB PRINTED         252-th frame
+prev state: layout = 10, color = 101, dist =  13,  18
+new state: layout = 01, color = 010, dist =  20,  13
+in drawing mode
+TB PRINTED         253-th frame
+in drawing mode
+TB PRINTED         254-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED         255-th frame
+baseX =  27, baseY =  87, nbX =  20, nbY = 100
+diffX =          -7, diffY =          13
+in drawing mode
+TB PRINTED         256-th frame
+in drawing mode
+TB PRINTED         257-th frame
+in drawing mode
+TB PRINTED         258-th frame
+in drawing mode
+TB PRINTED         259-th frame
+in drawing mode
+TB PRINTED         260-th frame
+in drawing mode
+TB PRINTED         261-th frame
+in drawing mode
+TB PRINTED         262-th frame
+in drawing mode
+TB PRINTED         263-th frame
+in drawing mode
+TB PRINTED         264-th frame
+in drawing mode
+TB PRINTED         265-th frame
+in drawing mode
+TB PRINTED         266-th frame
+in drawing mode
+TB PRINTED         267-th frame
+in drawing mode
+TB PRINTED         268-th frame
+in drawing mode
+TB PRINTED         269-th frame
+in drawing mode
+TB PRINTED         270-th frame
+prev state: layout = 01, color = 010, dist =  20,  13
+new state: layout = 10, color = 101, dist =  15,  20
+in drawing mode
+TB PRINTED         271-th frame
+in drawing mode
+TB PRINTED         272-th frame
+next layout is 0 based on prev layout 1
+in drawing mode
+TB PRINTED         273-th frame
+baseX =  40, baseY =  80, nbX =  40, nbY = 100
+diffX =           0, diffY =          20
+in drawing mode
+TB PRINTED         274-th frame
+in drawing mode
+TB PRINTED         275-th frame
+in drawing mode
+TB PRINTED         276-th frame
+in drawing mode
+TB PRINTED         277-th frame
+in drawing mode
+TB PRINTED         278-th frame
+in drawing mode
+TB PRINTED         279-th frame
+in drawing mode
+TB PRINTED         280-th frame
+in drawing mode
+TB PRINTED         281-th frame
+in drawing mode
+TB PRINTED         282-th frame
+in drawing mode
+TB PRINTED         283-th frame
+in drawing mode
+TB PRINTED         284-th frame
+in drawing mode
+TB PRINTED         285-th frame
+in drawing mode
+TB PRINTED         286-th frame
+in drawing mode
+TB PRINTED         287-th frame
+in drawing mode
+TB PRINTED         288-th frame
+prev state: layout = 10, color = 101, dist =  15,  20
+new state: layout = 01, color = 010, dist =  14,  15
+in drawing mode
+TB PRINTED         289-th frame
+in drawing mode
+TB PRINTED         290-th frame
+next layout is 1 based on prev layout 0
+in drawing mode
+TB PRINTED         291-th frame
+baseX =  25, baseY =  85, nbX =  20, nbY = 100
+diffX =          -5, diffY =          15
+Stopped at time : 2375779 ns : File "C:/Users/152/Downloads/BottleFlip/src/fsm.v" Line 228
