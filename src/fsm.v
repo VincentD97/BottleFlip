@@ -117,27 +117,38 @@ random rand();
 
 reg [7:0] dx;
 reg [7:0] dy;
+reg [7:0] landing_x_l;
+reg [7:0] landing_x_r;
+reg [7:0] landing_y_u;
+reg [7:0] landing_y_d;
+reg [7:0] landing_x;
+reg [7:0] landing_y;
+reg [7:0] pl_jump_dist;
+
 task updatePlayer();
 begin
-	dy = last8bits(((square[0][`SQ_CY] - square[1][`SQ_CY]) * jump_ratio) >>> jump_tot_sft);
+	dy = last8bits((/*(square[0][`SQ_CY] - square[1][`SQ_CY])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
 	if (square[1][`SQ_CX] > square[0][`SQ_CX]) begin
-		$display("dy = %d", (last8bits(dx * (square[1][`SQ_CX] - square[0][`SQ_CX] - dx)) >>> 2));
-
-
-		dx = last8bits(((square[1][`SQ_CX] - square[0][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
-		player_reg = { square[0][`SQ_CX] + dx,
-							square[0][`SQ_CY] - dy 
-								- (last8bits(dx * (square[1][`SQ_CX] - square[0][`SQ_CX] - dx)) >>> 2),
-							PL_INIT_H };
+		dx = last8bits((/*(square[1][`SQ_CX] - square[0][`SQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
+		player_reg = { ( landing_x_l ? (square[0][`SQ_CX] + dx - landing_x_l) : 
+                                       (square[0][`SQ_CX] + dx + landing_x_r) ),
+                       ( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
+							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
+                                       (square[0][`SQ_CY] - dy + landing_y_d
+							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
+					   PL_INIT_H };
 	end else begin
-	$display("dy = %d", (last8bits(dx * (square[0][`SQ_CX] - square[1][`SQ_CX] - dx)) >>> 2));
-	
-		dx = last8bits(((square[0][`SQ_CX] - square[1][`SQ_CX]) * jump_ratio) >>> jump_tot_sft);
-		player_reg = { square[0][`SQ_CX] - dx,
-							square[0][`SQ_CY] - dy 
-								- (last8bits(dx * (square[0][`SQ_CX] - square[1][`SQ_CX] - dx)) >>> 2),
-							PL_INIT_H };
+        dx = last8bits((/*(square[0][`SQ_CX] - square[1][`SQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
+        player_reg = { ( landing_x_l ? (square[0][`SQ_CX] - dx - landing_x_l) : 
+                                       (square[0][`SQ_CX] - dx + landing_x_r) ),
+						( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
+							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
+                                       (square[0][`SQ_CY] - dy + landing_y_d
+							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
+						PL_INIT_H };
 	end
+
+    
 end
 endtask
 
@@ -163,8 +174,15 @@ begin
     $display("init state: layout = %b, color = %b, dist = %b, %b", 
             layout, color, dist[15:8], dist[7:0]);
 	layout_to_xy(layout, color);
-	updatePlayer();
-   state = GEN_NEXT;
+    jump_ratio = 0;
+    landing_x_l = 0;
+    landing_x_r = 0;
+    landing_y_u = 0;
+    landing_y_d = 0;
+    pl_jump_dist = dist[7:0] - 1;
+    player_reg = {square[0][`SQ_CX], square[0][`SQ_CY], PL_INIT_H};
+	// updatePlayer();
+    state = GEN_NEXT;
 	
 end
 endtask
@@ -201,8 +219,7 @@ begin
     $display("next layout is %d based on prev layout %d", next_layout, layout[NUM_SQ - 2]);
     next_color = rand.rand(1) & 1;
     next_dist = 13 + (rand.rand(1) & 3'b111);
-	 jump_ratio = 0;
-	 updatePlayer();
+	updatePlayer();
     state = SHIFT;
     shift_state = SHIFT_PREP;
 end
@@ -245,7 +262,7 @@ begin
 	 shift_xy( (diffX * shift_ratio) >>> shift_tot_sft,
 				  (diffY * shift_ratio) >>> shift_tot_sft );
 
-    if (shift_ratio == (1 << shift_tot_sft) - 1) 
+    if (shift_ratio == (1 << shift_tot_sft)) 
     begin
         $display("prev state: layout = %b, color = %b, dist = %d, %d", 
             layout, color, dist[15:8], dist[7:0]);
@@ -262,10 +279,25 @@ begin
         shift_lazy = shift_lazy + 1;
     end
 	 
-	 updatePlayer();
-	 
-	 if (jump_ratio == (1 << jump_tot_sft) - 1) begin
+	updatePlayer();
+	if (jump_ratio == (1 << jump_tot_sft)) begin
 		  jump_ratio = 0;
+          pl_jump_dist = dist[7:0] - 1;
+          state = STATIC;
+        if (player_reg[`PL_X] < square[1][`SQ_CX]) begin
+                landing_x_l = square[1][`SQ_CX] - player_reg[`PL_X];
+                landing_x_r = 0;
+          end else begin
+                landing_x_r = player_reg[`PL_X] - square[1][`SQ_CX];
+                landing_x_l = 0;
+          end
+          if (player_reg[`PL_Y] < square[1][`SQ_CY]) begin
+                landing_y_u = square[1][`SQ_CY] - player_reg[`PL_Y];
+                landing_y_d = 0;
+          end else begin
+                landing_y_d = player_reg[`PL_Y] - square[1][`SQ_CY];
+                landing_y_u = 0;
+          end
 	 end else begin
 		  jump_ratio = jump_ratio + 1;
 	 end
@@ -280,13 +312,12 @@ begin
 	layout_to_xy(layout, color);
    if (static_state == STATIC_ANIM) 
         state = GEN_NEXT;
-	updatePlayer();
 end
 endtask
 
 always @(negedge clk) begin
 	case (state)
-		  RESET: reset();
+		RESET: reset();
         STATIC: static();
         SHIFT: shift();
         GEN_NEXT: gen_next();

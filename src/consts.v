@@ -50,7 +50,7 @@ typedef struct {
 parameter PLAYER_WIDTH = 24;
 parameter PL_DRAW_WIDTH = 1;
 parameter PL_COLOR = 3'b110;
-parameter PL_INIT_H = 8'd15;
+parameter PL_INIT_H = 8'd8;
 // input reg[7:0] botmid_x, input reg[7:0] botmid_y, input reg [7:0] height
 
 `define PLW 24
