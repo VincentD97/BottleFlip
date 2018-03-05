@@ -36,13 +36,16 @@ reg [PX_WIDTH*PX_HEIGHT*3:0] pixel;
 reg [31:0] x;
 reg [31:0] y;
 
-parameter DRAW=3'b000;
+parameter CLR=3'b000;
+parameter DRAW=3'b001;
 parameter OTHER=3'b001;
 reg [2:0] state;
 
 initial begin
     state = 0;
     pixel = 0;
+    x = 0;
+    y = 0;
 end
 
 task draw_square(input [7:0] center_x, input [7:0] center_y, input [7:0] r, input [7:0] height, 
@@ -107,17 +110,45 @@ begin
 end
 endtask
 
-
-
-always @(posedge clk) begin
-    case (state)
-        DRAW: begin
-				pixel = 0;
-				draw_sq(square1);
-            draw_sq(square2);
+task render;
+begin
+	draw_sq(square1);
+    draw_sq(square2);
 				draw_sq(square3);
 				draw_pl(player);
             $display("in drawing mode");
+end
+
+reg clr_st = 0;
+task clear;
+begin
+    if (clr_st == 0) begin
+        wr <= 1;
+        x <= 0;
+        y <= 0;
+        memi <= 0;
+        clr_st <= 1;
+    end 
+    else if (x < PX_WIDTH - 1) begin
+        wr <= 1;
+        memi <= 0;
+        x <= x + 1;
+    end else if (y < PX_HEIGHT - 1) begin
+        wr <= 1;
+        memi <= 0;
+        y <= y + 1;
+        x <= 0;
+    end else begin
+        clr_st <= 0;
+        state <= DRAW;
+    end
+end
+
+always @(posedge clk) begin
+    case (state)
+        CLR: clear();
+        DRAW: render();
+				
             //state <= state + 1;
         end
         default: begin
@@ -130,6 +161,12 @@ always @(posedge clk) begin
 
 end
 
+reg memw;
+assign [15:0] memaddr = y * PX_HEIGHT + x;
+reg [2:0] memi;
+wire [2:0] memo;
+
+memory mem(raw_clk, memw, memaddr, memi, memo);
 
 /*
 
