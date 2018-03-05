@@ -87,11 +87,11 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1520026329" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1520026329">
+    <transform xil_pn:end_ts="1520275868" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1520275868">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1520028874" xil_pn:in_ck="-5848641141776029587" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1520028874">
+    <transform xil_pn:end_ts="1520277596" xil_pn:in_ck="-5848641141776029587" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1520277596">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="NERP_demo_top.v"/>
@@ -104,19 +104,19 @@
       <outfile xil_pn:name="tb.v"/>
       <outfile xil_pn:name="vga640x480.v"/>
     </transform>
-    <transform xil_pn:end_ts="1520028743" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-7128511773193751507" xil_pn:start_ts="1520028743">
+    <transform xil_pn:end_ts="1520275868" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-7128511773193751507" xil_pn:start_ts="1520275868">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1520028743" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-2964187670512171541" xil_pn:start_ts="1520028743">
+    <transform xil_pn:end_ts="1520275868" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-2964187670512171541" xil_pn:start_ts="1520275868">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1520026329" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-5657073427038460945" xil_pn:start_ts="1520026329">
+    <transform xil_pn:end_ts="1520275868" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-5657073427038460945" xil_pn:start_ts="1520275868">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1520028874" xil_pn:in_ck="-5848641141776029587" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1520028874">
+    <transform xil_pn:end_ts="1520277596" xil_pn:in_ck="-5848641141776029587" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1520277596">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="NERP_demo_top.v"/>
@@ -129,11 +129,9 @@
       <outfile xil_pn:name="tb.v"/>
       <outfile xil_pn:name="vga640x480.v"/>
     </transform>
-    <transform xil_pn:end_ts="1520028879" xil_pn:in_ck="-5848641141776029587" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6159587342810039271" xil_pn:start_ts="1520028874">
+    <transform xil_pn:end_ts="1520277601" xil_pn:in_ck="-5848641141776029587" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6159587342810039271" xil_pn:start_ts="1520277596">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="isim.log"/>
@@ -141,11 +139,9 @@
       <outfile xil_pn:name="tb_isim_beh.exe"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1520028879" xil_pn:in_ck="-6004302312630246790" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1853537267270789276" xil_pn:start_ts="1520028879">
+    <transform xil_pn:end_ts="1520277601" xil_pn:in_ck="-6004302312630246790" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1853537267270789276" xil_pn:start_ts="1520277601">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="tb_isim_beh.wdb"/>

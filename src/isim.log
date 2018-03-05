@@ -13,750 +13,474 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 TB PRINTED           1-th frame
-random         97
-init state: layout = 01, color = 010, dist = 00001101, 00010000
-dy =   X
+jump dist ===  16
 Finished circuit initialization process.
 # run all
 in drawing mode
 TB PRINTED           2-th frame
-next layout is 1 based on prev layout 0
-dy =   X
 in drawing mode
 TB PRINTED           3-th frame
-baseX =  24, baseY =  84, nbX =  20, nbY = 100
-diffX =          -4, diffY =          16
-dy =   0
 in drawing mode
 TB PRINTED           4-th frame
-dy =   0
 in drawing mode
 TB PRINTED           5-th frame
-dy =   3
 in drawing mode
 TB PRINTED           6-th frame
-dy =   7
 in drawing mode
 TB PRINTED           7-th frame
-dy =   9
 in drawing mode
 TB PRINTED           8-th frame
-dy =  12
 in drawing mode
 TB PRINTED           9-th frame
-dy =  13
 in drawing mode
 TB PRINTED          10-th frame
-dy =  15
 in drawing mode
 TB PRINTED          11-th frame
-dy =  15
 in drawing mode
 TB PRINTED          12-th frame
-dy =  16
 in drawing mode
 TB PRINTED          13-th frame
-dy =  15
 in drawing mode
 TB PRINTED          14-th frame
-dy =  15
 in drawing mode
 TB PRINTED          15-th frame
-dy =  13
 in drawing mode
 TB PRINTED          16-th frame
-dy =  12
 in drawing mode
 TB PRINTED          17-th frame
-dy =   9
 in drawing mode
 TB PRINTED          18-th frame
-prev state: layout = 01, color = 010, dist =  13,  16
-new state: layout = 10, color = 101, dist =  17,  13
-dy =   7
 in drawing mode
 TB PRINTED          19-th frame
-dy =  56
+jump dist ===  13
+============================================== score :     5 =======
 in drawing mode
 TB PRINTED          20-th frame
-next layout is 0 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED          21-th frame
-baseX =  33, baseY =  87, nbX =  40, nbY = 100
-diffX =           7, diffY =          13
-dy =   0
 in drawing mode
 TB PRINTED          22-th frame
-dy =   0
 in drawing mode
 TB PRINTED          23-th frame
-dy =   0
 in drawing mode
 TB PRINTED          24-th frame
-dy =   3
 in drawing mode
 TB PRINTED          25-th frame
-dy =   5
 in drawing mode
 TB PRINTED          26-th frame
-dy =   7
 in drawing mode
 TB PRINTED          27-th frame
-dy =   9
 in drawing mode
 TB PRINTED          28-th frame
-dy =   9
 in drawing mode
 TB PRINTED          29-th frame
-dy =  10
 in drawing mode
 TB PRINTED          30-th frame
-dy =  10
 in drawing mode
 TB PRINTED          31-th frame
-dy =  10
 in drawing mode
 TB PRINTED          32-th frame
-dy =  10
 in drawing mode
 TB PRINTED          33-th frame
-dy =  10
 in drawing mode
 TB PRINTED          34-th frame
-dy =   9
 in drawing mode
 TB PRINTED          35-th frame
-dy =   7
 in drawing mode
 TB PRINTED          36-th frame
-prev state: layout = 10, color = 101, dist =  17,  13
-new state: layout = 01, color = 010, dist =  16,  17
-dy =   5
 in drawing mode
 TB PRINTED          37-th frame
-dy =  15
 in drawing mode
 TB PRINTED          38-th frame
-next layout is 1 based on prev layout 0
-dy =   0
+jump dist ===  20
+============================================== score :    10 =======
 in drawing mode
 TB PRINTED          39-th frame
-baseX =  23, baseY =  83, nbX =  20, nbY = 100
-diffX =          -3, diffY =          17
-dy =   0
 in drawing mode
 TB PRINTED          40-th frame
-dy =   0
 in drawing mode
 TB PRINTED          41-th frame
-dy =   4
 in drawing mode
 TB PRINTED          42-th frame
-dy =   7
 in drawing mode
 TB PRINTED          43-th frame
-dy =  10
 in drawing mode
 TB PRINTED          44-th frame
-dy =  13
 in drawing mode
 TB PRINTED          45-th frame
-dy =  15
 in drawing mode
 TB PRINTED          46-th frame
-dy =  16
 in drawing mode
 TB PRINTED          47-th frame
-dy =  17
 in drawing mode
 TB PRINTED          48-th frame
-dy =  18
 in drawing mode
 TB PRINTED          49-th frame
-dy =  18
 in drawing mode
 TB PRINTED          50-th frame
-dy =  17
 in drawing mode
 TB PRINTED          51-th frame
-dy =  16
 in drawing mode
 TB PRINTED          52-th frame
-dy =  15
 in drawing mode
 TB PRINTED          53-th frame
-dy =  13
 in drawing mode
 TB PRINTED          54-th frame
-prev state: layout = 01, color = 010, dist =  16,  17
-new state: layout = 10, color = 101, dist =  19,  16
-dy =  10
 in drawing mode
 TB PRINTED          55-th frame
-dy =   3
 in drawing mode
 TB PRINTED          56-th frame
-next layout is 1 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED          57-th frame
-baseX =  36, baseY =  84, nbX =  40, nbY = 100
-diffX =           4, diffY =          16
-dy =   0
+jump dist ===  15
+============================================== score :    15 =======
 in drawing mode
 TB PRINTED          58-th frame
-dy =   0
 in drawing mode
 TB PRINTED          59-th frame
-dy =   3
 in drawing mode
 TB PRINTED          60-th frame
-dy =   7
 in drawing mode
 TB PRINTED          61-th frame
-dy =   9
 in drawing mode
 TB PRINTED          62-th frame
-dy =  12
 in drawing mode
 TB PRINTED          63-th frame
-dy =  13
 in drawing mode
 TB PRINTED          64-th frame
-dy =  15
 in drawing mode
 TB PRINTED          65-th frame
-dy =  15
 in drawing mode
 TB PRINTED          66-th frame
-dy =  16
 in drawing mode
 TB PRINTED          67-th frame
-dy =  15
 in drawing mode
 TB PRINTED          68-th frame
-dy =  15
 in drawing mode
 TB PRINTED          69-th frame
-dy =  13
 in drawing mode
 TB PRINTED          70-th frame
-dy =  12
 in drawing mode
 TB PRINTED          71-th frame
-dy =   9
 in drawing mode
 TB PRINTED          72-th frame
-prev state: layout = 10, color = 101, dist =  19,  16
-new state: layout = 11, color = 010, dist =  18,  19
-dy =   7
 in drawing mode
 TB PRINTED          73-th frame
-dy =  15
 in drawing mode
 TB PRINTED          74-th frame
-next layout is 0 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED          75-th frame
-baseX =  21, baseY =  81, nbX =  40, nbY = 100
-diffX =          19, diffY =          19
-dy =   0
 in drawing mode
 TB PRINTED          76-th frame
-dy =   0
+jump dist ===  14
+============================================== score :    20 =======
 in drawing mode
 TB PRINTED          77-th frame
-dy =   4
 in drawing mode
 TB PRINTED          78-th frame
-dy =   8
 in drawing mode
 TB PRINTED          79-th frame
-dy =  12
 in drawing mode
 TB PRINTED          80-th frame
-dy =  15
 in drawing mode
 TB PRINTED          81-th frame
-dy =  17
 in drawing mode
 TB PRINTED          82-th frame
-dy =  21
 in drawing mode
 TB PRINTED          83-th frame
-dy =  22
 in drawing mode
 TB PRINTED          84-th frame
-dy =  22
 in drawing mode
 TB PRINTED          85-th frame
-dy =  22
 in drawing mode
 TB PRINTED          86-th frame
-dy =  22
 in drawing mode
 TB PRINTED          87-th frame
-dy =  19
 in drawing mode
 TB PRINTED          88-th frame
-dy =  17
 in drawing mode
 TB PRINTED          89-th frame
-dy =  15
 in drawing mode
 TB PRINTED          90-th frame
-prev state: layout = 11, color = 010, dist =  18,  19
-new state: layout = 01, color = 101, dist =  13,  18
-dy =  12
 in drawing mode
 TB PRINTED          91-th frame
-dy =   4
 in drawing mode
 TB PRINTED          92-th frame
-next layout is 1 based on prev layout 0
-dy =   0
 in drawing mode
 TB PRINTED          93-th frame
-baseX =  22, baseY =  82, nbX =  20, nbY = 100
-diffX =          -2, diffY =          18
-dy =   0
 in drawing mode
 TB PRINTED          94-th frame
-dy =   0
 in drawing mode
 TB PRINTED          95-th frame
-dy =   4
+jump dist ===  17
+============================================== score :    25 =======
 in drawing mode
 TB PRINTED          96-th frame
-dy =   8
 in drawing mode
 TB PRINTED          97-th frame
-dy =  11
 in drawing mode
 TB PRINTED          98-th frame
-dy =  14
 in drawing mode
 TB PRINTED          99-th frame
-dy =  16
 in drawing mode
 TB PRINTED         100-th frame
-dy =  18
 in drawing mode
 TB PRINTED         101-th frame
-dy =  19
 in drawing mode
 TB PRINTED         102-th frame
-dy =  20
 in drawing mode
 TB PRINTED         103-th frame
-dy =  20
 in drawing mode
 TB PRINTED         104-th frame
-dy =  19
 in drawing mode
 TB PRINTED         105-th frame
-dy =  18
 in drawing mode
 TB PRINTED         106-th frame
-dy =  16
 in drawing mode
 TB PRINTED         107-th frame
-dy =  14
 in drawing mode
 TB PRINTED         108-th frame
-prev state: layout = 01, color = 101, dist =  13,  18
-new state: layout = 10, color = 010, dist =  20,  13
-dy =  11
 in drawing mode
 TB PRINTED         109-th frame
-dy =  52
 in drawing mode
 TB PRINTED         110-th frame
-next layout is 0 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED         111-th frame
-baseX =  33, baseY =  87, nbX =  40, nbY = 100
-diffX =           7, diffY =          13
-dy =   0
 in drawing mode
 TB PRINTED         112-th frame
-dy =   0
 in drawing mode
 TB PRINTED         113-th frame
-dy =   0
 in drawing mode
 TB PRINTED         114-th frame
-dy =   3
+jump dist ===  18
+============================================== score :    30 =======
 in drawing mode
 TB PRINTED         115-th frame
-dy =   5
 in drawing mode
 TB PRINTED         116-th frame
-dy =   7
 in drawing mode
 TB PRINTED         117-th frame
-dy =   9
 in drawing mode
 TB PRINTED         118-th frame
-dy =   9
 in drawing mode
 TB PRINTED         119-th frame
-dy =  10
 in drawing mode
 TB PRINTED         120-th frame
-dy =  10
 in drawing mode
 TB PRINTED         121-th frame
-dy =  10
 in drawing mode
 TB PRINTED         122-th frame
-dy =  10
 in drawing mode
 TB PRINTED         123-th frame
-dy =  10
 in drawing mode
 TB PRINTED         124-th frame
-dy =   9
 in drawing mode
 TB PRINTED         125-th frame
-dy =   7
 in drawing mode
 TB PRINTED         126-th frame
-prev state: layout = 10, color = 010, dist =  20,  13
-new state: layout = 01, color = 101, dist =  15,  20
-dy =   5
 in drawing mode
 TB PRINTED         127-th frame
-dy =  24
 in drawing mode
 TB PRINTED         128-th frame
-next layout is 1 based on prev layout 0
-dy =   0
 in drawing mode
 TB PRINTED         129-th frame
-baseX =  20, baseY =  80, nbX =  20, nbY = 100
-diffX =           0, diffY =          20
-dy =   0
 in drawing mode
 TB PRINTED         130-th frame
-dy =   0
 in drawing mode
 TB PRINTED         131-th frame
-dy =   4
 in drawing mode
 TB PRINTED         132-th frame
-dy =   9
 in drawing mode
 TB PRINTED         133-th frame
-dy =  12
+jump dist ===  21
+============================================== score :    33 =======
 in drawing mode
 TB PRINTED         134-th frame
-dy =  18
 in drawing mode
 TB PRINTED         135-th frame
-dy =  21
 in drawing mode
 TB PRINTED         136-th frame
-dy =  22
 in drawing mode
 TB PRINTED         137-th frame
-dy =  24
 in drawing mode
 TB PRINTED         138-th frame
-dy =  25
 in drawing mode
 TB PRINTED         139-th frame
-dy =  24
 in drawing mode
 TB PRINTED         140-th frame
-dy =  24
 in drawing mode
 TB PRINTED         141-th frame
-dy =  22
 in drawing mode
 TB PRINTED         142-th frame
-dy =  18
 in drawing mode
 TB PRINTED         143-th frame
-dy =  16
 in drawing mode
 TB PRINTED         144-th frame
-prev state: layout = 01, color = 101, dist =  15,  20
-new state: layout = 10, color = 010, dist =  14,  15
-dy =  12
 in drawing mode
 TB PRINTED         145-th frame
-dy =  50
 in drawing mode
 TB PRINTED         146-th frame
-next layout is 1 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED         147-th frame
-baseX =  35, baseY =  85, nbX =  40, nbY = 100
-diffX =           5, diffY =          15
-dy =   0
 in drawing mode
 TB PRINTED         148-th frame
-dy =   0
 in drawing mode
 TB PRINTED         149-th frame
-dy =   0
 in drawing mode
 TB PRINTED         150-th frame
-dy =   3
 in drawing mode
 TB PRINTED         151-th frame
-dy =   6
 in drawing mode
 TB PRINTED         152-th frame
-dy =   9
+jump dist ===  20
+============================================== score :    36 =======
 in drawing mode
 TB PRINTED         153-th frame
-dy =  11
 in drawing mode
 TB PRINTED         154-th frame
-dy =  12
 in drawing mode
 TB PRINTED         155-th frame
-dy =  13
 in drawing mode
 TB PRINTED         156-th frame
-dy =  14
 in drawing mode
 TB PRINTED         157-th frame
-dy =  14
 in drawing mode
 TB PRINTED         158-th frame
-dy =  13
 in drawing mode
 TB PRINTED         159-th frame
-dy =  12
 in drawing mode
 TB PRINTED         160-th frame
-dy =  11
 in drawing mode
 TB PRINTED         161-th frame
-dy =   9
 in drawing mode
 TB PRINTED         162-th frame
-prev state: layout = 10, color = 010, dist =  14,  15
-new state: layout = 11, color = 101, dist =  17,  14
-dy =   6
 in drawing mode
 TB PRINTED         163-th frame
-dy =   0
 in drawing mode
 TB PRINTED         164-th frame
-next layout is 0 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED         165-th frame
-baseX =  26, baseY =  86, nbX =  40, nbY = 100
-diffX =          14, diffY =          14
-dy =   0
 in drawing mode
 TB PRINTED         166-th frame
-dy =   0
 in drawing mode
 TB PRINTED         167-th frame
-dy =   0
 in drawing mode
 TB PRINTED         168-th frame
-dy =   3
 in drawing mode
 TB PRINTED         169-th frame
-dy =   6
 in drawing mode
 TB PRINTED         170-th frame
-dy =   8
 in drawing mode
 TB PRINTED         171-th frame
-dy =  10
+jump dist ===  15
+============================================== falling =======
 in drawing mode
 TB PRINTED         172-th frame
-dy =  11
 in drawing mode
 TB PRINTED         173-th frame
-dy =  12
 in drawing mode
 TB PRINTED         174-th frame
-dy =  12
 in drawing mode
 TB PRINTED         175-th frame
-dy =  12
 in drawing mode
 TB PRINTED         176-th frame
-dy =  12
 in drawing mode
 TB PRINTED         177-th frame
-dy =  11
 in drawing mode
 TB PRINTED         178-th frame
-dy =  10
 in drawing mode
 TB PRINTED         179-th frame
-dy =   8
 in drawing mode
 TB PRINTED         180-th frame
-prev state: layout = 11, color = 101, dist =  17,  14
-new state: layout = 01, color = 010, dist =  16,  17
-dy =   6
 in drawing mode
 TB PRINTED         181-th frame
-dy =  13
 in drawing mode
 TB PRINTED         182-th frame
-next layout is 1 based on prev layout 0
-dy =   0
 in drawing mode
 TB PRINTED         183-th frame
-baseX =  23, baseY =  83, nbX =  20, nbY = 100
-diffX =          -3, diffY =          17
-dy =   0
 in drawing mode
 TB PRINTED         184-th frame
-dy =   0
 in drawing mode
 TB PRINTED         185-th frame
-dy =   4
 in drawing mode
 TB PRINTED         186-th frame
-dy =   7
 in drawing mode
 TB PRINTED         187-th frame
-dy =  10
 in drawing mode
 TB PRINTED         188-th frame
-dy =  13
 in drawing mode
 TB PRINTED         189-th frame
-dy =  15
 in drawing mode
 TB PRINTED         190-th frame
-dy =  16
 in drawing mode
 TB PRINTED         191-th frame
-dy =  17
 in drawing mode
 TB PRINTED         192-th frame
-dy =  18
 in drawing mode
 TB PRINTED         193-th frame
-dy =  18
 in drawing mode
 TB PRINTED         194-th frame
-dy =  17
 in drawing mode
 TB PRINTED         195-th frame
-dy =  16
 in drawing mode
 TB PRINTED         196-th frame
-dy =  15
 in drawing mode
 TB PRINTED         197-th frame
-dy =  13
 in drawing mode
 TB PRINTED         198-th frame
-prev state: layout = 01, color = 010, dist =  16,  17
-new state: layout = 10, color = 101, dist =  19,  16
-dy =  10
 in drawing mode
 TB PRINTED         199-th frame
-dy =   3
 in drawing mode
 TB PRINTED         200-th frame
-next layout is 0 based on prev layout 1
-dy =   0
 in drawing mode
 TB PRINTED         201-th frame
-baseX =  36, baseY =  84, nbX =  40, nbY = 100
-diffX =           4, diffY =          16
-dy =   0
 in drawing mode
 TB PRINTED         202-th frame
-dy =   0
 in drawing mode
 TB PRINTED         203-th frame
-dy =   3
 in drawing mode
 TB PRINTED         204-th frame
-dy =   7
 in drawing mode
 TB PRINTED         205-th frame
-dy =   9
 in drawing mode
 TB PRINTED         206-th frame
-dy =  12
 in drawing mode
 TB PRINTED         207-th frame
-dy =  13
 in drawing mode
 TB PRINTED         208-th frame
-dy =  15
 in drawing mode
 TB PRINTED         209-th frame
-dy =  15
 in drawing mode
 TB PRINTED         210-th frame
-dy =  16
 in drawing mode
 TB PRINTED         211-th frame
-dy =  15
 in drawing mode
 TB PRINTED         212-th frame
-dy =  15
 in drawing mode
 TB PRINTED         213-th frame
-dy =  13
 in drawing mode
 TB PRINTED         214-th frame
-dy =  12
 in drawing mode
 TB PRINTED         215-th frame
-dy =   9
 in drawing mode
 TB PRINTED         216-th frame
-prev state: layout = 10, color = 101, dist =  19,  16
-new state: layout = 01, color = 010, dist =  18,  19
-dy =   7
 in drawing mode
 TB PRINTED         217-th frame
-dy =  15
 in drawing mode
 TB PRINTED         218-th frame
-next layout is 1 based on prev layout 0
-dy =   0
 in drawing mode
 TB PRINTED         219-th frame
-baseX =  21, baseY =  81, nbX =  20, nbY = 100
-diffX =          -1, diffY =          19
-dy =   0
 in drawing mode
 TB PRINTED         220-th frame
-dy =   0
 in drawing mode
 TB PRINTED         221-th frame
-dy =   4
 in drawing mode
 TB PRINTED         222-th frame
-dy =   8
 in drawing mode
 TB PRINTED         223-th frame
-dy =  12
 in drawing mode
 TB PRINTED         224-th frame
-dy =  15
 in drawing mode
 TB PRINTED         225-th frame
-dy =  17
 in drawing mode
-TB PRINTED         226-th frame
-dy =  21
-in drawing mode
-TB PRINTED         227-th frame
-dy =  22
-Stopped at time : 1854183 ns : File "C:/Users/152/Downloads/BottleFlip/src/vga640x480.v" Line 192
+Stopped at time : 1843299 ns : File "C:/Users/152/Downloads/BottleFlip/src/NERP_demo_top.v" Line 128

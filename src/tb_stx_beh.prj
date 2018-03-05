@@ -1,3 +1,4 @@
+verilog isim_temp "random.v"
 verilog isim_temp "vga640x480.v"
 verilog isim_temp "segdisplay.v"
 verilog isim_temp "renderer.v"
