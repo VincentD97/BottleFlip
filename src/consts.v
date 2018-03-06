@@ -58,3 +58,6 @@ parameter PL_INIT_H = 8'd8;
 `define PL_Y `PLW - 1 -   8 -: 8
 `define PL_H `PLW - 1 - 2*8 -: 8
 
+
+parameter idleMax = 16384;
+parameter RENDER_CLK_HI_BIT = 14;

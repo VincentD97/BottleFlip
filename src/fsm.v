@@ -129,7 +129,7 @@ reg [7:0] landing_x;
 reg [7:0] landing_y;
 reg [7:0] pl_jump_dist;
 
-task updatePlayer();
+task updatePlayer;
 begin
 	dy = last8bits((/*(square[0][`SQ_CY] - square[1][`SQ_CY])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
 	if (square[1][`SQ_CX] > square[0][`SQ_CX]) begin

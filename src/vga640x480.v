@@ -27,7 +27,8 @@ module vga640x480(
 	output reg [2:0] red,	//red vga output
 	output reg [2:0] green, //green vga output
 	output reg [1:0] blue,	//blue vga output
-	input [PX_WIDTH*PX_HEIGHT*3:0] pixel
+	input [2:0] memout,
+	output reg [15:0] rmemaddr
 	);
 
 `include "consts.v"
@@ -209,7 +210,8 @@ always @(*)
 begin
 	// first check if we're within vertical active video range
 	if (inscreen) begin
-		{red[2:0], green[2:0], blue[1:0]} = code_to_rgb(pixel[idx * 3 +: 3]);
+		rmemaddr = idx;
+		{red[2:0], green[2:0], blue[1:0]} = code_to_rgb(memout);
 	
 	/*
 	if (vc + hc >= (vbp + vfp + hbp + hfp) / 2) begin
@@ -222,7 +224,7 @@ begin
 		green = 0;
 		blue = 0;
 	end
-	
+
 end
 
 endmodule

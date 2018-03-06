@@ -45,7 +45,12 @@ assign dp = 1;
 
 // 2d pixel 
 
-wire [PX_HEIGHT*PX_WIDTH*3 : 0] pixel;
+wire [2:0] memo;
+wire [2:0] memo2;  
+wire [15:0] rmemaddr;
+reg [15:0] rmemaddr2;
+wire [2:0] memout;
+assign memout = memo;
 
 // generate 7-segment clock & display clock
 clockdiv U1(
@@ -74,7 +79,8 @@ vga640x480 U3(
 	.red(red),
 	.green(green),
 	.blue(blue),
-	.pixel(pixel)
+	.rmemaddr(rmemaddr),
+	.memout(memout)
 	);
 	
 //parameter PSIZE = 640 * 480;
@@ -93,6 +99,8 @@ wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
 wire [SQ_WIDTH - 1 : 0] sq3;
 wire [PLAYER_WIDTH - 1 : 0] pl;
+
+
 fsm U5(.clk(rclk), .btn(btn), 
 		.square1(sq1),
 		.square2(sq2),
@@ -100,14 +108,16 @@ fsm U5(.clk(rclk), .btn(btn),
 		.player(pl)
 );
 
-renderer U4(.clk(rclk),
-	        .pixel(pixel),
-			  .square1(sq1),
-			  .square2(sq2),
-			  .square3(sq3),
-			  .player(pl)
-			  );
-			  
+renderer U4(.clk(clk),
+			.square1(sq1),
+			.square2(sq2),
+			.square3(sq3),
+			.player(pl),
+			.rmemaddr(rmemaddr),
+			.rmemaddr2(rmemaddr2),
+			.memo(memo),
+			.memo2(memo2)
+			);
 
 integer f, i, j, cnt;
 initial begin
@@ -127,7 +137,8 @@ always @(negedge rclk) begin
 	for (j = 0; j < PX_HEIGHT; j = j + 1) 
 		for (i = 0; i < PX_WIDTH; i = i +1) 
         begin
-			case (pixel[(j * PX_WIDTH + i) * 3 +: 3])
+			rmemaddr2 = j * PX_WIDTH + i;
+			case (memo2)
 				3'b000: $fwrite(f, "0");	
 				3'b001: $fwrite(f, "1");
 				3'b010: $fwrite(f, "2");
@@ -136,6 +147,7 @@ always @(negedge rclk) begin
 				3'b101: $fwrite(f, "5");
 				3'b110: $fwrite(f, "6");
 				3'b111: $fwrite(f, "7");
+				default: $fwrite(f, "0");
 				//default: code_to_rgb = 8'b11111111;
 			endcase
             //$display("pixel is ", pixel[(j * PX_WIDTH + i) * 3 +: 3]);

@@ -1,0 +1,10 @@
+*
+!.gitignore
+!*.v
+!*.bit
+!*.bits
+!*.ucf
+!*.gise
+!*.xise
+!iseconfig/
+!_xmsgs/

@@ -48,12 +48,12 @@ begin
     end
 end
 
-// 50Mhz ÷ 2^17 = 381.47Hz
+// 50Mhz ï¿½ 2^17 = 381.47Hz
 assign segclk = q[17];
 
-assign rclk = q[11];
+assign rclk = q[RENDER_CLK_HI_BIT];
 
-// 50Mhz ÷ 2^1 = 25MHz
+// 50Mhz ï¿½ 2^1 = 25MHz
 assign dclk = q[1];
 
 endmodule
