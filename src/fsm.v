@@ -116,7 +116,7 @@ begin
 end
 endtask
 
-random rand();
+random rand_();
 
 
 reg [7:0] dx;
@@ -161,7 +161,22 @@ endtask
 
 
 
+integer seed;
+reg init;
 
+initial begin
+    seed = 0;
+    init = 0;
+end
+
+function integer rand;
+input x;
+begin
+   if (init == 0) begin seed = 879387228; init = 1; end
+   seed = (seed * 1103515245 + 12345) & 'h7fffffff;
+   rand = seed;
+end
+endfunction
 
 
 
@@ -171,10 +186,10 @@ begin
 	score = 0;
 	layout = 2'b01;	// keeping shift to the right
 	color = 3'b001;
-    layout = rand.rand(1) & 2'b11;
-    color = rand.rand(1) & 3'b111;
-    dist[7:0]  = 13 + (rand.rand(1) & 3'b111);
-    dist[15:8] = 13 + (rand.rand(1) & 3'b111);
+    layout = rand(1) & 2'b11;
+    color = rand(1) & 3'b111;
+    dist[7:0]  = 13 + (rand(1) & 3'b111);
+    dist[15:8] = 13 + (rand(1) & 3'b111);
     //$display("random %d", rand.rand(1) & 7'b1111111);
     //$display("init state: layout = %b, color = %b, dist = %b, %b", 
     //        layout, color, dist[15:8], dist[7:0]);
@@ -221,10 +236,10 @@ parameter SHIFT_EXEC = 1;
 
 task gen_next; 
 begin
-    next_layout = ((rand.rand(1) & 4'b1111) > 4'b1101) ? layout[NUM_SQ - 2] : ~layout[NUM_SQ - 2];
+    next_layout = ((rand(1) & 4'b1111) > 4'b1101) ? layout[NUM_SQ - 2] : ~layout[NUM_SQ - 2];
     // $display("next layout is %d based on prev layout %d", next_layout, layout[NUM_SQ - 2]);
-    next_color = rand.rand(1) & 1;
-    next_dist = 13 + (rand.rand(1) & 3'b111);
+    next_color = rand(1) & 1;
+    next_dist = 13 + (rand(1) & 3'b111);
 	updatePlayer();
     state = SHIFT;
     shift_state = SHIFT_PREP;

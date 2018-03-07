@@ -208,7 +208,7 @@ begin
         begin
             draw_sq(square1);
             if (render_sq_st == RENDER_SQ_DONE) begin
-                render_sq_st = 0;
+                render_sq_st <= 0;
                 render_st <= RENDER_SQ2;
             end
         end
@@ -216,7 +216,7 @@ begin
         begin
             draw_sq(square2);
             if (render_sq_st == RENDER_SQ_DONE) begin
-                render_sq_st = 0;
+                render_sq_st <= 0;
                 render_st <= RENDER_SQ3;
             end
         end
@@ -224,7 +224,7 @@ begin
         begin
             draw_sq(square3);
             if (render_sq_st == RENDER_SQ_DONE) begin
-                render_sq_st = 0;
+                render_sq_st <= 0;
                 render_st <= RENDER_PL;
             end
         end
@@ -232,8 +232,8 @@ begin
         begin
             draw_pl(player);
             if (render_pl_st == RENDER_PL_DONE) begin
-                render_pl_st = 0;
-                render_st = 0;
+                render_pl_st <= 0;
+                render_st <= 0;
                 state <= IDLE;
                 $display("render is done");
             end
@@ -244,6 +244,7 @@ endtask
 
 reg clr_st;
 task clear;
+/*
 begin
     if (clr_st == 0) begin
         rst = 1;
@@ -256,7 +257,9 @@ begin
     end
 end
 endtask
-/*
+*/
+
+begin
     if (clr_st == 0) begin
         wr <= 1;
         x <= 0;
@@ -280,7 +283,7 @@ endtask
     end
 end
 endtask
-*/
+
 
 always @(posedge clk) begin
     case (state)

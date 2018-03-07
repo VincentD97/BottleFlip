@@ -1,8 +1,8 @@
 INTSTYLE=impact
-INFILE=C:\Users\152\Downloads\impact.xsl
-OUTFILE=C:\Users\152\Downloads\impact.xsl
+INFILE=C:\Users\152\Downloads\BottleFlip\src\impact.xsl
+OUTFILE=C:\Users\152\Downloads\BottleFlip\src\impact.xsl
 FAMILY=Single
 PART=Single
-WORKINGDIR=C:\Users\152\Downloads
+WORKINGDIR=C:\Users\152\Downloads\BottleFlip\src
 LICENSE=iMPACT
 USER_INFO=iMPACT

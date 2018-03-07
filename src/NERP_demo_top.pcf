@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.68d on Wed Feb 28 10:32:24 2018
+// Written by: Map P.68d on Wed Mar 07 10:51:42 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -23,11 +23,261 @@ COMP "seg<6>" LOCATE = SITE "L14" LEVEL 1;
 COMP "green<0>" LOCATE = SITE "P8" LEVEL 1;
 COMP "green<1>" LOCATE = SITE "T6" LEVEL 1;
 COMP "green<2>" LOCATE = SITE "V6" LEVEL 1;
+PIN U4/Maddsub_y[8]_GND_29_o_MuLt_378_OUT_pins<92> = BEL
+        "U4/Maddsub_y[8]_GND_29_o_MuLt_378_OUT" PINNAME CLK;
 TIMEGRP sys_clk_pin = BEL "U1/q_0" BEL "U1/q_1" BEL "U1/q_2" BEL "U1/q_3" BEL
         "U1/q_4" BEL "U1/q_5" BEL "U1/q_6" BEL "U1/q_7" BEL "U1/q_8" BEL
         "U1/q_9" BEL "U1/q_10" BEL "U1/q_11" BEL "U1/q_12" BEL "U1/q_13" BEL
         "U1/q_14" BEL "U1/q_15" BEL "U1/q_16" BEL "U1/q_17" BEL "U1/q_18" BEL
-        "U1/q_19" BEL "clk_BUFGP/BUFG";
+        "U1/q_19" BEL "U1/q_20" BEL "U1/q_21" BEL "U4/idleCount_31" BEL
+        "U4/idleCount_30" BEL "U4/idleCount_29" BEL "U4/idleCount_28" BEL
+        "U4/idleCount_27" BEL "U4/idleCount_26" BEL "U4/idleCount_25" BEL
+        "U4/idleCount_24" BEL "U4/idleCount_23" BEL "U4/idleCount_22" BEL
+        "U4/idleCount_21" BEL "U4/idleCount_20" BEL "U4/idleCount_19" BEL
+        "U4/idleCount_18" BEL "U4/idleCount_17" BEL "U4/idleCount_16" BEL
+        "U4/idleCount_15" BEL "U4/idleCount_14" BEL "U4/idleCount_13" BEL
+        "U4/idleCount_12" BEL "U4/idleCount_11" BEL "U4/idleCount_10" BEL
+        "U4/idleCount_9" BEL "U4/idleCount_8" BEL "U4/idleCount_7" BEL
+        "U4/idleCount_6" BEL "U4/idleCount_5" BEL "U4/idleCount_4" BEL
+        "U4/idleCount_3" BEL "U4/idleCount_2" BEL "U4/idleCount_1" BEL
+        "U4/idleCount_0" BEL "U4/render_sq_st_FSM_FFd1" BEL
+        "U4/render_sq_st_FSM_FFd2" BEL "U4/render_sq_st_FSM_FFd3" BEL
+        "U4/state_FSM_FFd1" BEL "U4/render_st_FSM_FFd1" BEL
+        "U4/render_st_FSM_FFd2" BEL "U4/state_FSM_FFd2" BEL
+        "U4/render_pl_st_FSM_FFd1" BEL "U4/render_pl_st_FSM_FFd2" PIN
+        "U4/Maddsub_y[8]_GND_29_o_MuLt_378_OUT_pins<92>" BEL "U4/y_8" BEL
+        "U4/y_7" BEL "U4/y_6" BEL "U4/y_5" BEL "U4/y_4" BEL "U4/y_3" BEL
+        "U4/y_2" BEL "U4/y_1" BEL "U4/y_0" BEL "U4/memi_2" BEL "U4/memi_1" BEL
+        "U4/memi_0" BEL "U4/x_8" BEL "U4/x_7" BEL "U4/x_6" BEL "U4/x_5" BEL
+        "U4/x_4" BEL "U4/x_3" BEL "U4/x_2" BEL "U4/x_1" BEL "U4/x_0" BEL
+        "U4/wr" BEL "U4/clr_st" BEL "clk_BUFGP/BUFG" BEL
+        "U4/mem/Mram_ram1143/SP" BEL "U4/mem/Mram_ram1143/DP" BEL
+        "U4/mem/Mram_ram1142/SP" BEL "U4/mem/Mram_ram1142/DP" BEL
+        "U4/mem/Mram_ram1141/SP" BEL "U4/mem/Mram_ram1141/DP" BEL
+        "U4/mem/Mram_ram10_RAMA" BEL "U4/mem/Mram_ram10_RAMB" BEL
+        "U4/mem/Mram_ram10_RAMC" BEL "U4/mem/Mram_ram10_RAMD" BEL
+        "U4/mem/Mram_ram100_RAMA" BEL "U4/mem/Mram_ram100_RAMB" BEL
+        "U4/mem/Mram_ram100_RAMC" BEL "U4/mem/Mram_ram100_RAMD" BEL
+        "U4/mem/Mram_ram101_RAMA" BEL "U4/mem/Mram_ram101_RAMB" BEL
+        "U4/mem/Mram_ram101_RAMC" BEL "U4/mem/Mram_ram101_RAMD" BEL
+        "U4/mem/Mram_ram102_RAMA" BEL "U4/mem/Mram_ram102_RAMB" BEL
+        "U4/mem/Mram_ram102_RAMC" BEL "U4/mem/Mram_ram102_RAMD" BEL
+        "U4/mem/Mram_ram103_RAMA" BEL "U4/mem/Mram_ram103_RAMB" BEL
+        "U4/mem/Mram_ram103_RAMC" BEL "U4/mem/Mram_ram103_RAMD" BEL
+        "U4/mem/Mram_ram104_RAMA" BEL "U4/mem/Mram_ram104_RAMB" BEL
+        "U4/mem/Mram_ram104_RAMC" BEL "U4/mem/Mram_ram104_RAMD" BEL
+        "U4/mem/Mram_ram105_RAMA" BEL "U4/mem/Mram_ram105_RAMB" BEL
+        "U4/mem/Mram_ram105_RAMC" BEL "U4/mem/Mram_ram105_RAMD" BEL
+        "U4/mem/Mram_ram106_RAMA" BEL "U4/mem/Mram_ram106_RAMB" BEL
+        "U4/mem/Mram_ram106_RAMC" BEL "U4/mem/Mram_ram106_RAMD" BEL
+        "U4/mem/Mram_ram107_RAMA" BEL "U4/mem/Mram_ram107_RAMB" BEL
+        "U4/mem/Mram_ram107_RAMC" BEL "U4/mem/Mram_ram107_RAMD" BEL
+        "U4/mem/Mram_ram108_RAMA" BEL "U4/mem/Mram_ram108_RAMB" BEL
+        "U4/mem/Mram_ram108_RAMC" BEL "U4/mem/Mram_ram108_RAMD" BEL
+        "U4/mem/Mram_ram109_RAMA" BEL "U4/mem/Mram_ram109_RAMB" BEL
+        "U4/mem/Mram_ram109_RAMC" BEL "U4/mem/Mram_ram109_RAMD" BEL
+        "U4/mem/Mram_ram11_RAMA" BEL "U4/mem/Mram_ram11_RAMB" BEL
+        "U4/mem/Mram_ram11_RAMC" BEL "U4/mem/Mram_ram11_RAMD" BEL
+        "U4/mem/Mram_ram110_RAMA" BEL "U4/mem/Mram_ram110_RAMB" BEL
+        "U4/mem/Mram_ram110_RAMC" BEL "U4/mem/Mram_ram110_RAMD" BEL
+        "U4/mem/Mram_ram111_RAMA" BEL "U4/mem/Mram_ram111_RAMB" BEL
+        "U4/mem/Mram_ram111_RAMC" BEL "U4/mem/Mram_ram111_RAMD" BEL
+        "U4/mem/Mram_ram112_RAMA" BEL "U4/mem/Mram_ram112_RAMB" BEL
+        "U4/mem/Mram_ram112_RAMC" BEL "U4/mem/Mram_ram112_RAMD" BEL
+        "U4/mem/Mram_ram113_RAMA" BEL "U4/mem/Mram_ram113_RAMB" BEL
+        "U4/mem/Mram_ram113_RAMC" BEL "U4/mem/Mram_ram113_RAMD" BEL
+        "U4/mem/Mram_ram12_RAMA" BEL "U4/mem/Mram_ram12_RAMB" BEL
+        "U4/mem/Mram_ram12_RAMC" BEL "U4/mem/Mram_ram12_RAMD" BEL
+        "U4/mem/Mram_ram13_RAMA" BEL "U4/mem/Mram_ram13_RAMB" BEL
+        "U4/mem/Mram_ram13_RAMC" BEL "U4/mem/Mram_ram13_RAMD" BEL
+        "U4/mem/Mram_ram14_RAMA" BEL "U4/mem/Mram_ram14_RAMB" BEL
+        "U4/mem/Mram_ram14_RAMC" BEL "U4/mem/Mram_ram14_RAMD" BEL
+        "U4/mem/Mram_ram15_RAMA" BEL "U4/mem/Mram_ram15_RAMB" BEL
+        "U4/mem/Mram_ram15_RAMC" BEL "U4/mem/Mram_ram15_RAMD" BEL
+        "U4/mem/Mram_ram16_RAMA" BEL "U4/mem/Mram_ram16_RAMB" BEL
+        "U4/mem/Mram_ram16_RAMC" BEL "U4/mem/Mram_ram16_RAMD" BEL
+        "U4/mem/Mram_ram17_RAMA" BEL "U4/mem/Mram_ram17_RAMB" BEL
+        "U4/mem/Mram_ram17_RAMC" BEL "U4/mem/Mram_ram17_RAMD" BEL
+        "U4/mem/Mram_ram18_RAMA" BEL "U4/mem/Mram_ram18_RAMB" BEL
+        "U4/mem/Mram_ram18_RAMC" BEL "U4/mem/Mram_ram18_RAMD" BEL
+        "U4/mem/Mram_ram19_RAMA" BEL "U4/mem/Mram_ram19_RAMB" BEL
+        "U4/mem/Mram_ram19_RAMC" BEL "U4/mem/Mram_ram19_RAMD" BEL
+        "U4/mem/Mram_ram2_RAMA" BEL "U4/mem/Mram_ram2_RAMB" BEL
+        "U4/mem/Mram_ram2_RAMC" BEL "U4/mem/Mram_ram2_RAMD" BEL
+        "U4/mem/Mram_ram20_RAMA" BEL "U4/mem/Mram_ram20_RAMB" BEL
+        "U4/mem/Mram_ram20_RAMC" BEL "U4/mem/Mram_ram20_RAMD" BEL
+        "U4/mem/Mram_ram21_RAMA" BEL "U4/mem/Mram_ram21_RAMB" BEL
+        "U4/mem/Mram_ram21_RAMC" BEL "U4/mem/Mram_ram21_RAMD" BEL
+        "U4/mem/Mram_ram22_RAMA" BEL "U4/mem/Mram_ram22_RAMB" BEL
+        "U4/mem/Mram_ram22_RAMC" BEL "U4/mem/Mram_ram22_RAMD" BEL
+        "U4/mem/Mram_ram23_RAMA" BEL "U4/mem/Mram_ram23_RAMB" BEL
+        "U4/mem/Mram_ram23_RAMC" BEL "U4/mem/Mram_ram23_RAMD" BEL
+        "U4/mem/Mram_ram24_RAMA" BEL "U4/mem/Mram_ram24_RAMB" BEL
+        "U4/mem/Mram_ram24_RAMC" BEL "U4/mem/Mram_ram24_RAMD" BEL
+        "U4/mem/Mram_ram25_RAMA" BEL "U4/mem/Mram_ram25_RAMB" BEL
+        "U4/mem/Mram_ram25_RAMC" BEL "U4/mem/Mram_ram25_RAMD" BEL
+        "U4/mem/Mram_ram26_RAMA" BEL "U4/mem/Mram_ram26_RAMB" BEL
+        "U4/mem/Mram_ram26_RAMC" BEL "U4/mem/Mram_ram26_RAMD" BEL
+        "U4/mem/Mram_ram27_RAMA" BEL "U4/mem/Mram_ram27_RAMB" BEL
+        "U4/mem/Mram_ram27_RAMC" BEL "U4/mem/Mram_ram27_RAMD" BEL
+        "U4/mem/Mram_ram28_RAMA" BEL "U4/mem/Mram_ram28_RAMB" BEL
+        "U4/mem/Mram_ram28_RAMC" BEL "U4/mem/Mram_ram28_RAMD" BEL
+        "U4/mem/Mram_ram29_RAMA" BEL "U4/mem/Mram_ram29_RAMB" BEL
+        "U4/mem/Mram_ram29_RAMC" BEL "U4/mem/Mram_ram29_RAMD" BEL
+        "U4/mem/Mram_ram3_RAMA" BEL "U4/mem/Mram_ram3_RAMB" BEL
+        "U4/mem/Mram_ram3_RAMC" BEL "U4/mem/Mram_ram3_RAMD" BEL
+        "U4/mem/Mram_ram30_RAMA" BEL "U4/mem/Mram_ram30_RAMB" BEL
+        "U4/mem/Mram_ram30_RAMC" BEL "U4/mem/Mram_ram30_RAMD" BEL
+        "U4/mem/Mram_ram31_RAMA" BEL "U4/mem/Mram_ram31_RAMB" BEL
+        "U4/mem/Mram_ram31_RAMC" BEL "U4/mem/Mram_ram31_RAMD" BEL
+        "U4/mem/Mram_ram32_RAMA" BEL "U4/mem/Mram_ram32_RAMB" BEL
+        "U4/mem/Mram_ram32_RAMC" BEL "U4/mem/Mram_ram32_RAMD" BEL
+        "U4/mem/Mram_ram33_RAMA" BEL "U4/mem/Mram_ram33_RAMB" BEL
+        "U4/mem/Mram_ram33_RAMC" BEL "U4/mem/Mram_ram33_RAMD" BEL
+        "U4/mem/Mram_ram34_RAMA" BEL "U4/mem/Mram_ram34_RAMB" BEL
+        "U4/mem/Mram_ram34_RAMC" BEL "U4/mem/Mram_ram34_RAMD" BEL
+        "U4/mem/Mram_ram35_RAMA" BEL "U4/mem/Mram_ram35_RAMB" BEL
+        "U4/mem/Mram_ram35_RAMC" BEL "U4/mem/Mram_ram35_RAMD" BEL
+        "U4/mem/Mram_ram36_RAMA" BEL "U4/mem/Mram_ram36_RAMB" BEL
+        "U4/mem/Mram_ram36_RAMC" BEL "U4/mem/Mram_ram36_RAMD" BEL
+        "U4/mem/Mram_ram37_RAMA" BEL "U4/mem/Mram_ram37_RAMB" BEL
+        "U4/mem/Mram_ram37_RAMC" BEL "U4/mem/Mram_ram37_RAMD" BEL
+        "U4/mem/Mram_ram38_RAMA" BEL "U4/mem/Mram_ram38_RAMB" BEL
+        "U4/mem/Mram_ram38_RAMC" BEL "U4/mem/Mram_ram38_RAMD" BEL
+        "U4/mem/Mram_ram39_RAMA" BEL "U4/mem/Mram_ram39_RAMB" BEL
+        "U4/mem/Mram_ram39_RAMC" BEL "U4/mem/Mram_ram39_RAMD" BEL
+        "U4/mem/Mram_ram4_RAMA" BEL "U4/mem/Mram_ram4_RAMB" BEL
+        "U4/mem/Mram_ram4_RAMC" BEL "U4/mem/Mram_ram4_RAMD" BEL
+        "U4/mem/Mram_ram40_RAMA" BEL "U4/mem/Mram_ram40_RAMB" BEL
+        "U4/mem/Mram_ram40_RAMC" BEL "U4/mem/Mram_ram40_RAMD" BEL
+        "U4/mem/Mram_ram41_RAMA" BEL "U4/mem/Mram_ram41_RAMB" BEL
+        "U4/mem/Mram_ram41_RAMC" BEL "U4/mem/Mram_ram41_RAMD" BEL
+        "U4/mem/Mram_ram42_RAMA" BEL "U4/mem/Mram_ram42_RAMB" BEL
+        "U4/mem/Mram_ram42_RAMC" BEL "U4/mem/Mram_ram42_RAMD" BEL
+        "U4/mem/Mram_ram43_RAMA" BEL "U4/mem/Mram_ram43_RAMB" BEL
+        "U4/mem/Mram_ram43_RAMC" BEL "U4/mem/Mram_ram43_RAMD" BEL
+        "U4/mem/Mram_ram44_RAMA" BEL "U4/mem/Mram_ram44_RAMB" BEL
+        "U4/mem/Mram_ram44_RAMC" BEL "U4/mem/Mram_ram44_RAMD" BEL
+        "U4/mem/Mram_ram45_RAMA" BEL "U4/mem/Mram_ram45_RAMB" BEL
+        "U4/mem/Mram_ram45_RAMC" BEL "U4/mem/Mram_ram45_RAMD" BEL
+        "U4/mem/Mram_ram46_RAMA" BEL "U4/mem/Mram_ram46_RAMB" BEL
+        "U4/mem/Mram_ram46_RAMC" BEL "U4/mem/Mram_ram46_RAMD" BEL
+        "U4/mem/Mram_ram47_RAMA" BEL "U4/mem/Mram_ram47_RAMB" BEL
+        "U4/mem/Mram_ram47_RAMC" BEL "U4/mem/Mram_ram47_RAMD" BEL
+        "U4/mem/Mram_ram48_RAMA" BEL "U4/mem/Mram_ram48_RAMB" BEL
+        "U4/mem/Mram_ram48_RAMC" BEL "U4/mem/Mram_ram48_RAMD" BEL
+        "U4/mem/Mram_ram49_RAMA" BEL "U4/mem/Mram_ram49_RAMB" BEL
+        "U4/mem/Mram_ram49_RAMC" BEL "U4/mem/Mram_ram49_RAMD" BEL
+        "U4/mem/Mram_ram5_RAMA" BEL "U4/mem/Mram_ram5_RAMB" BEL
+        "U4/mem/Mram_ram5_RAMC" BEL "U4/mem/Mram_ram5_RAMD" BEL
+        "U4/mem/Mram_ram50_RAMA" BEL "U4/mem/Mram_ram50_RAMB" BEL
+        "U4/mem/Mram_ram50_RAMC" BEL "U4/mem/Mram_ram50_RAMD" BEL
+        "U4/mem/Mram_ram51_RAMA" BEL "U4/mem/Mram_ram51_RAMB" BEL
+        "U4/mem/Mram_ram51_RAMC" BEL "U4/mem/Mram_ram51_RAMD" BEL
+        "U4/mem/Mram_ram52_RAMA" BEL "U4/mem/Mram_ram52_RAMB" BEL
+        "U4/mem/Mram_ram52_RAMC" BEL "U4/mem/Mram_ram52_RAMD" BEL
+        "U4/mem/Mram_ram53_RAMA" BEL "U4/mem/Mram_ram53_RAMB" BEL
+        "U4/mem/Mram_ram53_RAMC" BEL "U4/mem/Mram_ram53_RAMD" BEL
+        "U4/mem/Mram_ram54_RAMA" BEL "U4/mem/Mram_ram54_RAMB" BEL
+        "U4/mem/Mram_ram54_RAMC" BEL "U4/mem/Mram_ram54_RAMD" BEL
+        "U4/mem/Mram_ram55_RAMA" BEL "U4/mem/Mram_ram55_RAMB" BEL
+        "U4/mem/Mram_ram55_RAMC" BEL "U4/mem/Mram_ram55_RAMD" BEL
+        "U4/mem/Mram_ram56_RAMA" BEL "U4/mem/Mram_ram56_RAMB" BEL
+        "U4/mem/Mram_ram56_RAMC" BEL "U4/mem/Mram_ram56_RAMD" BEL
+        "U4/mem/Mram_ram57_RAMA" BEL "U4/mem/Mram_ram57_RAMB" BEL
+        "U4/mem/Mram_ram57_RAMC" BEL "U4/mem/Mram_ram57_RAMD" BEL
+        "U4/mem/Mram_ram58_RAMA" BEL "U4/mem/Mram_ram58_RAMB" BEL
+        "U4/mem/Mram_ram58_RAMC" BEL "U4/mem/Mram_ram58_RAMD" BEL
+        "U4/mem/Mram_ram59_RAMA" BEL "U4/mem/Mram_ram59_RAMB" BEL
+        "U4/mem/Mram_ram59_RAMC" BEL "U4/mem/Mram_ram59_RAMD" BEL
+        "U4/mem/Mram_ram6_RAMA" BEL "U4/mem/Mram_ram6_RAMB" BEL
+        "U4/mem/Mram_ram6_RAMC" BEL "U4/mem/Mram_ram6_RAMD" BEL
+        "U4/mem/Mram_ram60_RAMA" BEL "U4/mem/Mram_ram60_RAMB" BEL
+        "U4/mem/Mram_ram60_RAMC" BEL "U4/mem/Mram_ram60_RAMD" BEL
+        "U4/mem/Mram_ram61_RAMA" BEL "U4/mem/Mram_ram61_RAMB" BEL
+        "U4/mem/Mram_ram61_RAMC" BEL "U4/mem/Mram_ram61_RAMD" BEL
+        "U4/mem/Mram_ram62_RAMA" BEL "U4/mem/Mram_ram62_RAMB" BEL
+        "U4/mem/Mram_ram62_RAMC" BEL "U4/mem/Mram_ram62_RAMD" BEL
+        "U4/mem/Mram_ram63_RAMA" BEL "U4/mem/Mram_ram63_RAMB" BEL
+        "U4/mem/Mram_ram63_RAMC" BEL "U4/mem/Mram_ram63_RAMD" BEL
+        "U4/mem/Mram_ram64_RAMA" BEL "U4/mem/Mram_ram64_RAMB" BEL
+        "U4/mem/Mram_ram64_RAMC" BEL "U4/mem/Mram_ram64_RAMD" BEL
+        "U4/mem/Mram_ram65_RAMA" BEL "U4/mem/Mram_ram65_RAMB" BEL
+        "U4/mem/Mram_ram65_RAMC" BEL "U4/mem/Mram_ram65_RAMD" BEL
+        "U4/mem/Mram_ram66_RAMA" BEL "U4/mem/Mram_ram66_RAMB" BEL
+        "U4/mem/Mram_ram66_RAMC" BEL "U4/mem/Mram_ram66_RAMD" BEL
+        "U4/mem/Mram_ram67_RAMA" BEL "U4/mem/Mram_ram67_RAMB" BEL
+        "U4/mem/Mram_ram67_RAMC" BEL "U4/mem/Mram_ram67_RAMD" BEL
+        "U4/mem/Mram_ram68_RAMA" BEL "U4/mem/Mram_ram68_RAMB" BEL
+        "U4/mem/Mram_ram68_RAMC" BEL "U4/mem/Mram_ram68_RAMD" BEL
+        "U4/mem/Mram_ram69_RAMA" BEL "U4/mem/Mram_ram69_RAMB" BEL
+        "U4/mem/Mram_ram69_RAMC" BEL "U4/mem/Mram_ram69_RAMD" BEL
+        "U4/mem/Mram_ram7_RAMA" BEL "U4/mem/Mram_ram7_RAMB" BEL
+        "U4/mem/Mram_ram7_RAMC" BEL "U4/mem/Mram_ram7_RAMD" BEL
+        "U4/mem/Mram_ram70_RAMA" BEL "U4/mem/Mram_ram70_RAMB" BEL
+        "U4/mem/Mram_ram70_RAMC" BEL "U4/mem/Mram_ram70_RAMD" BEL
+        "U4/mem/Mram_ram71_RAMA" BEL "U4/mem/Mram_ram71_RAMB" BEL
+        "U4/mem/Mram_ram71_RAMC" BEL "U4/mem/Mram_ram71_RAMD" BEL
+        "U4/mem/Mram_ram72_RAMA" BEL "U4/mem/Mram_ram72_RAMB" BEL
+        "U4/mem/Mram_ram72_RAMC" BEL "U4/mem/Mram_ram72_RAMD" BEL
+        "U4/mem/Mram_ram73_RAMA" BEL "U4/mem/Mram_ram73_RAMB" BEL
+        "U4/mem/Mram_ram73_RAMC" BEL "U4/mem/Mram_ram73_RAMD" BEL
+        "U4/mem/Mram_ram74_RAMA" BEL "U4/mem/Mram_ram74_RAMB" BEL
+        "U4/mem/Mram_ram74_RAMC" BEL "U4/mem/Mram_ram74_RAMD" BEL
+        "U4/mem/Mram_ram75_RAMA" BEL "U4/mem/Mram_ram75_RAMB" BEL
+        "U4/mem/Mram_ram75_RAMC" BEL "U4/mem/Mram_ram75_RAMD" BEL
+        "U4/mem/Mram_ram76_RAMA" BEL "U4/mem/Mram_ram76_RAMB" BEL
+        "U4/mem/Mram_ram76_RAMC" BEL "U4/mem/Mram_ram76_RAMD" BEL
+        "U4/mem/Mram_ram77_RAMA" BEL "U4/mem/Mram_ram77_RAMB" BEL
+        "U4/mem/Mram_ram77_RAMC" BEL "U4/mem/Mram_ram77_RAMD" BEL
+        "U4/mem/Mram_ram78_RAMA" BEL "U4/mem/Mram_ram78_RAMB" BEL
+        "U4/mem/Mram_ram78_RAMC" BEL "U4/mem/Mram_ram78_RAMD" BEL
+        "U4/mem/Mram_ram79_RAMA" BEL "U4/mem/Mram_ram79_RAMB" BEL
+        "U4/mem/Mram_ram79_RAMC" BEL "U4/mem/Mram_ram79_RAMD" BEL
+        "U4/mem/Mram_ram8_RAMA" BEL "U4/mem/Mram_ram8_RAMB" BEL
+        "U4/mem/Mram_ram8_RAMC" BEL "U4/mem/Mram_ram8_RAMD" BEL
+        "U4/mem/Mram_ram80_RAMA" BEL "U4/mem/Mram_ram80_RAMB" BEL
+        "U4/mem/Mram_ram80_RAMC" BEL "U4/mem/Mram_ram80_RAMD" BEL
+        "U4/mem/Mram_ram81_RAMA" BEL "U4/mem/Mram_ram81_RAMB" BEL
+        "U4/mem/Mram_ram81_RAMC" BEL "U4/mem/Mram_ram81_RAMD" BEL
+        "U4/mem/Mram_ram82_RAMA" BEL "U4/mem/Mram_ram82_RAMB" BEL
+        "U4/mem/Mram_ram82_RAMC" BEL "U4/mem/Mram_ram82_RAMD" BEL
+        "U4/mem/Mram_ram83_RAMA" BEL "U4/mem/Mram_ram83_RAMB" BEL
+        "U4/mem/Mram_ram83_RAMC" BEL "U4/mem/Mram_ram83_RAMD" BEL
+        "U4/mem/Mram_ram84_RAMA" BEL "U4/mem/Mram_ram84_RAMB" BEL
+        "U4/mem/Mram_ram84_RAMC" BEL "U4/mem/Mram_ram84_RAMD" BEL
+        "U4/mem/Mram_ram85_RAMA" BEL "U4/mem/Mram_ram85_RAMB" BEL
+        "U4/mem/Mram_ram85_RAMC" BEL "U4/mem/Mram_ram85_RAMD" BEL
+        "U4/mem/Mram_ram86_RAMA" BEL "U4/mem/Mram_ram86_RAMB" BEL
+        "U4/mem/Mram_ram86_RAMC" BEL "U4/mem/Mram_ram86_RAMD" BEL
+        "U4/mem/Mram_ram87_RAMA" BEL "U4/mem/Mram_ram87_RAMB" BEL
+        "U4/mem/Mram_ram87_RAMC" BEL "U4/mem/Mram_ram87_RAMD" BEL
+        "U4/mem/Mram_ram88_RAMA" BEL "U4/mem/Mram_ram88_RAMB" BEL
+        "U4/mem/Mram_ram88_RAMC" BEL "U4/mem/Mram_ram88_RAMD" BEL
+        "U4/mem/Mram_ram89_RAMA" BEL "U4/mem/Mram_ram89_RAMB" BEL
+        "U4/mem/Mram_ram89_RAMC" BEL "U4/mem/Mram_ram89_RAMD" BEL
+        "U4/mem/Mram_ram9_RAMA" BEL "U4/mem/Mram_ram9_RAMB" BEL
+        "U4/mem/Mram_ram9_RAMC" BEL "U4/mem/Mram_ram9_RAMD" BEL
+        "U4/mem/Mram_ram90_RAMA" BEL "U4/mem/Mram_ram90_RAMB" BEL
+        "U4/mem/Mram_ram90_RAMC" BEL "U4/mem/Mram_ram90_RAMD" BEL
+        "U4/mem/Mram_ram91_RAMA" BEL "U4/mem/Mram_ram91_RAMB" BEL
+        "U4/mem/Mram_ram91_RAMC" BEL "U4/mem/Mram_ram91_RAMD" BEL
+        "U4/mem/Mram_ram92_RAMA" BEL "U4/mem/Mram_ram92_RAMB" BEL
+        "U4/mem/Mram_ram92_RAMC" BEL "U4/mem/Mram_ram92_RAMD" BEL
+        "U4/mem/Mram_ram93_RAMA" BEL "U4/mem/Mram_ram93_RAMB" BEL
+        "U4/mem/Mram_ram93_RAMC" BEL "U4/mem/Mram_ram93_RAMD" BEL
+        "U4/mem/Mram_ram94_RAMA" BEL "U4/mem/Mram_ram94_RAMB" BEL
+        "U4/mem/Mram_ram94_RAMC" BEL "U4/mem/Mram_ram94_RAMD" BEL
+        "U4/mem/Mram_ram95_RAMA" BEL "U4/mem/Mram_ram95_RAMB" BEL
+        "U4/mem/Mram_ram95_RAMC" BEL "U4/mem/Mram_ram95_RAMD" BEL
+        "U4/mem/Mram_ram96_RAMA" BEL "U4/mem/Mram_ram96_RAMB" BEL
+        "U4/mem/Mram_ram96_RAMC" BEL "U4/mem/Mram_ram96_RAMD" BEL
+        "U4/mem/Mram_ram97_RAMA" BEL "U4/mem/Mram_ram97_RAMB" BEL
+        "U4/mem/Mram_ram97_RAMC" BEL "U4/mem/Mram_ram97_RAMD" BEL
+        "U4/mem/Mram_ram98_RAMA" BEL "U4/mem/Mram_ram98_RAMB" BEL
+        "U4/mem/Mram_ram98_RAMC" BEL "U4/mem/Mram_ram98_RAMD" BEL
+        "U4/mem/Mram_ram99_RAMA" BEL "U4/mem/Mram_ram99_RAMB" BEL
+        "U4/mem/Mram_ram99_RAMC" BEL "U4/mem/Mram_ram99_RAMD";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 

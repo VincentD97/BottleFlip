@@ -28,7 +28,7 @@ module clockdiv(
 `include "consts.v"
 
 // 17-bit counter variable
-reg [20:0] q;
+reg [31:0] q;
 initial begin
     q = 0;
 end
