@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module fsm(
     input clk,
-	 input btn,
+	 input [15:0] press_time,
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
 	 output [SQ_WIDTH - 1:0] square3,
@@ -199,7 +199,7 @@ begin
     landing_x_r = 0;
     landing_y_u = 0;
     landing_y_d = 0;
-    pl_jump_dist = dist[7:0];
+    pl_jump_dist = press_time[7:0];
 	 $display("jump dist === %d", pl_jump_dist);
     player_reg = {square[0][`SQ_CX], square[0][`SQ_CY], PL_INIT_H};
 	// updatePlayer();
@@ -305,9 +305,9 @@ begin
 		  jump_ratio = 0;
 		  
 		  if (score < 25) begin
-				pl_jump_dist = dist[7:0];
+				pl_jump_dist = press_time[7:0];
 			end else begin
-				pl_jump_dist = dist[7:0] + 2;
+				pl_jump_dist = press_time[7:0];
 			end
 			$display("jump dist === %d", pl_jump_dist);
 			

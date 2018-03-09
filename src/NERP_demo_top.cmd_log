@@ -95,3 +95,20 @@ map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off NERP_demo_top_map.ncd NERP_demo_top.ncd NERP_demo_top.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml NERP_demo_top.twx NERP_demo_top.ncd -o NERP_demo_top.twr NERP_demo_top.pcf -ucf Nexys2_1200General.ucf 
 bitgen -intstyle ise -f NERP_demo_top.ut NERP_demo_top.ncd 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys2_1200General.ucf -p xc6slx16-csg324-3 NERP_demo_top.ngc NERP_demo_top.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o NERP_demo_top_map.ncd NERP_demo_top.ngd NERP_demo_top.pcf 
+par -w -intstyle ise -ol high -mt off NERP_demo_top_map.ncd NERP_demo_top.ncd NERP_demo_top.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml NERP_demo_top.twx NERP_demo_top.ncd -o NERP_demo_top.twr NERP_demo_top.pcf -ucf Nexys2_1200General.ucf 
+bitgen -intstyle ise -f NERP_demo_top.ut NERP_demo_top.ncd 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+xst -intstyle ise -ifn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.xst" -ofn "C:/Users/TEMP.CS152A-01.000/Downloads/BottleFlip/src/NERP_demo_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Nexys2_1200General.ucf -p xc6slx16-csg324-3 NERP_demo_top.ngc NERP_demo_top.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o NERP_demo_top_map.ncd NERP_demo_top.ngd NERP_demo_top.pcf 
+par -w -intstyle ise -ol high -mt off NERP_demo_top_map.ncd NERP_demo_top.ncd NERP_demo_top.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml NERP_demo_top.twx NERP_demo_top.ncd -o NERP_demo_top.twr NERP_demo_top.pcf -ucf Nexys2_1200General.ucf 
+bitgen -intstyle ise -f NERP_demo_top.ut NERP_demo_top.ncd 

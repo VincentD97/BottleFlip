@@ -91,17 +91,55 @@ reg [31:0] center_y; // vertical
 reg [31:0] r; // the top vertex of the <> shape is at (center_x, center_y - r)
 reg [31:0] height;
 
+
+
+
+
+
+
+
+
+
+
+
+
 reg btn;
+wire jump_btn;
+wire [15:0] digits;
+wire light_on;
+wire light_blink;
+wire [15:0] press_time;
 
 
-			  
+rebounce jump_btn_reb(.btn(btn), .clk(clk), .rst(rst), .inst_vld(jump_btn));
+mylogic mylogic(.clk(clk), 
+	.pause_btn(jump_btn),
+	.press_time(press_time)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
 wire [SQ_WIDTH - 1 : 0] sq3;
 wire [PLAYER_WIDTH - 1 : 0] pl;
 
 
-fsm U5(.clk(rclk), .btn(btn), 
+fsm U5(.clk(rclk), .press_time(press_time), 
 		.square1(sq1),
 		.square2(sq2),
 		.square3(sq3),
