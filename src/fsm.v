@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module fsm(
     input clk,
-	 input [15:0] jump_dist,
-     input end_of_press,
+	 input [7:0] jump_dist,
+     input end_of_jump,
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
 	 output [SQ_WIDTH - 1:0] square3,
@@ -250,9 +250,14 @@ endtask
 
 task jump_prep; 
 begin
-    if (end_of_press) begin
-        pl_jump_dist = press_time;
-		// $display("jump dist === %d", pl_jump_dist);
+    updatePlayer();
+
+    $display("jump dist === %d", pl_jump_dist);
+
+    if (end_of_jump) begin
+        pl_jump_dist = jump_dist;
+		$display("jump dist === %d", pl_jump_dist);
+        
         state = SHIFT;
         shift_state = SHIFT_PREP;
     end
@@ -275,7 +280,6 @@ begin
         diffX = newbaseX - baseX; 
         diffY = newbaseY - baseY;
         // $display("diffX = %d, diffY = %d", diffX, diffY);
-        if 
         shift_state = SHIFT_EXEC;
         shift_ratio = 0;
         shift_lazy = 0;

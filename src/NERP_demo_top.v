@@ -105,10 +105,11 @@ reg [31:0] height;
 
 reg btn;
 wire jump_btn;
+wire [7:0] jump_dist;
+wire end_of_jump;
 wire [15:0] digits;
 wire light_on;
 wire light_blink;
-wire [15:0] press_time;
 
 
 rebounce jump_btn_reb(.btn(btn), .clk(clk), .rst(rst), .inst_vld(jump_btn));
@@ -141,11 +142,11 @@ wire [PLAYER_WIDTH - 1 : 0] pl;
 
 fsm U5(.clk(rclk), 
 	.jump_dist(jump_dist),
-	.end_of_jump(end_of_jump)
-		.square1(sq1),
-		.square2(sq2),
-		.square3(sq3),
-		.player(pl)
+	.end_of_jump(end_of_jump),
+	.square1(sq1),
+	.square2(sq2),
+	.square3(sq3),
+	.player(pl)
 );
 
 renderer U4(.clk(clk),
