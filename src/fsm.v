@@ -20,7 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module fsm(
     input clk,
-	 input [15:0] press_time,
+	 input [15:0] jump_dist,
+     input end_of_press,
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
 	 output [SQ_WIDTH - 1:0] square3,
@@ -30,11 +31,10 @@ module fsm(
 `include "consts.v"
 
 parameter RESET = 0;
-parameter STATIC = 1;
-parameter JUMP = 2;
+parameter GEN_NEXT = 1;
+parameter JUMP_PREP = 2;
 parameter SHIFT = 3;
-parameter GEN_NEXT = 4;
-parameter FALL = 5;
+parameter FALL = 4;
 
 parameter SQ_R = 8'd6;
 parameter NUM_SQ = 3;
@@ -199,8 +199,6 @@ begin
     landing_x_r = 0;
     landing_y_u = 0;
     landing_y_d = 0;
-    pl_jump_dist = press_time[7:0];
-	 $display("jump dist === %d", pl_jump_dist);
     player_reg = {square[0][`SQ_CX], square[0][`SQ_CY], PL_INIT_H};
 	// updatePlayer();
     state = GEN_NEXT;
@@ -241,8 +239,7 @@ begin
     next_color = rand(1) & 1;
     next_dist = 13 + (rand(1) & 3'b111);
 	updatePlayer();
-    state = SHIFT;
-    shift_state = SHIFT_PREP;
+    state = JUMP_PREP;
 end
 endtask
 
@@ -251,7 +248,16 @@ endtask
 
 
 
-
+task jump_prep; 
+begin
+    if (end_of_press) begin
+        pl_jump_dist = press_time;
+		// $display("jump dist === %d", pl_jump_dist);
+        state = SHIFT;
+        shift_state = SHIFT_PREP;
+    end
+end
+endtask
 
 
 
@@ -269,6 +275,7 @@ begin
         diffX = newbaseX - baseX; 
         diffY = newbaseY - baseY;
         // $display("diffX = %d, diffY = %d", diffX, diffY);
+        if 
         shift_state = SHIFT_EXEC;
         shift_ratio = 0;
         shift_lazy = 0;
@@ -290,8 +297,8 @@ begin
         layout = {next_layout, layout[NUM_SQ - 2: 1]};
         color = {next_color, color[NUM_SQ - 1: 1]};
         dist  = {next_dist, dist[ ((NUM_SQ - 1) * 8) - 1: 8]};
-        state = STATIC;
-        static_state = STATIC_ANIM;
+        state = GEN_NEXT;
+        // static_state = STATIC_ANIM;
         // $display("new state: layout = %b, color = %b, dist = %d, %d", 
         //    layout, color, dist[15:8], dist[7:0]);
     end else begin
@@ -304,12 +311,12 @@ begin
 	if (jump_ratio == (1 << jump_tot_sft)) begin
 		  jump_ratio = 0;
 		  
-		  if (score < 25) begin
-				pl_jump_dist = press_time[7:0];
-			end else begin
-				pl_jump_dist = press_time[7:0];
-			end
-			$display("jump dist === %d", pl_jump_dist);
+		//   if (score < 25) begin
+		// 		pl_jump_dist = press_time;
+		// 	end else begin
+		// 		pl_jump_dist = press_time;
+		// 	end
+		// 	$display("jump dist === %d", pl_jump_dist);
 			
 			
 			
@@ -331,7 +338,7 @@ begin
 				$display("============================================== falling =======");
 				state = FALL;
 			 end else begin
-				state = STATIC;
+				state = GEN_NEXT;
 				if (landing_x_l + landing_x_r + landing_y_u + landing_y_d == 0) begin
 					score = score + PERFECT_HIT;
 				end else begin
@@ -347,19 +354,10 @@ end
 
 endtask
 
-
-task static;
-begin
-	layout_to_xy(layout, color);
-   if (static_state == STATIC_ANIM) 
-        state = GEN_NEXT;
-end
-endtask
-
 task fall;
 begin
 	layout_to_xy(layout, color);
-   updatePlayer();
+    updatePlayer();
 end
 endtask
 
@@ -367,10 +365,10 @@ endtask
 always @(negedge clk) begin
 	case (state)
 		RESET: reset();
-        STATIC: static();
-        SHIFT: shift();
         GEN_NEXT: gen_next();
-		  FALL: fall();
+        JUMP_PREP: jump_prep();
+        SHIFT: shift();
+		FALL: fall();
 	endcase
 end
 
