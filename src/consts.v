@@ -59,5 +59,7 @@ parameter PL_INIT_H = 8'd8;
 `define PL_H `PLW - 1 - 2*8 -: 8
 
 
-parameter idleMax = 4000;
-parameter RENDER_CLK_HI_BIT = 12;
+parameter DEBUG = 1;
+// idle should be at least ten times 7200 = 72000
+parameter idleMax = DEBUG ? 60000 : 2000000;
+parameter RENDER_CLK_HI_BIT = DEBUG ? 16 : 21;

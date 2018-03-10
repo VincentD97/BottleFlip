@@ -82,8 +82,11 @@ wire valido;
 assign valido = (x >= 0 && x < PX_WIDTH && y >= 0 && y < PX_HEIGHT); 
 
 
+
 task incr_draw_square(input [7:0] center_x, input [7:0] center_y, input [7:0] r, input [7:0] height, 
 input [2:0] color1, input [2:0] color2, input [2:0] color3); 
+reg [7:0] nx;
+reg [7:0] ny;
 begin
     case (render_sq_st)
     RENDER_SQ_INIT: 
@@ -104,14 +107,15 @@ begin
             x <= center_x - r;
             render_sq_st <= RENDER_SQ_LEFT;
         end else begin
-            if ( x + y >= center_x + center_y - r &&
-                 x + y <= center_x + center_y + r &&
-                 x - y >= center_x - center_y - r &&
-                 x - y <= center_x - center_y + r )
+            if (x < center_x + r) begin nx = x + 1; ny = y; end
+            else begin nx = center_x - r; ny = y + 1; end
+            if ( nx + ny >= center_x + center_y - r &&
+                 nx + ny <= center_x + center_y + r &&
+                 nx - ny >= center_x - center_y - r &&
+                 nx - ny <= center_x - center_y + r )
             begin wr <= 1; memi <= color1; end else wr <= 0;
-
-            if (x < center_x + r) x <= x + 1;
-            else begin x <= center_x - r; y <= y + 1; end
+            x <= nx;
+            y <= ny;
         end
     end
     RENDER_SQ_LEFT:
@@ -126,7 +130,7 @@ begin
             wr <= 1;
             memi <= color2;
             if (y < center_y + x - (center_x - r) + height) y <= y + 1;
-            else begin x <= x + 1; y <= center_y + (x + 1) - (center_x - r) + 1; end
+            else begin x <= x + 1; y <= center_y + (x + 1) - (center_x - r)+ 1; end
         end
     end
     RENDER_SQ_RIGHT:
@@ -226,6 +230,8 @@ begin
             if (render_sq_st == RENDER_SQ_DONE) begin
                 render_sq_st <= 0;
                 render_st <= RENDER_PL;
+                $display("render: player x, y, h = %d %d %d", player[`PL_X], player[`PL_Y], player[`PL_H]);
+
             end
         end
         RENDER_PL:
@@ -279,7 +285,7 @@ begin
     end else begin
         clr_st <= 0;
         state <= DRAW;
-        $display("CLR is done");
+        $display("CLR DONE");
     end
 end
 endtask
@@ -295,6 +301,7 @@ always @(posedge clk) begin
             if (idleCount == idleMax) begin
                 idleCount <= 0;
                 state <= CLR;
+                $display("CLRING ", idleCount);
             end
         end
             //state <= state + 1;

@@ -1,75 +1,217 @@
 `timescale 1ns / 1ps
-
-////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer:
-//
-// Create Date:   10:16:30 02/26/2018
-// Design Name:   NERP_demo_top
-// Module Name:   C:/Users/152/Downloads/0226/tb.v
-// Project Name:  NERP_demo
-// Target Device:  
-// Tool versions:  
+// Engineer: 
+// 
+// Create Date:    20:28:25 03/19/2013 
+// Design Name: 
+// Module Name:    NERP_demo_top 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
 // Description: 
 //
-// Verilog Test Fixture created by ISE for module: NERP_demo_top
+// Dependencies: 
 //
-// Dependencies:
-// 
-// Revision:
+// Revision: 
 // Revision 0.01 - File Created
-// Additional Comments:
-// 
-////////////////////////////////////////////////////////////////////////////////
-
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
 module tb;
 
-	// Inputs
-	reg clk;
-	reg clr;
+reg clk;			//master clock = 50MHz
+reg clr;			//right-most pushbutton for reset
+wire [6:0] seg;	//7-segment display LEDs
+wire [3:0] an;	//7-segment display anode enable
+wire dp;			//7-segment display decimal point
+wire [2:0] red;	//red vga output - 3 bits
+wire [2:0] green;//green vga output - 3 bits
+wire [1:0] blue;	//blue vga output - 2 bits
+wire hsync;		//horizontal sync out
+wire vsync;	//vertical sync out
 
-	// Outputs
-	wire [6:0] seg;
-	wire [3:0] an;
-	wire dp;
-	wire [2:0] red;
-	wire [2:0] green;
-	wire [1:0] blue;
-	wire hsync;
-	wire vsync;
+`include "consts.v"
+// 7-segment clock interconnect
+wire segclk;
 
-	// Instantiate the Unit Under Test (UUT)
-	NERP_demo_top uut (
-		.clk(clk), 
-		.clr(clr), 
-		.seg(seg), 
-		.an(an), 
-		.dp(dp), 
-		.red(red), 
-		.green(green), 
-		.blue(blue), 
-		.hsync(hsync), 
-		.vsync(vsync)
+// VGA display clock interconnect
+wire dclk;
+
+// our render clock
+wire rclk;
+
+// disable the 7-segment decimal points
+assign dp = 1;
+
+// 2d pixel 
+
+wire [2:0] memo;
+wire [2:0] memo2;  
+wire [15:0] rmemaddr;
+reg [15:0] rmemaddr2;
+wire [2:0] memout;
+assign memout = memo;
+
+// generate 7-segment clock & display clock
+clockdiv U1(
+	.clk(clk),
+	.clr(clr),
+	.segclk(segclk),
+	.dclk(dclk),
+    .rclk(rclk)
 	);
 
-	initial begin
-		// Initialize Inputs
-		clk = 0;
-		clr = 0;
+// 7-segment display controller
+segdisplay U2(
+	.segclk(segclk),
+	.clr(clr),
+	.seg(seg),
+	.an(an)
+	);
 
-		// Wait 100 ns for global reset to finish
-		#100;
-		
-		forever begin
-			clk = 0;
-			#1;
-			clk = 1;
-			#1;
-		end
-        
-		// Add stimulus here
 
+// VGA controller
+vga640x480 U3(
+	.dclk(dclk),
+	.clr(clr),
+	.hsync(hsync),
+	.vsync(vsync),
+	.red(red),
+	.green(green),
+	.blue(blue),
+	.rmemaddr(rmemaddr),
+	.memout(memout)
+	);
+	
+//parameter PSIZE = 640 * 480;
+
+
+
+
+
+wire [SQ_WIDTH - 1 : 0] sq1;
+wire [SQ_WIDTH - 1 : 0] sq2;
+wire [SQ_WIDTH - 1 : 0] sq3;
+wire [PLAYER_WIDTH - 1 : 0] pl;
+
+
+
+reg [7:0] jump_dist;
+
+
+
+fsm U5(.clk(rclk), 
+	.jump_dist(jump_dist),
+	.square1(sq1),
+	.square2(sq2),
+	.square3(sq3),
+	.player(pl)
+);
+
+renderer U4(.clk(clk),
+			.square1(sq1),
+			.square2(sq2),
+			.square3(sq3),
+			.player(pl),
+			.rmemaddr(rmemaddr),
+			.rmemaddr2(rmemaddr2),
+			.memo(memo),
+			.memo2(memo2)
+			);
+
+integer f, i, j, cnt;
+initial begin
+	f = $fopen("output.txt", "w");
+	cnt = 0;
+	i = 0; 
+	j = 0;
+end
+/*
+wire [2:0] pix;
+assign pix = ;
+	*/
+	
+always @(negedge rclk) begin
+    //$display("demo_top: %d ", PX_HEIGHT);
+	for (j = 0; j < PX_HEIGHT; j = j + 1) 
+		for (i = 0; i < PX_WIDTH; i = i +1) 
+        begin
+			rmemaddr2 = j * PX_WIDTH + i;
+			case (memo2)
+				3'b000: $fwrite(f, "0");	
+				3'b001: $fwrite(f, "1");
+				3'b010: $fwrite(f, "2");
+				3'b011: $fwrite(f, "3");
+				3'b100: $fwrite(f, "4");
+				3'b101: $fwrite(f, "5");
+				3'b110: $fwrite(f, "6");
+				3'b111: $fwrite(f, "7");
+				default: $fwrite(f, "0");
+				//default: code_to_rgb = 8'b11111111;
+			endcase
+            //$display("pixel is ", pixel[(j * PX_WIDTH + i) * 3 +: 3]);
+        end
+	cnt = cnt + 1;
+    $fwrite(f, "\n");
+	$fflush(f);
+	//$display("%b\n", pixel);
+	$display("TB PRINTED %d-th frame", cnt);
+end
+
+
+initial begin 
+	clk = 0;
+	forever begin
+		clk = ~clk;
+		#1;
 	end
-      
+end
+
+
+integer rcnt = 0;
+always @(posedge rclk) begin
+	if (rcnt == 2) 
+		jump_dist <= 15; //jump starts at 4th frame
+	if (rcnt == 3)
+		jump_dist <= 0;
+
+	if (rcnt == 50)
+		jump_dist <= 13;
+	if (rcnt == 51)
+		jump_dist <= 0;
+
+	if (rcnt == 100)
+		jump_dist <= 2;
+	if (rcnt == 101)
+		jump_dist <= 0;
+
+    rcnt <= rcnt + 1;
+end
+
+	
+
+/*
+
+reg btn;
+wire jump_btn;
+wire [7:0] jump_dist;
+wire [15:0] digits;
+wire light_on;
+wire light_blink;
+*/
+
+/*
+rebounce jump_btn_reb(.btn(btn), .clk(clk), .rst(rst), .inst_vld(jump_btn));
+button2dist button2dist(.clk(clk), 
+	.jump_btn(jump_btn),
+	.jump_dist(jump_dist),
+	.end_of_jump(end_of_jump)
+);
+
+
+
+*/
+
 endmodule
 

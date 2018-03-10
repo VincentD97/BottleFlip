@@ -17,7 +17,7 @@ integer i;
 
 always @(posedge clk) begin
     if (rst) begin
-        // for (i = 0; i < 12 * 60; i = i + 1) ram[i] = 0;
+        //for (i = 0; i < 12 * 60; i = i + 1) ram[i] = 0;
     end
     else if (wr) begin
         //if (di > 0 && addr >= 7200) $display("writing %d to ram[%d]", di, addr);

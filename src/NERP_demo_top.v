@@ -28,7 +28,7 @@ module NERP_demo_top(
 	output wire [2:0] green,//green vga output - 3 bits
 	output wire [1:0] blue,	//blue vga output - 2 bits
 	output wire hsync,		//horizontal sync out
-	output wire vsync			//vertical sync out
+	output wire vsync		//vertical sync out
 	);
 `include "consts.v"
 // 7-segment clock interconnect
@@ -142,7 +142,6 @@ wire [PLAYER_WIDTH - 1 : 0] pl;
 
 fsm U5(.clk(rclk), 
 	.jump_dist(jump_dist),
-	.end_of_jump(end_of_jump),
 	.square1(sq1),
 	.square2(sq2),
 	.square3(sq3),

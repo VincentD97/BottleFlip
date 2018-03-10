@@ -21,7 +21,6 @@
 module fsm(
     input clk,
 	 input [7:0] jump_dist,
-     input end_of_jump,
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
 	 output [SQ_WIDTH - 1:0] square3,
@@ -56,6 +55,8 @@ assign square3 = square[2];
 reg [PLAYER_WIDTH - 1:0] player_reg;
 assign player =  player_reg;
 
+initial begin score = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0;player_reg = 0; end
+
 function[8:0] colorscheme(input color);
 	if (color) colorscheme = {3'd1, 3'd2, 3'd3};
 	else colorscheme = {3'd3, 3'd2, 3'd1};
@@ -76,6 +77,7 @@ integer i;
 reg[15:0] jump_ratio;
 parameter signed jump_tot_sft = 4;
 
+initial begin baseX = 0; newbaseX = 0; baseY = 0; newbaseY = 0; diffX = 0; diffY = 0; shiftX = 0; shiftY = 0; tmpX = 0; i = 0; jump_ratio = 0; end
 
 function [7:0] s_dist(input layout, input [7:0] dist);
     if (layout) s_dist = -dist; else s_dist = dist;
@@ -127,7 +129,17 @@ reg [7:0] landing_y_u;
 reg [7:0] landing_y_d;
 reg [7:0] landing_x;
 reg [7:0] landing_y;
-reg [7:0] pl_jump_dist;
+
+initial begin 
+    dx = 0;
+    dy = 0;
+    landing_x_l = 0;
+    landing_x_r = 0;
+    landing_y_u = 0;
+    landing_y_d = 0;
+    landing_x = 0;
+    landing_y = 0;
+end
 
 task updatePlayer;
 begin
@@ -142,7 +154,20 @@ begin
 							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
 					   PL_INIT_H };
 	end else begin
-        dx = last8bits((/*(square[0][`SQ_CX] - square[1][`SQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
+        dx = last8bits((/*(square[0][`SQ_CX] - square[1][`ySQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
+
+        $display("fsm:player_reg_x, %d", ( landing_x_l ? (square[0][`SQ_CX] - dx - landing_x_l) : 
+                                       (square[0][`SQ_CX] - dx + landing_x_r) ));
+
+        $display("fsm: dy = %d, dx = %d, pl_jump_dist = %d, jump_ratio = %d, jump_tot_sft = %d", dy, dx, 
+        pl_jump_dist, jump_ratio, jump_tot_sft);
+        $display("fsm:player_reg_y, %d", 
+						( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
+							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
+                                       (square[0][`SQ_CY] - dy + landing_y_d
+							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ));
+        
+
         player_reg = { ( landing_x_l ? (square[0][`SQ_CX] - dx - landing_x_l) : 
                                        (square[0][`SQ_CX] - dx + landing_x_r) ),
 						( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
@@ -229,6 +254,8 @@ reg [shift_lazy_sft - 1:0] shift_lazy;
 
 reg signed [7: 0] shift_ratio;
 
+initial begin shift_ratio = 0; shift_lazy = 0; shift_state = 0; static_state = 0; next_dist = 0; next_layout = 0; next_color = 0; end
+
 parameter SHIFT_PREP = 0;
 parameter SHIFT_EXEC = 1;
 
@@ -238,29 +265,39 @@ begin
     // $display("next layout is %d based on prev layout %d", next_layout, layout[NUM_SQ - 2]);
     next_color = rand(1) & 1;
     next_dist = 13 + (rand(1) & 3'b111);
-	updatePlayer();
+	//updatePlayer();
     state = JUMP_PREP;
 end
 endtask
 
 
 
+reg [7:0] pl_jump_dist;
+reg [15:0] jump_dist_sr;
+wire end_of_jump = jump_dist_sr[15:8] > 0 && jump_dist_sr[7:0] == 0;
 
-
+initial begin
+    pl_jump_dist = 0;
+    jump_dist_sr = 0;
+end
 
 task jump_prep; 
 begin
     updatePlayer();
 
-    $display("jump dist === %d", pl_jump_dist);
+    $display("jump dist sr === %d, %d", jump_dist_sr[15:8], jump_dist_sr[7:0]);
+    $display("jump dist raw = %d", jump_dist);
+    
 
     if (end_of_jump) begin
-        pl_jump_dist = jump_dist;
-		$display("jump dist === %d", pl_jump_dist);
-        
+        pl_jump_dist = jump_dist_sr[15:8];
+		$display("EOJ: jump dist === %d", pl_jump_dist);
         state = SHIFT;
         shift_state = SHIFT_PREP;
+    end else begin
+        pl_jump_dist = 0;
     end
+    jump_dist_sr = {jump_dist_sr[7:0], jump_dist};
 end
 endtask
 
