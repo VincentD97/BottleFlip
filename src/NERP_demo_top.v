@@ -21,6 +21,8 @@
 module NERP_demo_top(
 	input wire clk,			//master clock = 50MHz
 	input wire clr,			//right-most pushbutton for reset
+	input wire btnJump,
+	input wire btnRestart,
 	output wire [6:0] seg,	//7-segment display LEDs
 	output wire [3:0] an,	//7-segment display anode enable
 	output wire dp,			//7-segment display decimal point
@@ -103,7 +105,7 @@ reg [31:0] height;
 
 
 
-reg btn;
+
 wire jump_btn;
 wire [7:0] jump_dist;
 wire end_of_jump;
@@ -112,7 +114,7 @@ wire light_on;
 wire light_blink;
 
 
-rebounce jump_btn_reb(.btn(btn), .clk(clk), .rst(rst), .inst_vld(jump_btn));
+rebounce jump_btn_reb(.btn(btnJump), .clk(clk), .rst(rst), .inst_vld(jump_btn));
 button2dist button2dist(.clk(clk), 
 	.jump_btn(jump_btn),
 	.jump_dist(jump_dist),
@@ -120,19 +122,9 @@ button2dist button2dist(.clk(clk),
 );
 
 
+wire restart_btn;
 
-
-
-
-
-
-
-
-
-
-
-
-
+rebounce restart_btn_reb(.btn(btnRestart), .clk(clk), .rst(rst), .inst_vld(restart_btn));
 
 wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
@@ -141,6 +133,7 @@ wire [PLAYER_WIDTH - 1 : 0] pl;
 
 
 fsm U5(.clk(rclk), 
+	.restart(restart_btn),
 	.jump_dist(jump_dist),
 	.square1(sq1),
 	.square2(sq2),
@@ -165,7 +158,6 @@ initial begin
 	cnt = 0;
 	i = 0; 
 	j = 0;
-	btn = 0;
 end
 /*
 wire [2:0] pix;

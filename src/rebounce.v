@@ -7,7 +7,7 @@ module rebounce (/*AUTOARG*/
 	parameter COUNTDOWN = 1000;
 	integer count;
 	
-initial begin count = 0 ; end
+initial begin count = 0; end
 
    always @(posedge clk) begin
 		if (btn) 

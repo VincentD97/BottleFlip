@@ -98,10 +98,11 @@ wire [PLAYER_WIDTH - 1 : 0] pl;
 
 
 reg [7:0] jump_dist;
-
+reg restart_btn;
 
 
 fsm U5(.clk(rclk), 
+	.restart(restart_btn),
 	.jump_dist(jump_dist),
 	.square1(sq1),
 	.square2(sq2),
@@ -162,6 +163,7 @@ end
 
 initial begin 
 	clk = 0;
+	restart_btn = 0;
 	forever begin
 		clk = ~clk;
 		#1;
@@ -176,14 +178,24 @@ always @(posedge rclk) begin
 	if (rcnt == 3)
 		jump_dist <= 0;
 
-	if (rcnt == 50)
-		jump_dist <= 13;
-	if (rcnt == 51)
+	if (rcnt == 30)
+		jump_dist <= 18;
+	if (rcnt == 31)
 		jump_dist <= 0;
 
-	if (rcnt == 100)
-		jump_dist <= 2;
-	if (rcnt == 101)
+	if (rcnt == 60)
+		jump_dist <= 5;
+	if (rcnt == 61)
+		jump_dist <= 0;
+
+	if (rcnt == 90)
+		restart_btn <= 1;
+	if (rcnt == 91)
+		restart_btn <= 0;
+
+	if (rcnt == 110)
+		jump_dist <= 15;
+	if (rcnt == 111)
 		jump_dist <= 0;
 
     rcnt <= rcnt + 1;

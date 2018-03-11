@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module fsm(
     input clk,
+    input restart,
 	 input [7:0] jump_dist,
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
@@ -76,6 +77,7 @@ reg [7:0] tmpX;
 integer i;
 reg[15:0] jump_ratio;
 parameter signed jump_tot_sft = 4;
+reg should_fall;
 
 initial begin baseX = 0; newbaseX = 0; baseY = 0; newbaseY = 0; diffX = 0; diffY = 0; shiftX = 0; shiftY = 0; tmpX = 0; i = 0; jump_ratio = 0; end
 
@@ -208,6 +210,7 @@ endfunction
 
 task reset;
 begin
+    should_fall = 0;
 	score = 0;
 	layout = 2'b01;	// keeping shift to the right
 	color = 3'b001;
@@ -227,7 +230,6 @@ begin
     player_reg = {square[0][`SQ_CX], square[0][`SQ_CY], PL_INIT_H};
 	// updatePlayer();
     state = GEN_NEXT;
-	
 end
 endtask
 
@@ -259,14 +261,20 @@ initial begin shift_ratio = 0; shift_lazy = 0; shift_state = 0; static_state = 0
 parameter SHIFT_PREP = 0;
 parameter SHIFT_EXEC = 1;
 
+initial begin should_fall = 0; end
+
 task gen_next; 
 begin
     next_layout = ((rand(1) & 4'b1111) > 4'b1101) ? layout[NUM_SQ - 2] : ~layout[NUM_SQ - 2];
     // $display("next layout is %d based on prev layout %d", next_layout, layout[NUM_SQ - 2]);
     next_color = rand(1) & 1;
     next_dist = 13 + (rand(1) & 3'b111);
-	//updatePlayer();
-    state = JUMP_PREP;
+    layout = {next_layout, layout[NUM_SQ - 2: 1]};
+    color = {next_color, color[NUM_SQ - 1: 1]};
+    dist  = {next_dist, dist[ ((NUM_SQ - 1) * 8) - 1: 8]};
+    layout_to_xy(layout, color);
+	updatePlayer();
+    state = should_fall ? FALL : JUMP_PREP;
 end
 endtask
 
@@ -283,12 +291,12 @@ end
 
 task jump_prep; 
 begin
+    layout_to_xy(layout, color);
     updatePlayer();
 
     $display("jump dist sr === %d, %d", jump_dist_sr[15:8], jump_dist_sr[7:0]);
     $display("jump dist raw = %d", jump_dist);
     
-
     if (end_of_jump) begin
         pl_jump_dist = jump_dist_sr[15:8];
 		$display("EOJ: jump dist === %d", pl_jump_dist);
@@ -335,9 +343,6 @@ begin
     begin
         // $display("prev state: layout = %b, color = %b, dist = %d, %d", 
         //    layout, color, dist[15:8], dist[7:0]);
-        layout = {next_layout, layout[NUM_SQ - 2: 1]};
-        color = {next_color, color[NUM_SQ - 1: 1]};
-        dist  = {next_dist, dist[ ((NUM_SQ - 1) * 8) - 1: 8]};
         state = GEN_NEXT;
         // static_state = STATIC_ANIM;
         // $display("new state: layout = %b, color = %b, dist = %d, %d", 
@@ -350,43 +355,42 @@ begin
 	 
 	updatePlayer();
 	if (jump_ratio == (1 << jump_tot_sft)) begin
-		  jump_ratio = 0;
-		  
 		//   if (score < 25) begin
 		// 		pl_jump_dist = press_time;
 		// 	end else begin
 		// 		pl_jump_dist = press_time;
 		// 	end
 		// 	$display("jump dist === %d", pl_jump_dist);
-			
+
 			
 			
         if (player_reg[`PL_X] < square[1][`SQ_CX]) begin
-                landing_x_l = square[1][`SQ_CX] - player_reg[`PL_X];
-                landing_x_r = 0;
-          end else begin
-                landing_x_r = player_reg[`PL_X] - square[1][`SQ_CX];
-                landing_x_l = 0;
-          end
-          if (player_reg[`PL_Y] < square[1][`SQ_CY]) begin
-                landing_y_u = square[1][`SQ_CY] - player_reg[`PL_Y];
-                landing_y_d = 0;
-          end else begin
-                landing_y_d = player_reg[`PL_Y] - square[1][`SQ_CY];
-                landing_y_u = 0;
-          end
-			 if (landing_x_l + landing_x_r + landing_y_u + landing_y_d > SQ_R - 1) begin
-				$display("============================================== falling =======");
-				state = FALL;
-			 end else begin
-				state = GEN_NEXT;
-				if (landing_x_l + landing_x_r + landing_y_u + landing_y_d == 0) begin
-					score = score + PERFECT_HIT;
-				end else begin
-					score = score + NORMAL_HIT;
-				end
-				$display("============================================== score : %d =======", score);
-			end
+            landing_x_l = square[1][`SQ_CX] - player_reg[`PL_X];
+            landing_x_r = 0;
+        end else begin
+            landing_x_r = player_reg[`PL_X] - square[1][`SQ_CX];
+            landing_x_l = 0;
+        end
+        if (player_reg[`PL_Y] < square[1][`SQ_CY]) begin
+            landing_y_u = square[1][`SQ_CY] - player_reg[`PL_Y];
+            landing_y_d = 0;
+        end else begin
+            landing_y_d = player_reg[`PL_Y] - square[1][`SQ_CY];
+            landing_y_u = 0;
+        end
+        if (landing_x_l + landing_x_r + landing_y_u + landing_y_d > SQ_R - 1) begin
+            $display("============================================== falling =======");
+            should_fall = 1;
+        end else begin
+            if (landing_x_l + landing_x_r + landing_y_u + landing_y_d == 0) begin
+                score = score + PERFECT_HIT;
+            end else begin
+                score = score + NORMAL_HIT;
+            end
+            $display("============================================== score : %d =======", score);
+        end
+        jump_ratio = 0;
+        state = GEN_NEXT;
 	 end else begin
 		  jump_ratio = jump_ratio + 1;
 	 end
@@ -404,6 +408,9 @@ endtask
 
 
 always @(negedge clk) begin
+    if (restart) begin
+        state = RESET;
+    end
 	case (state)
 		RESET: reset();
         GEN_NEXT: gen_next();
