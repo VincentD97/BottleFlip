@@ -19,25 +19,43 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module light(
-	input blink,
-	input clk_blink,
-	input on,
+	input perfect,
+	input clk,
 	output wire [7:0] led
 );
 
+`include "consts.v"
+
+reg [7:0] led_r;
+assign led = led_r;
+
+integer times_count;
+integer clk_count;
 integer i;
-reg ison;
-reg [7:0] light;
-
-initial begin i = 0; end
-
-always @(on) begin
-	ison = clk_blink && blink;
-	for (i = 0; i < 8; i = i + 1) begin
-		light[i] = ison;
-	end
+initial begin
+	times_count	= 0;
+	clk_count = 0;
+	i = 0;
 end
 
-assign led = light;
+reg on;
+
+always @(posedge clk) begin
+	if (perfect) begin
+		times_count = BLINK_TIMES;
+		clk_count = 2 * BLINK_PERIOD;
+	end
+	for (i = 0; i < 8; i = i + 1) begin
+		led_r[i] = (times_count > 0 && clk_count > BLINK_PERIOD);
+	end
+	if (clk_count > 0) begin
+		clk_count = clk_count - 1;
+	end else if (times_count > 0) begin
+		times_count = times_count - 1;
+		clk_count = 2 * BLINK_PERIOD;
+	end
+	// $display("times_count = %d,    clk_count = %d", times_count, clk_count);
+end
+
 
 endmodule

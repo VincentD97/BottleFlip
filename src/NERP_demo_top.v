@@ -23,6 +23,7 @@ module NERP_demo_top(
 	input wire clr,			//right-most pushbutton for reset
 	input wire btnJump,
 	input wire btnRestart,
+	output wire [7:0] Led,
 	output wire [6:0] seg,	//7-segment display LEDs
 	output wire [3:0] an,	//7-segment display anode enable
 	output wire dp,			//7-segment display decimal point
@@ -63,13 +64,13 @@ clockdiv U1(
     .rclk(rclk)
 	);
 
-// 7-segment display controller
-segdisplay U2(
-	.segclk(segclk),
-	.clr(clr),
-	.seg(seg),
-	.an(an)
-	);
+// // 7-segment display controller
+// segdisplay U2(
+// 	.segclk(segclk),
+// 	.clr(clr),
+// 	.seg(seg),
+// 	.an(an)
+// 	);
 
 
 // VGA controller
@@ -130,7 +131,8 @@ wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
 wire [SQ_WIDTH - 1 : 0] sq3;
 wire [PLAYER_WIDTH - 1 : 0] pl;
-
+wire [15:0] score;
+wire perfect;
 
 fsm U5(.clk(rclk), 
 	.restart(restart_btn),
@@ -138,7 +140,22 @@ fsm U5(.clk(rclk),
 	.square1(sq1),
 	.square2(sq2),
 	.square3(sq3),
-	.player(pl)
+	.player(pl),
+	.out_score(score),
+	.perfect(perfect)
+);
+
+ssled ss(
+	.n(score),
+	.clk_disp(segclk),
+	.seg(seg),
+	.an(an)
+);
+
+light light(
+	.perfect(perfect),
+	.clk(clk),
+	.led(Led)
 );
 
 renderer U4(.clk(clk),
@@ -185,6 +202,7 @@ always @(negedge rclk) begin
             //$display("pixel is ", pixel[(j * PX_WIDTH + i) * 3 +: 3]);
         end
 	cnt = cnt + 1;
+	$fwrite(f, " %d %d\n", score, perfect);
     $fwrite(f, "\n");
 	$fflush(f);
 	//$display("%b\n", pixel);

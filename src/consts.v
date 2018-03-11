@@ -63,3 +63,10 @@ parameter DEBUG = 1;
 // idle should be at least ten times 7200 = 72000
 parameter idleMax = DEBUG ? 6000 /*60000*/ : 2000000;
 parameter RENDER_CLK_HI_BIT = DEBUG ? 13/*16*/ : 21;
+
+parameter NORMAL_HIT = 3;
+parameter PERFECT_HIT = 5;
+
+
+parameter BLINK_TIMES = 3;
+parameter BLINK_PERIOD = DEBUG ? 75000 : 25000000;

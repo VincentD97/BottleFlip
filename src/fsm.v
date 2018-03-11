@@ -25,7 +25,9 @@ module fsm(
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
 	 output [SQ_WIDTH - 1:0] square3,
-	 output [PLAYER_WIDTH - 1:0] player
+	 output [PLAYER_WIDTH - 1:0] player,
+     output [15:0] out_score,
+     output perfect
     );
 
 `include "consts.v"
@@ -39,9 +41,33 @@ parameter FALL = 4;
 parameter SQ_R = 8'd6;
 parameter NUM_SQ = 3;
 
-parameter NORMAL_HIT = 3;
-parameter PERFECT_HIT = 5;
-reg [15:0] score; 	// 0-9999
+reg [15:0] score; 	// 0-9999. Every 4 bits represent a decimal digit.
+assign out_score = score;
+reg perfect_r;
+assign perfect = perfect_r;
+reg [3:0] diff_score;
+reg [15:0] tmp_score;
+
+function [15:0] newScore(input [15:0] score, input perfect_r);
+begin
+    diff_score = perfect_r ? PERFECT_HIT : NORMAL_HIT;
+    tmp_score = score;
+    tmp_score[3:0] = score[3:0] + diff_score;
+    if (tmp_score[3:0] > 4'b1001) begin
+        tmp_score[3:0] = tmp_score[3:0] - 4'b1010;
+        tmp_score[7:4] = tmp_score[7:4] + 1;
+    end
+    if (tmp_score[7:4] > 4'b1001) begin
+        tmp_score[7:4] = tmp_score[7:4] - 4'b1010;
+        tmp_score[11:8] = tmp_score[11:8] + 1;
+    end
+    if (tmp_score[11:8] > 4'b1001) begin
+        tmp_score[11:8] = tmp_score[11:8] - 4'b1010;
+        tmp_score[15:12] = tmp_score[15:12] + 1;
+    end
+    newScore = tmp_score;
+end
+endfunction
 
 reg [2:0] state;
 reg [NUM_SQ - 2:0] layout;
@@ -56,7 +82,7 @@ assign square3 = square[2];
 reg [PLAYER_WIDTH - 1:0] player_reg;
 assign player =  player_reg;
 
-initial begin score = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0;player_reg = 0; end
+initial begin score = 0; perfect_r = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0;player_reg = 0; end
 
 function[8:0] colorscheme(input color);
 	if (color) colorscheme = {3'd1, 3'd2, 3'd3};
@@ -275,6 +301,7 @@ begin
     layout_to_xy(layout, color);
 	updatePlayer();
     state = should_fall ? FALL : JUMP_PREP;
+    perfect_r = 0;
 end
 endtask
 
@@ -354,16 +381,7 @@ begin
     end
 	 
 	updatePlayer();
-	if (jump_ratio == (1 << jump_tot_sft)) begin
-		//   if (score < 25) begin
-		// 		pl_jump_dist = press_time;
-		// 	end else begin
-		// 		pl_jump_dist = press_time;
-		// 	end
-		// 	$display("jump dist === %d", pl_jump_dist);
-
-			
-			
+	if (jump_ratio == (1 << jump_tot_sft)) begin	
         if (player_reg[`PL_X] < square[1][`SQ_CX]) begin
             landing_x_l = square[1][`SQ_CX] - player_reg[`PL_X];
             landing_x_r = 0;
@@ -378,16 +396,15 @@ begin
             landing_y_d = player_reg[`PL_Y] - square[1][`SQ_CY];
             landing_y_u = 0;
         end
-        if (landing_x_l + landing_x_r + landing_y_u + landing_y_d > SQ_R - 1) begin
+        if (landing_x_l + landing_x_r + landing_y_u + landing_y_d > SQ_R) begin
             $display("============================================== falling =======");
             should_fall = 1;
         end else begin
             if (landing_x_l + landing_x_r + landing_y_u + landing_y_d == 0) begin
-                score = score + PERFECT_HIT;
-            end else begin
-                score = score + NORMAL_HIT;
+                perfect_r = 1;
             end
-            $display("============================================== score : %d =======", score);
+            score = newScore(score, perfect_r);
+            $display("============================================== score : %d%d%d%d =======", score[15:12], score[11:8], score[7:4], score[3:0]);
         end
         jump_ratio = 0;
         state = GEN_NEXT;

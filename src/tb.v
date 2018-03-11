@@ -22,6 +22,7 @@ module tb;
 
 reg clk;			//master clock = 50MHz
 reg clr;			//right-most pushbutton for reset
+wire [7:0] Led;
 wire [6:0] seg;	//7-segment display LEDs
 wire [3:0] an;	//7-segment display anode enable
 wire dp;			//7-segment display decimal point
@@ -94,8 +95,8 @@ wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
 wire [SQ_WIDTH - 1 : 0] sq3;
 wire [PLAYER_WIDTH - 1 : 0] pl;
-
-
+wire [15:0] score;
+wire perfect;
 
 reg [7:0] jump_dist;
 reg restart_btn;
@@ -107,7 +108,15 @@ fsm U5(.clk(rclk),
 	.square1(sq1),
 	.square2(sq2),
 	.square3(sq3),
-	.player(pl)
+	.player(pl),
+	.out_score(score),
+	.perfect(perfect)
+);
+
+light light(
+	.perfect(perfect),
+	.clk(clk),
+	.led(Led)
 );
 
 renderer U4(.clk(clk),
@@ -128,11 +137,7 @@ initial begin
 	i = 0; 
 	j = 0;
 end
-/*
-wire [2:0] pix;
-assign pix = ;
-	*/
-	
+
 always @(negedge rclk) begin
     //$display("demo_top: %d ", PX_HEIGHT);
 	for (j = 0; j < PX_HEIGHT; j = j + 1) 
@@ -154,7 +159,7 @@ always @(negedge rclk) begin
             //$display("pixel is ", pixel[(j * PX_WIDTH + i) * 3 +: 3]);
         end
 	cnt = cnt + 1;
-    $fwrite(f, "\n");
+	$fwrite(f, " score: %d%d%d%d perfect: %d Led: %b\n", score[15:12], score[11:8], score[7:4], score[3:0], perfect, Led);
 	$fflush(f);
 	//$display("%b\n", pixel);
 	$display("TB PRINTED %d-th frame", cnt);
@@ -173,29 +178,39 @@ end
 
 integer rcnt = 0;
 always @(posedge rclk) begin
-	if (rcnt == 2) 
-		jump_dist <= 15; //jump starts at 4th frame
+	if (rcnt == 2)
+		jump_dist <= 13; //jump starts at 4th frame
 	if (rcnt == 3)
 		jump_dist <= 0;
 
 	if (rcnt == 30)
-		jump_dist <= 18;
+		jump_dist <= 19;
 	if (rcnt == 31)
 		jump_dist <= 0;
 
 	if (rcnt == 60)
-		jump_dist <= 5;
+		jump_dist <= 15;
 	if (rcnt == 61)
 		jump_dist <= 0;
 
 	if (rcnt == 90)
-		restart_btn <= 1;
+		jump_dist <= 15;
 	if (rcnt == 91)
+		jump_dist <= 0;
+
+	if (rcnt == 120)
+		jump_dist <= 25;
+	if (rcnt == 121)
+		jump_dist <= 0;
+
+	if (rcnt == 150)
+		restart_btn <= 1;
+	if (rcnt == 151)
 		restart_btn <= 0;
 
-	if (rcnt == 110)
+	if (rcnt == 170)
 		jump_dist <= 15;
-	if (rcnt == 111)
+	if (rcnt == 171)
 		jump_dist <= 0;
 
     rcnt <= rcnt + 1;
