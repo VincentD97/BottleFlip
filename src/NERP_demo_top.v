@@ -127,6 +127,7 @@ wire restart_btn;
 
 rebounce restart_btn_reb(.btn(btnRestart), .clk(clk), .rst(rst), .inst_vld(restart_btn));
 
+wire [SQ_WIDTH - 1 : 0] sq0;
 wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
 wire [SQ_WIDTH - 1 : 0] sq3;
@@ -137,6 +138,7 @@ wire perfect;
 fsm U5(.clk(rclk), 
 	.restart(restart_btn),
 	.jump_dist(jump_dist),
+	.square0(sq0),
 	.square1(sq1),
 	.square2(sq2),
 	.square3(sq3),
@@ -159,6 +161,7 @@ light light(
 );
 
 renderer U4(.clk(clk),
+			.square0(sq0),
 			.square1(sq1),
 			.square2(sq2),
 			.square3(sq3),

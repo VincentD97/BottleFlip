@@ -90,6 +90,10 @@ input [2:0] color1, input [2:0] color2, input [2:0] color3);
 reg signed [15:0] nx;
 reg signed [15:0] ny;
 begin
+    if (y > 200) begin
+        wr <= 0;
+        render_sq_st <= RENDER_SQ_DONE;
+    end else begin
 /*
         if (x < 0) begin
             $display("Setting cx to %d, cy to %d", center_x, center_y);
@@ -126,7 +130,7 @@ begin
             begin wr <= 1; memi <= color1; end else begin wr <= 0; end
             x <= nx;
             y <= ny;
-           // $display("Painting middle , x = %d, y = %d, wr = %d, memi = %d", nx, ny, wr, memi);
+            //$display("Painting middle , x = %d, y = %d, center_x = %d, center_y = %d, r = %d, wr = %d, memi = %d", nx, ny, center_x, center_y, r,  wr, memi);
         end
     end
     RENDER_SQ_LEFT:
@@ -157,6 +161,8 @@ begin
         end
     end
     endcase
+
+    end
 end
 endtask
 

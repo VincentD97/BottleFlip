@@ -53,8 +53,9 @@ function [7:0] sqwidth(input [31:0] rand);
 reg [4:0] s;
 begin
     s = rand & 5'b11111;
+    if (s < 1) sqwidth = 4;
     if (s < 5) sqwidth = 4;
-    else if (s < 16) sqwidth = 5;
+    else if (s < 12) sqwidth = 5;
     else if (s < 27) sqwidth = 6;
     else sqwidth = 7;
 end
