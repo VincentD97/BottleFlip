@@ -107,8 +107,8 @@ begin
         y <= center_y - r;
         x <= center_x - r;
         memi <= color1;
-       // $display("About to paint cx=%d, cy=%d, x=%d, y=%d, r=%d, height=%d, color1=%d", 
-       // center_x, center_y, x, y, r, height, color1);
+        $display("render: About to paint cx=%d, cy=%d, x=%d, y=%d, r=%d, height=%d, color1=%d", 
+        center_x, center_y, x, y, r, height, color1);
         render_sq_st <= RENDER_SQ_MIDDLE;
     end
     RENDER_SQ_MIDDLE:

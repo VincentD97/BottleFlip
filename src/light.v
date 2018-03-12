@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module light(
 	input perfect,
+	input dead,
 	input clk,
 	output wire [7:0] led
 );
@@ -41,19 +42,28 @@ end
 reg on;
 
 always @(posedge clk) begin
-	if (perfect) begin
-		times_count = BLINK_TIMES;
-		clk_count = 2 * BLINK_PERIOD;
+	if (dead) begin
+		times_count = 0;
+		clk_count = 0;
+		for (i = 0; i < 8; i = i + 1) begin
+			led_r[i] = 1;
+		end
+	end else begin
+		if (perfect) begin
+			times_count = BLINK_TIMES;
+			clk_count = 2 * BLINK_PERIOD;
+		end
+		for (i = 0; i < 8; i = i + 1) begin
+			led_r[i] = (times_count > 0 && clk_count > BLINK_PERIOD);
+		end
+		if (clk_count > 0) begin
+			clk_count = clk_count - 1;
+		end else if (times_count > 0) begin
+			times_count = times_count - 1;
+			clk_count = 2 * BLINK_PERIOD;
+		end
 	end
-	for (i = 0; i < 8; i = i + 1) begin
-		led_r[i] = (times_count > 0 && clk_count > BLINK_PERIOD);
-	end
-	if (clk_count > 0) begin
-		clk_count = clk_count - 1;
-	end else if (times_count > 0) begin
-		times_count = times_count - 1;
-		clk_count = 2 * BLINK_PERIOD;
-	end
+	
 	// $display("times_count = %d,    clk_count = %d", times_count, clk_count);
 end
 

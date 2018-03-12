@@ -5,7 +5,10 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="751" delta="unknown" >"C:/Users/152/Downloads/BottleFlip/src/renderer.v" Line 34: Redeclaration of ansi port <arg fmt="%s" index="1">pixel</arg> is not allowed
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/152/Downloads/BottleFlip/src/tb.v" Line 106: Port <arg fmt="%s" index="1">dead</arg> is not connected to this instance
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/152/Downloads/BottleFlip/src/tb.v" Line 125: Port <arg fmt="%s" index="1">dead</arg> is not connected to this instance
 </msg>
 
 </messages>

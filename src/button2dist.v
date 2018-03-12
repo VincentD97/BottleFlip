@@ -25,6 +25,7 @@ module button2dist(
 	output end_of_jump
 );
 
+`include "consts.v"
 	reg [2:0] sr;
 	parameter interval = 1048576 * 3; // 2^20 * 3
 	integer press_count;
@@ -45,10 +46,11 @@ wire btn_on = sr[0];
 always @(posedge clk) begin
 	if (btn_posedge || btn_on) begin
 		if (press_count == interval) begin
-			jump_dist_r <= jump_dist_r + 1;
+			if (jump_dist_r < MAX_JUMP_DIST) begin
+				jump_dist_r <= jump_dist_r + 1;
+			end
 			press_count <= 0;
 		end else press_count <= press_count + 1;
-		
 	end else if (btn_negedge) begin
 		jump_dist_r <= 0;
 	end

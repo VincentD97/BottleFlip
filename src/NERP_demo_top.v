@@ -134,6 +134,7 @@ wire [SQ_WIDTH - 1 : 0] sq3;
 wire [PLAYER_WIDTH - 1 : 0] pl;
 wire [15:0] score;
 wire perfect;
+wire dead;
 
 fsm U5(.clk(rclk), 
 	.restart(restart_btn),
@@ -144,7 +145,8 @@ fsm U5(.clk(rclk),
 	.square3(sq3),
 	.player(pl),
 	.out_score(score),
-	.perfect(perfect)
+	.perfect(perfect),
+	.dead(dead)
 );
 
 ssled _ssled(
@@ -156,6 +158,7 @@ ssled _ssled(
 
 light light(
 	.perfect(perfect),
+	.dead(dead),
 	.clk(clk),
 	.led(Led)
 );

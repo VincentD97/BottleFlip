@@ -28,7 +28,8 @@ module fsm(
 	 output [SQ_WIDTH - 1:0] square3,
 	 output [PLAYER_WIDTH - 1:0] player,
      output [15:0] out_score,
-     output perfect
+     output perfect,
+	  output dead
     );
 
 `include "consts.v"
@@ -45,6 +46,8 @@ reg [15:0] score; 	// 0-9999. Every 4 bits represent a decimal digit.
 assign out_score = score;
 reg perfect_r;
 assign perfect = perfect_r;
+reg dead_r;
+assign dead = dead_r;
 reg [3:0] diff_score;
 reg [15:0] tmp_score;
 
@@ -53,11 +56,12 @@ function [7:0] sqwidth(input [31:0] rand);
 reg [4:0] s;
 begin
     s = rand & 5'b11111;
-    if (s < 1) sqwidth = 4;
-    if (s < 5) sqwidth = 4;
-    else if (s < 12) sqwidth = 5;
-    else if (s < 27) sqwidth = 6;
-    else sqwidth = 7;
+    if (s < 1) sqwidth = 3;
+    if (s < 4) sqwidth = 4;
+    else if (s < 10) sqwidth = 5;
+    else if (s < 23) sqwidth = 6;
+    else if (s < 29) sqwidth = 7;
+	 else sqwidth = 8;
 end
 endfunction
 
@@ -97,7 +101,7 @@ assign square3 = square[3];
 reg [PLAYER_WIDTH - 1:0] player_reg;
 assign player =  player_reg;
 
-initial begin score = 0; perfect_r = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0; square[3] = 0;player_reg = 0; end
+initial begin score = 0; perfect_r = 0; dead_r = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0; square[3] = 0;player_reg = 0; end
 
 function[8:0] colorscheme(input color);
 	if (color) colorscheme = {3'd1, 3'd2, 3'd3};
@@ -264,6 +268,7 @@ task reset;
 begin
     should_fall = 0;
 	score = 0;
+	dead_r = 0;
     layout = rand(1) & 3'b111;
     color = rand(1) & 4'b1111;
     width[7:0] = sqwidth(rand(1));
@@ -434,7 +439,7 @@ begin
             $display("============================================== falling =======");
             should_fall = 1;
         end else begin
-            if (landing_x_l + landing_x_r + landing_y_u + landing_y_d == 0) begin
+            if (landing_x_l + landing_x_r + landing_y_u + landing_y_d <= 1) begin
                 perfect_r = 1;
             end
             score = newScore(score, perfect_r);
@@ -452,6 +457,7 @@ endtask
 
 task fall;
 begin
+	dead_r = 1;
 	layout_to_xy(layout, width, color);
     updatePlayer();
 end
