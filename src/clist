@@ -8,4 +8,5 @@ rebounce.v
 renderer.v
 segdisplay.v
 tb.v
+ssled.v
 vga640x480.v

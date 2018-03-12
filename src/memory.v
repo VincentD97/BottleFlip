@@ -20,7 +20,7 @@ always @(posedge clk) begin
         //for (i = 0; i < 12 * 60; i = i + 1) ram[i] = 0;
     end
     else if (wr) begin
-        if (di) $display("writing %d to ram[%d]", di, addr);
+        //if (di) $display("writing %d to ram[%d]", di, addr);
         ram[addr] = di;
     end
 end
