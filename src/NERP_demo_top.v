@@ -145,12 +145,12 @@ fsm U5(.clk(rclk),
 	.perfect(perfect)
 );
 
-ssled ss(
-	.n(score),
+ssled _ssled(
+	.in_score(score),
 	.clk_disp(segclk),
 	.seg(seg),
 	.an(an)
-);
+    );
 
 light light(
 	.perfect(perfect),

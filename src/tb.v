@@ -64,12 +64,12 @@ clockdiv U1(
 	);
 
 // 7-segment display controller
-segdisplay U2(
-	.segclk(segclk),
-	.clr(clr),
-	.seg(seg),
-	.an(an)
-	);
+// segdisplay U2(
+// 	.segclk(segclk),
+// 	.clr(clr),
+// 	.seg(seg),
+// 	.an(an)
+// 	);
 
 
 // VGA controller
@@ -112,6 +112,13 @@ fsm U5(.clk(rclk),
 	.out_score(score),
 	.perfect(perfect)
 );
+
+ssled _ssled(
+	.in_score(score),
+	.clk_disp(segclk),
+	.seg(seg),
+	.an(an)
+    );
 
 light light(
 	.perfect(perfect),

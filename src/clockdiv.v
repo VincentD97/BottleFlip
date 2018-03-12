@@ -49,7 +49,7 @@ begin
 end
 
 // 50Mhz � 2^17 = 381.47Hz
-assign segclk = q[17];
+assign segclk = q[SEG_CLK_HI_BIT];
 
 assign rclk = q[RENDER_CLK_HI_BIT];
 
