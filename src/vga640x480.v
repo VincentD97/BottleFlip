@@ -192,11 +192,12 @@ function [7:0] code_to_rgb;
 input [2:0] c;
 begin
 	case (c)
-		0: code_to_rgb = 8'b10010010;
+		0: code_to_rgb = 8'b10111011; // light-purple-blue // 8'b10010010;
 		1: code_to_rgb = 8'b11100000;
 		2: code_to_rgb = 8'b11110100;
 		3: code_to_rgb = 8'b11111000;
 		4: code_to_rgb = 8'b11111000;
+		6: /*pl_color*/ code_to_rgb = 8'b10000010; // dark-purple
 		default: code_to_rgb = 8'b10010010;
 	endcase
 end

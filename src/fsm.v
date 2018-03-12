@@ -22,6 +22,7 @@ module fsm(
     input clk,
     input restart,
 	 input [7:0] jump_dist,
+	 output [SQ_WIDTH - 1:0] square0,
 	 output [SQ_WIDTH - 1:0] square1,
 	 output [SQ_WIDTH - 1:0] square2,
 	 output [SQ_WIDTH - 1:0] square3,
@@ -38,8 +39,7 @@ parameter JUMP_PREP = 2;
 parameter SHIFT = 3;
 parameter FALL = 4;
 
-parameter SQ_R = 8'd6;
-parameter NUM_SQ = 3;
+parameter NUM_SQ = 4;
 
 reg [15:0] score; 	// 0-9999. Every 4 bits represent a decimal digit.
 assign out_score = score;
@@ -47,6 +47,18 @@ reg perfect_r;
 assign perfect = perfect_r;
 reg [3:0] diff_score;
 reg [15:0] tmp_score;
+
+
+function [7:0] sqwidth(input [31:0] rand);
+reg [4:0] s;
+begin
+    s = rand & 5'b11111;
+    if (s < 5) sqwidth = 4;
+    else if (s < 16) sqwidth = 5;
+    else if (s < 27) sqwidth = 6;
+    else sqwidth = 7;
+end
+endfunction
 
 function [15:0] newScore(input [15:0] score, input perfect_r);
 begin
@@ -72,17 +84,19 @@ endfunction
 reg [2:0] state;
 reg [NUM_SQ - 2:0] layout;
 reg [NUM_SQ * 8 - 8 - 1:0] dist;
+reg [NUM_SQ * 8 - 1:0] width;
 reg [NUM_SQ - 1:0] color;
 
-reg [SQ_WIDTH - 1:0] square [2:0];
-assign square1 = square[0];
-assign square2 = square[1];
-assign square3 = square[2];
+reg [SQ_WIDTH - 1:0] square [3:0];
+assign square0 = square[0];
+assign square1 = square[1];
+assign square2 = square[2];
+assign square3 = square[3];
 
 reg [PLAYER_WIDTH - 1:0] player_reg;
 assign player =  player_reg;
 
-initial begin score = 0; perfect_r = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0;player_reg = 0; end
+initial begin score = 0; perfect_r = 0; state = 0; layout = 0; dist = 0; color = 0; square[0] = 0; square[1] = 0; square[2] = 0; square[3] = 0;player_reg = 0; end
 
 function[8:0] colorscheme(input color);
 	if (color) colorscheme = {3'd1, 3'd2, 3'd3};
@@ -111,8 +125,8 @@ function [7:0] s_dist(input layout, input [7:0] dist);
     if (layout) s_dist = -dist; else s_dist = dist;
 endfunction
 function [15:0] base(input layout);
-    if (layout) base = {8'd40, 8'd100};
-    else base = {8'd20, 8'd100};
+    if (layout) base = {8'd40, 8'd90};
+    else base = {8'd20, 8'd90};
 endfunction
 function [7:0] last8bits(input[15:0] x);
 	 reg [7:0] wulala;
@@ -120,23 +134,35 @@ function [7:0] last8bits(input[15:0] x);
 endfunction
 
 
-task layout_to_xy(input [1:0] layout, input[2:0] color);
+
+// !!!!!
+parameter B = 1; // BASE SQAURE THAT PLAER IS STANDING ON
+
+
+
+task layout_to_xy(input [NUM_SQ - 2:0] layout, input [NUM_SQ * 8 - 1 : 0] width, input[NUM_SQ - 1:0] color);
 begin
-    {baseX, baseY} = base(layout[0]);
+    {baseX, baseY} = base(layout[B]);
 	
-	for (i = 0; i < NUM_SQ; i = i + 1) begin
-		if (i == 0) begin
-            square[i] = {baseX, baseY, SQ_R, 8'd5, colorscheme(color[i])};
+    $display("%d %d %d %d", width[31:24], width[23:16], width[15:8], width[7:0]);
+	for (i = B; i < NUM_SQ; i = i + 1) begin
+		if (i == B) begin
+            square[i] = {baseX, baseY, width[ i * 8 +: 8], 8'd5, colorscheme(color[i])};
         end else begin
             square[i] = {square[i-1][`SQ_CX] + s_dist(layout[i-1], dist[ i * 8 - 1 -: 8]) ,
-                         square[i-1][`SQ_CY] - dist[ i * 8 - 1 -: 8], SQ_R, 8'd5, colorscheme(color[i])}; 
+                         square[i-1][`SQ_CY] - dist[ i * 8 - 1 -: 8], width[ i * 8 +: 8], 8'd5 , colorscheme(color[i])}; 
         end
         //$display("square[%d] = %b", i, square[i]);
 	end
+    for (i = B - 1; i >= 0; i = i - 1) begin
+        square[i] = {square[i+1][`SQ_CX] - s_dist(layout[i], dist[ i * 8 +: 8]), 
+                     square[i+1][`SQ_CY] + dist[ i * 8 +: 8], width[ i * 8 +: 8], 8'd5, colorscheme(color[i])};
+    end
+
+    //$display("%d %d , %d %d", square[0][`SQ_CX], square[0][`SQ_CY], square[1][`SQ_CX], square[1][`SQ_CY]);
 	
 end
 endtask
-
 task shift_xy(input signed [7:0] x, input signed [7:0] y); 
 begin
 	 for (i = 0; i < NUM_SQ; i = i + 1) begin 
@@ -172,35 +198,35 @@ end
 task updatePlayer;
 begin
 	dy = last8bits((/*(square[0][`SQ_CY] - square[1][`SQ_CY])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
-	if (square[1][`SQ_CX] > square[0][`SQ_CX]) begin
+	if (square[B+1][`SQ_CX] > square[B+0][`SQ_CX]) begin
 		dx = last8bits((/*(square[1][`SQ_CX] - square[0][`SQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
-		player_reg = { ( landing_x_l ? (square[0][`SQ_CX] + dx - landing_x_l) : 
-                                       (square[0][`SQ_CX] + dx + landing_x_r) ),
-                       ( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
+		player_reg = { ( landing_x_l ? (square[B+0][`SQ_CX] + dx - landing_x_l) : 
+                                       (square[B+0][`SQ_CX] + dx + landing_x_r) ),
+                       ( landing_y_u ? (square[B+0][`SQ_CY] - dy - landing_y_u
 							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
-                                       (square[0][`SQ_CY] - dy + landing_y_d
+                                       (square[B+0][`SQ_CY] - dy + landing_y_d
 							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
 					   PL_INIT_H };
 	end else begin
         dx = last8bits((/*(square[0][`SQ_CX] - square[1][`ySQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
 
-        $display("fsm:player_reg_x, %d", ( landing_x_l ? (square[0][`SQ_CX] - dx - landing_x_l) : 
-                                       (square[0][`SQ_CX] - dx + landing_x_r) ));
+        $display("fsm:player_reg_x, %d", ( landing_x_l ? (square[B+0][`SQ_CX] - dx - landing_x_l) : 
+                                       (square[B+0][`SQ_CX] - dx + landing_x_r) ));
 
         $display("fsm: dy = %d, dx = %d, pl_jump_dist = %d, jump_ratio = %d, jump_tot_sft = %d", dy, dx, 
         pl_jump_dist, jump_ratio, jump_tot_sft);
         $display("fsm:player_reg_y, %d", 
-						( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
+						( landing_y_u ? (square[B+0][`SQ_CY] - dy - landing_y_u
 							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
-                                       (square[0][`SQ_CY] - dy + landing_y_d
+                                       (square[B+0][`SQ_CY] - dy + landing_y_d
 							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ));
         
 
-        player_reg = { ( landing_x_l ? (square[0][`SQ_CX] - dx - landing_x_l) : 
-                                       (square[0][`SQ_CX] - dx + landing_x_r) ),
-						( landing_y_u ? (square[0][`SQ_CY] - dy - landing_y_u
+        player_reg = { ( landing_x_l ? (square[B+0][`SQ_CX] - dx - landing_x_l) : 
+                                       (square[B+0][`SQ_CX] - dx + landing_x_r) ),
+						( landing_y_u ? (square[B+0][`SQ_CY] - dy - landing_y_u
 							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
-                                       (square[0][`SQ_CY] - dy + landing_y_d
+                                       (square[B+0][`SQ_CY] - dy + landing_y_d
 							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
 						PL_INIT_H };
 	end
@@ -233,27 +259,31 @@ endfunction
 
 
 
-
 task reset;
 begin
     should_fall = 0;
 	score = 0;
-	layout = 2'b01;	// keeping shift to the right
-	color = 3'b001;
-    layout = rand(1) & 2'b11;
-    color = rand(1) & 3'b111;
+    layout = rand(1) & 3'b111;
+    color = rand(1) & 4'b1111;
+    width[7:0] = sqwidth(rand(1));
+    width[15:8] = sqwidth(rand(1));
+    width[23:16] = sqwidth(rand(1));
+    width[31:24] = sqwidth(rand(1));
+
     dist[7:0]  = 13 + (rand(1) & 3'b111);
     dist[15:8] = 13 + (rand(1) & 3'b111);
+    dist[23:16] = 13 + (rand(1) & 3'b111);
+
     //$display("random %d", rand.rand(1) & 7'b1111111);
     //$display("init state: layout = %b, color = %b, dist = %b, %b", 
     //        layout, color, dist[15:8], dist[7:0]);
-	layout_to_xy(layout, color);
+	layout_to_xy(layout, width, color);
     jump_ratio = 0;
     landing_x_l = 0;
     landing_x_r = 0;
     landing_y_u = 0;
     landing_y_d = 0;
-    player_reg = {square[0][`SQ_CX], square[0][`SQ_CY], PL_INIT_H};
+    player_reg = {square[B][`SQ_CX], square[B][`SQ_CY], PL_INIT_H};
 	// updatePlayer();
     state = GEN_NEXT;
 end
@@ -270,6 +300,7 @@ endtask
 
 reg next_layout;
 reg next_color;
+reg[7:0] next_width;
 reg[7:0] next_dist;
 
 reg shift_state;
@@ -282,7 +313,7 @@ reg [shift_lazy_sft - 1:0] shift_lazy;
 
 reg signed [7: 0] shift_ratio;
 
-initial begin shift_ratio = 0; shift_lazy = 0; shift_state = 0; static_state = 0; next_dist = 0; next_layout = 0; next_color = 0; end
+initial begin shift_ratio = 0; shift_lazy = 0; shift_state = 0; static_state = 0; next_dist = 0; next_layout = 0; next_color = 0; next_width = 0; end
 
 parameter SHIFT_PREP = 0;
 parameter SHIFT_EXEC = 1;
@@ -294,11 +325,13 @@ begin
     next_layout = ((rand(1) & 4'b1111) > 4'b1101) ? layout[NUM_SQ - 2] : ~layout[NUM_SQ - 2];
     // $display("next layout is %d based on prev layout %d", next_layout, layout[NUM_SQ - 2]);
     next_color = rand(1) & 1;
+    next_width = sqwidth(rand(1));
     next_dist = 13 + (rand(1) & 3'b111);
     layout = {next_layout, layout[NUM_SQ - 2: 1]};
     color = {next_color, color[NUM_SQ - 1: 1]};
+    width = {next_width, width[ NUM_SQ * 8 - 1 : 8]};
     dist  = {next_dist, dist[ ((NUM_SQ - 1) * 8) - 1: 8]};
-    layout_to_xy(layout, color);
+    layout_to_xy(layout, width, color);
 	updatePlayer();
     state = should_fall ? FALL : JUMP_PREP;
     perfect_r = 0;
@@ -318,7 +351,7 @@ end
 
 task jump_prep; 
 begin
-    layout_to_xy(layout, color);
+    layout_to_xy(layout, width, color);
     updatePlayer();
 
     $display("jump dist sr === %d, %d", jump_dist_sr[15:8], jump_dist_sr[7:0]);
@@ -343,10 +376,10 @@ endtask
 task shift;
 begin
     if (shift_state == SHIFT_PREP) begin
-        {baseX, baseY} = base(layout[0]);
-        baseX = baseX + s_dist(layout[0], dist[7:0]);
-        baseY = baseY - dist[7:0];
-        {newbaseX, newbaseY} = base(layout[1]);
+        {baseX, baseY} = base(layout[B]);
+        baseX = baseX + s_dist(layout[B], dist[B*8 +: 8]);
+        baseY = baseY - dist[B*8 +: 8];
+        {newbaseX, newbaseY} = base(layout[B+1]);
         // $display("baseX = %d, baseY = %d, nbX = %d, nbY = %d", baseX, baseY, newbaseX, newbaseY);
         // get the second square's current base and would-be base 
         diffX = newbaseX - baseX; 
@@ -357,7 +390,7 @@ begin
         shift_lazy = 0;
     end
 
-	layout_to_xy(layout, color);
+	layout_to_xy(layout, width, color);
 
     //$display("shift_ratio = %d, shift_amount = %d, %d", 
     //    shift_ratio, (diffX * shift_ratio) >>> shift_tot_sft, 
@@ -382,21 +415,21 @@ begin
 	 
 	updatePlayer();
 	if (jump_ratio == (1 << jump_tot_sft)) begin	
-        if (player_reg[`PL_X] < square[1][`SQ_CX]) begin
-            landing_x_l = square[1][`SQ_CX] - player_reg[`PL_X];
+        if (player_reg[`PL_X] < square[B+1][`SQ_CX]) begin
+            landing_x_l = square[B+1][`SQ_CX] - player_reg[`PL_X];
             landing_x_r = 0;
         end else begin
-            landing_x_r = player_reg[`PL_X] - square[1][`SQ_CX];
+            landing_x_r = player_reg[`PL_X] - square[B+1][`SQ_CX];
             landing_x_l = 0;
         end
-        if (player_reg[`PL_Y] < square[1][`SQ_CY]) begin
-            landing_y_u = square[1][`SQ_CY] - player_reg[`PL_Y];
+        if (player_reg[`PL_Y] < square[B+1][`SQ_CY]) begin
+            landing_y_u = square[B+1][`SQ_CY] - player_reg[`PL_Y];
             landing_y_d = 0;
         end else begin
-            landing_y_d = player_reg[`PL_Y] - square[1][`SQ_CY];
+            landing_y_d = player_reg[`PL_Y] - square[B+1][`SQ_CY];
             landing_y_u = 0;
         end
-        if (landing_x_l + landing_x_r + landing_y_u + landing_y_d > SQ_R) begin
+        if (landing_x_l + landing_x_r + landing_y_u + landing_y_d > square[B+1][`SQ_R]) begin
             $display("============================================== falling =======");
             should_fall = 1;
         end else begin
@@ -418,7 +451,7 @@ endtask
 
 task fall;
 begin
-	layout_to_xy(layout, color);
+	layout_to_xy(layout, width, color);
     updatePlayer();
 end
 endtask

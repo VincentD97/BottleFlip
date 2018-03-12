@@ -91,6 +91,7 @@ vga640x480 U3(
 
 
 
+wire [SQ_WIDTH - 1 : 0] sq0;
 wire [SQ_WIDTH - 1 : 0] sq1;
 wire [SQ_WIDTH - 1 : 0] sq2;
 wire [SQ_WIDTH - 1 : 0] sq3;
@@ -105,6 +106,7 @@ reg restart_btn;
 fsm U5(.clk(rclk), 
 	.restart(restart_btn),
 	.jump_dist(jump_dist),
+	.square0(sq0),
 	.square1(sq1),
 	.square2(sq2),
 	.square3(sq3),
@@ -127,6 +129,7 @@ light light(
 );
 
 renderer U4(.clk(clk),
+			.square0(sq0),
 			.square1(sq1),
 			.square2(sq2),
 			.square3(sq3),
@@ -186,22 +189,22 @@ end
 integer rcnt = 0;
 always @(posedge rclk) begin
 	if (rcnt == 2)
-		jump_dist <= 13; //jump starts at 4th frame
+		jump_dist <= 18; //jump starts at 4th frame
 	if (rcnt == 3)
 		jump_dist <= 0;
 
 	if (rcnt == 30)
-		jump_dist <= 19;
+		jump_dist <= 14;
 	if (rcnt == 31)
 		jump_dist <= 0;
 
 	if (rcnt == 60)
-		jump_dist <= 15;
+		jump_dist <= 17;
 	if (rcnt == 61)
 		jump_dist <= 0;
 
 	if (rcnt == 90)
-		jump_dist <= 15;
+		jump_dist <= 13;
 	if (rcnt == 91)
 		jump_dist <= 0;
 

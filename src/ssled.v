@@ -65,7 +65,7 @@ module ssled(
 
 integer f;
 	initial begin
-		f = $fopen("ssled.txt", "w");
+		//f = $fopen("ssled.txt", "w");
 	end
 	
 	always @ (posedge clk_disp) begin
@@ -73,7 +73,7 @@ integer f;
 		//$display("ssled: from ssled_disp: %d %d : %d %d", n[15:12], n[11:8], n[7:4], n[3:0]);
 		//$display("ssled: binary = %d, digit = %d", binary, d);
 
-		$fwrite(f, "%b,%b\n", seg, an);
+		//$fwrite(f, "%b,%b\n", seg, an);
 		binary <= binary + 1'b1;
 		
 		if (unary == 4'b0111) begin

@@ -22,6 +22,7 @@
 
 module renderer(
 	input clk,
+	input [SQ_WIDTH - 1:0] square0,
 	input [SQ_WIDTH - 1:0] square1,
 	input [SQ_WIDTH - 1:0] square2,
 	input [SQ_WIDTH - 1:0] square3,
@@ -34,8 +35,8 @@ module renderer(
 
 `include "consts.v"
 
-reg signed [8:0] x;
-reg signed [8:0] y;
+reg signed [15:0] x;
+reg signed [15:0] y;
 
 parameter CLR=3'b000;
 parameter DRAW=3'b001;
@@ -58,10 +59,11 @@ parameter RENDER_PL_MAIN = 1;
 parameter RENDER_PL_DONE = 2;
 
 reg [3:0] render_st;
-parameter RENDER_SQ1 = 0;
-parameter RENDER_SQ2 = 1;
-parameter RENDER_SQ3 = 2;
-parameter RENDER_PL = 3;
+parameter RENDER_SQ0 = 0;
+parameter RENDER_SQ1 = 1;
+parameter RENDER_SQ2 = 2;
+parameter RENDER_SQ3 = 3;
+parameter RENDER_PL = 4;
 
 
 reg [31:0] idleCount;
@@ -83,19 +85,26 @@ assign valido = (x >= 0 && x < PX_WIDTH && y >= 0 && y < PX_HEIGHT);
 
 
 
-task incr_draw_square(input [7:0] center_x, input [7:0] center_y, input [7:0] r, input [7:0] height, 
+task incr_draw_square(input signed [15:0] center_x, input signed [15:0] center_y, input signed [15:0] r, input signed [15:0] height, 
 input [2:0] color1, input [2:0] color2, input [2:0] color3); 
-reg [7:0] nx;
-reg [7:0] ny;
+reg signed [15:0] nx;
+reg signed [15:0] ny;
 begin
+/*
+        if (x < 0) begin
+            $display("Setting cx to %d, cy to %d", center_x, center_y);
+            $display("Setting x to %b, y to %b, %d", x, y, x < 0);
+        end
+        */
     case (render_sq_st)
     RENDER_SQ_INIT: 
     begin
         wr <= 0;  // must be non-writeable
         y <= center_y - r;
         x <= center_x - r;
-
-        $display("Setting x to %d, y to %d", y, x);
+        memi <= color1;
+       // $display("About to paint cx=%d, cy=%d, x=%d, y=%d, r=%d, height=%d, color1=%d", 
+       // center_x, center_y, x, y, r, height, color1);
         render_sq_st <= RENDER_SQ_MIDDLE;
     end
     RENDER_SQ_MIDDLE:
@@ -109,13 +118,15 @@ begin
         end else begin
             if (x < center_x + r) begin nx = x + 1; ny = y; end
             else begin nx = center_x - r; ny = y + 1; end
+
             if ( nx + ny >= center_x + center_y - r &&
                  nx + ny <= center_x + center_y + r &&
                  nx - ny >= center_x - center_y - r &&
                  nx - ny <= center_x - center_y + r )
-            begin wr <= 1; memi <= color1; end else wr <= 0;
+            begin wr <= 1; memi <= color1; end else begin wr <= 0; end
             x <= nx;
             y <= ny;
+           // $display("Painting middle , x = %d, y = %d, wr = %d, memi = %d", nx, ny, wr, memi);
         end
     end
     RENDER_SQ_LEFT:
@@ -187,7 +198,6 @@ endtask
 
 task draw_sq(input [SQ_WIDTH - 1 : 0] square1);
 begin
-	//$display("here in draw_sq, %b, %d, %d", square1, square1[`SQ_CX], square1[`SQ_CY]);
 	incr_draw_square(
 					square1[`SQ_CX], square1[`SQ_CY], square1[`SQ_R], 
 					square1[`SQ_H], square1[`SQ_C1], square1[`SQ_C2], square1[`SQ_C3]);
@@ -207,7 +217,16 @@ endtask
 task render;
 begin
     //$display("RENDER STATE = ", render_st);
+    //$display("%b %b %b %b" , square0, square1, square2, square3);
     case (render_st)
+        RENDER_SQ0:
+        begin
+            draw_sq(square0);
+            if (render_sq_st == RENDER_SQ_DONE) begin
+                render_sq_st <= 0;
+                render_st <= RENDER_SQ1;
+            end
+        end
         RENDER_SQ1: 
         begin
             draw_sq(square1);
@@ -230,8 +249,6 @@ begin
             if (render_sq_st == RENDER_SQ_DONE) begin
                 render_sq_st <= 0;
                 render_st <= RENDER_PL;
-                $display("render: player x, y, h = %d %d %d", player[`PL_X], player[`PL_Y], player[`PL_H]);
-
             end
         end
         RENDER_PL:
@@ -244,6 +261,7 @@ begin
                 $display("render is done");
             end
         end
+        
     endcase
 end
 endtask
