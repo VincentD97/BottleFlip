@@ -98,6 +98,7 @@ wire [SQ_WIDTH - 1 : 0] sq3;
 wire [PLAYER_WIDTH - 1 : 0] pl;
 wire [15:0] score;
 wire perfect;
+wire dead;
 
 reg [7:0] jump_dist;
 reg restart_btn;
@@ -112,7 +113,8 @@ fsm U5(.clk(rclk),
 	.square3(sq3),
 	.player(pl),
 	.out_score(score),
-	.perfect(perfect)
+	.perfect(perfect),
+	.dead(dead)
 );
 
 ssled _ssled(
@@ -124,6 +126,7 @@ ssled _ssled(
 
 light light(
 	.perfect(perfect),
+	.dead(dead),
 	.clk(clk),
 	.led(Led)
 );
@@ -134,6 +137,7 @@ renderer U4(.clk(clk),
 			.square2(sq2),
 			.square3(sq3),
 			.player(pl),
+			.dead(dead),
 			.rmemaddr(rmemaddr),
 			.rmemaddr2(rmemaddr2),
 			.memo(memo),
@@ -189,7 +193,7 @@ end
 integer rcnt = 0;
 always @(posedge rclk) begin
 	if (rcnt == 2)
-		jump_dist <= 18; //jump starts at 4th frame
+		jump_dist <= 31/*18*/; //jump starts at 4th frame
 	if (rcnt == 3)
 		jump_dist <= 0;
 

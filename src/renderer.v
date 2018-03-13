@@ -27,6 +27,7 @@ module renderer(
 	input [SQ_WIDTH - 1:0] square2,
 	input [SQ_WIDTH - 1:0] square3,
 	input [PLAYER_WIDTH - 1:0] player,
+    input dead,
     input [15:0] rmemaddr,
     input [15:0] rmemaddr2,
     output wire [2:0] memo,
@@ -290,20 +291,21 @@ endtask
 */
 
 begin
+    $display("======== %d", dead );
     if (clr_st == 0) begin
         wr <= 1;
         x <= 0;
         y <= 0;
-        memi <= 0;
+        memi <= dead ? 4 : 0;
         clr_st <= 1;
     end 
     else if (x < PX_WIDTH - 1) begin
         wr <= 1;
-        memi <= 0;
+        memi <= dead ? 4 : 0;
         x <= x + 1;
     end else if (y < PX_HEIGHT - 1) begin
         wr <= 1;
-        memi <= 0;
+        memi <= dead ? 4 : 0;
         y <= y + 1;
         x <= 0;
     end else begin
