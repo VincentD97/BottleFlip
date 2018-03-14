@@ -193,10 +193,18 @@ end
 integer rcnt = 0;
 always @(posedge rclk) begin
 	if (rcnt == 2)
-		jump_dist <= 31/*18*/; //jump starts at 4th frame
+		jump_dist <= 18; //jump starts at 4th frame
 	if (rcnt == 3)
 		jump_dist <= 0;
 
+	if (rcnt == 26) 
+		jump_dist <= 10;
+	if (rcnt == 27) 
+		jump_dist <= 11;
+	if (rcnt == 28) 
+		jump_dist <= 12;
+	if (rcnt == 29) 
+		jump_dist <= 13;
 	if (rcnt == 30)
 		jump_dist <= 14;
 	if (rcnt == 31)

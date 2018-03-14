@@ -55,7 +55,6 @@ always @(posedge clk) begin
 		jump_dist_r <= 0;
 	end
 
-	//$display("in button2dist: %d", jump_dist);
 	sr <= {sr[0], jump_btn};
 end
 	

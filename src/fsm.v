@@ -123,8 +123,9 @@ integer i;
 reg[15:0] jump_ratio;
 parameter signed jump_tot_sft = 4;
 reg should_fall;
+reg [7:0] pl_h;
 
-initial begin baseX = 0; newbaseX = 0; baseY = 0; newbaseY = 0; diffX = 0; diffY = 0; shiftX = 0; shiftY = 0; tmpX = 0; i = 0; jump_ratio = 0; end
+initial begin pl_h = PL_INIT_H; baseX = 0; newbaseX = 0; baseY = 0; newbaseY = 0; diffX = 0; diffY = 0; shiftX = 0; shiftY = 0; tmpX = 0; i = 0; jump_ratio = 0; end
 
 function [7:0] s_dist(input layout, input [7:0] dist);
     if (layout) s_dist = -dist; else s_dist = dist;
@@ -211,7 +212,7 @@ begin
 							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
                                        (square[B+0][`SQ_CY] - dy + landing_y_d
 							- (last8bits(dx * (/*square[1][`SQ_CX] - square[0][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
-					   PL_INIT_H };
+					   pl_h };
 	end else begin
         dx = last8bits((/*(square[0][`SQ_CX] - square[1][`ySQ_CX])*/ pl_jump_dist * jump_ratio) >>> jump_tot_sft);
 
@@ -233,7 +234,7 @@ begin
 							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) :
                                        (square[B+0][`SQ_CY] - dy + landing_y_d
 							- (last8bits(dx * (/*square[0][`SQ_CX] - square[1][`SQ_CX]*/ pl_jump_dist - dx)) >>> 2) ) ),
-						PL_INIT_H };
+						pl_h };
 	end
 
     
@@ -289,6 +290,7 @@ begin
     landing_x_r = 0;
     landing_y_u = 0;
     landing_y_d = 0;
+	 pl_h = PL_INIT_H;
     player_reg = {square[B][`SQ_CX], square[B][`SQ_CY], PL_INIT_H};
 	// updatePlayer();
     state = GEN_NEXT;
@@ -363,8 +365,13 @@ begin
     $display("jump dist sr === %d, %d", jump_dist_sr[15:8], jump_dist_sr[7:0]);
     $display("jump dist raw = %d", jump_dist);
     
+	 if (jump_dist > 0)
+		pl_h = PL_INIT_H - (jump_dist >> 2);
+	 else
+	   pl_h = PL_INIT_H;
     if (end_of_jump) begin
         pl_jump_dist = jump_dist_sr[15:8];
+		  pl_h = PL_INIT_H;
 		$display("EOJ: jump dist === %d", pl_jump_dist);
         state = SHIFT;
         shift_state = SHIFT_PREP;

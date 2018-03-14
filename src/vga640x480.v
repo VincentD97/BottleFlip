@@ -83,8 +83,11 @@ begin
 			hc <= 0;
 			if (vc < vlines - 1)
 				vc <= vc + 1;
-			else
+			else begin
 				vc <= 0;
+				frameCount <= frameCount + 1;
+			end
+
 		end
 		
 	end
@@ -97,111 +100,42 @@ end
 assign hsync = (hc < hpulse) ? 0:1;
 assign vsync = (vc < vpulse) ? 0:1;
 
-// display 100% saturation colorbars
-// ------------------------
-// Combinational "always block", which is a block that is
-// triggered when anything in the "sensitivity list" changes.
-// The asterisk implies that everything that is capable of triggering the block
-// is automatically included in the sensitivty list.  In this case, it would be
-// equivalent to the following: always @(hc, vc)
-// Assignment statements can only be used on type "reg" and should be of the "blocking" type: =
-/*
-always @(*)
+
+
+reg [15:0] frameCount;
+initial begin frameCount = 0;  end
+
+
+function [7:0] background(input [2:0] frameCount);
 begin
-	// first check if we're within vertical active video range
-	if (vc >= vbp && vc < vfp)
-	begin
-		// now display different colors every 80 pixels
-		// while we're within the active horizontal range
-		// -----------------
-		// display white bar
-		if (hc >= hbp && hc < (hbp+80))
-		begin
-			red = 3'b111;
-			green = 3'b111;
-			blue = 2'b11;
-		end
-		// display yellow bar
-		else if (hc >= (hbp+80) && hc < (hbp+160))
-		begin
-			red = 3'b111;
-			green = 3'b111;
-			blue = 2'b00;
-		end
-		// display cyan bar
-		else if (hc >= (hbp+160) && hc < (hbp+240))
-		begin
-			red = 3'b000;
-			green = 3'b111;
-			blue = 2'b11;
-		end
-		// display green bar
-		else if (hc >= (hbp+240) && hc < (hbp+320))
-		begin
-			red = 3'b000;
-			green = 3'b111;
-			blue = 2'b00;
-		end
-		// display magenta bar
-		else if (hc >= (hbp+320) && hc < (hbp+400))
-		begin
-			red = 3'b111;
-			green = 3'b000;
-			blue = 2'b11;
-		end
-		// display red bar
-		else if (hc >= (hbp+400) && hc < (hbp+480))
-		begin
-			red = 3'b111;
-			green = 3'b000;
-			blue = 2'b00;
-		end
-		// display blue bar
-		else if (hc >= (hbp+480) && hc < (hbp+560))
-		begin
-			red = 3'b000;
-			green = 3'b000;
-			blue = 2'b11;
-		end
-		// display black bar
-		else if (hc >= (hbp+560) && hc < (hbp+640))
-		begin
-			red = 3'b000;
-			green = 3'b000;
-			blue = 2'b00;
-		end
-		// we're outside active horizontal range so display black
-		else
-		begin
-			red = 0;
-			green = 0;
-			blue = 0;
-		end
-	end
-	// we're outside active vertical range so display black
-	else
-	begin
-		red = 0;
-		green = 0;
-		blue = 0;
-	end
+	case (frameCount)
+		0: background = 8'b11111011; // ffdbff
+		1: background = 8'b11111010; // ffdbaa
+		2: background = 8'b11111110; // ffffaa
+		3: background = 8'b11011110; // dbffaa
+		4: background = 8'b11011111; // dbffff
+		5: background = 8'b10111111; // b6ffff
+		6: background = 8'b11011011; // dbdbff
+		7: background = 8'b11111111; // ffffff
+	endcase
 end
-*/
+endfunction
 
 function [7:0] code_to_rgb;
 input [2:0] c;
 begin
 	case (c)
-		0: code_to_rgb = 8'b10111011; // light-purple-blue // 8'b10010010;
+		0: code_to_rgb = background(frameCount[11:9]); // 8'b10111011; // light-purple-blue // 8'b10010010;
 		1: code_to_rgb = 8'b11101100; // orange
 		2: code_to_rgb = 8'b10010110; // steelgrey
 		3: code_to_rgb = 8'b11111000; // yellow
-		4: code_to_rgb = 8'b11111000;
+		4: code_to_rgb = 8'b10100000; // crimson red
 		6: /*pl_color*/ code_to_rgb = 8'b10000010; // dark-purple
 		default: code_to_rgb = 8'b10010010;
 	endcase
 end
 endfunction
+
 
 wire [32:0] idx;
 wire inscreen;

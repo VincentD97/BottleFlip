@@ -275,23 +275,8 @@ endtask
 
 reg clr_st;
 task clear;
-/*
-begin
-    if (clr_st == 0) begin
-        rst = 1;
-        clr_st <= 1;
-    end else begin
-        rst = 0;
-        clr_st <= 0;
-        state <= DRAW;
-        $display("CLR DONE");
-    end
-end
-endtask
-*/
 
 begin
-    $display("======== %d", dead );
     if (clr_st == 0) begin
         wr <= 1;
         x <= 0;
