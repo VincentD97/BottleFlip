@@ -446,7 +446,7 @@ begin
             $display("============================================== falling =======");
             should_fall = 1;
         end else begin
-            if (landing_x_l + landing_x_r + landing_y_u + landing_y_d <= 1) begin
+            if (landing_x_l + landing_x_r + landing_y_u + landing_y_d <= 2) begin
                 perfect_r = 1;
             end
             score = newScore(score, perfect_r);

@@ -4,7 +4,7 @@ module rebounce (/*AUTOARG*/
    // Inputs
    input btn, input clk, input rst
 );
-	parameter COUNTDOWN = 1000;
+	parameter COUNTDOWN = 1000000;
 	integer count;
 	
 initial begin count = 0; end
